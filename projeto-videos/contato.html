@@ -3,10 +3,12 @@
     <head>
         <title>Channel online</title>
         <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/estilo.css" type="text/css" />
+        <script src="../projeto-videos/js/contato.js"></script>
     </head>
     <style>
         h2{
-            color:crimson;
+            color:firebrick;
         }
     </style>
     <body>
@@ -22,29 +24,28 @@
         </nav>
         <section>
             <h1>Channel Online - Seu local de entretenimento</h1>
-            <form>
+            <form id="formContato">
                 <fieldset>
                     <legend>Fale conosco</legend>
                     <div>
                         <label>Nome</label>
-                        <input name="nome-contato" maxlength="50" required>
+                        <input name="nomeContato" id="nomeContato" maxlength="50" required>
                     </div>
                     <div>
                         <label>Email</label>
-                        <input name="email-contato" type="email" required>
+                        <input name="emailContato" id="emailContato" type="email" required>
                     </div>
                     <div>
                         <label>Assunto</label>
-                        <input name="assunto-contato" maxlength="50" required>
+                        <input name="assuntoContato" id="assuntoContato" maxlength="50" required>
                     </div>                    
                     <div>
                         <label>Comentários<br /></label>
-                        <textarea name="comentario" rows="8"></textarea> 
+                        <textarea name="comentario" id="comentario" rows="8"></textarea> 
                     </div>
                     <div>
-                        <button>Confirmar</button>
+                        <button id="btContato" type="button">Confirmar</button>
                     </div>
-                    
                 </fieldset>
             </form>            
             <article>
