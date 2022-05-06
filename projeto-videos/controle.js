@@ -1,10 +1,9 @@
 var formC=document.forms.formCadastro
-//evento de Clic no botton comfimar
-document.querySelector("#btContato").onclick=function(){
+document.querySelector("#btCadastro").onclick=function(){
    // alert("ok")
-    if(formC.nomeContato.value == ""){
+    if(formC.nome.value == ""){
        alert("preencha o nome!")
-   }else if(formC.emailContato.value ==""){
+   }else if(formC.email.value ==""){
        alert("preecha o email!")
     }else if(formC.telefone.value == ""){
         alert("preencha o número do telefone")
