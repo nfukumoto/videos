@@ -19,17 +19,17 @@
         </nav>
         <section>
             <center>
-                <form class="caixaDeFormsLoginEContato">
+                <form id="formLogin" class="caixaDeFormsLoginEContato">
                     <fieldset class="fieldsetPersonalizado">
                         <div>
                             <img src="../imagens/login.png" width="300">
                         </div>
                         <div >
-                            <input class="caixaDeEntrada" name="nome-usuario" placeholder="Usuário" type="email" required/><br/><br/>
-                            <input class="caixaDeEntrada" name="senha-usuario" placeholder="Senha" type="password" required/><br/><br/>
+                            <input id="usuario" class="caixaDeEntrada" name="nome-usuario" placeholder="Usuário" type="email" /><br/><br/>
+                            <input id="senha" class="caixaDeEntrada" name="senha-usuario" placeholder="Senha" type="password" /><br/><br/>
                         </div>
                         <div>
-                            <button class="botaoEntrarLogin">Entrar</button>
+                            <button id="btLogin" class="botaoEntrarLogin" type="button">Entrar</button>
                         </div>        
                     </fieldset>
                 </form>
@@ -37,4 +37,6 @@
         </section>
         <footer></footer>
     </body>
+    
+    <script src="../js/validaLogin.js"></script>
 </html>
