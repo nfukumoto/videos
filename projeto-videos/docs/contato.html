@@ -18,18 +18,18 @@
         <section>
             <div>
                 <center>
-                    <form class="caixaDeFormsLoginEContato">
+                    <form id="formContato" class="caixaDeFormsLoginEContato">
                         <fieldset class="fieldsetPersonalizado">
                             <div>
                                 <img src="../imagens/suporte2.png" width="300">
                             </div>
                             <div>
-                                <input class="caixaDeEntrada" name="nome-contato" placeholder="Nome" required><br/><br/>
-                                <input class="caixaDeEntrada" name="email-contato" placeholder="Email de Contato" type="email" required><br/><br/>
-                                <textarea class="caixaDeComentario" name="comentario" placeholder="Deixe seu comentário" rows="10" required></textarea><br/><br/>
+                                <input id="nomeContato" class="caixaDeEntrada" name="nome-contato" placeholder="Nome" ><br/><br/>
+                                <input id="emailContato" class="caixaDeEntrada" name="email-contato" placeholder="Email de Contato" type="email" ><br/><br/>
+                                <textarea id="comentario" class="caixaDeComentario" name="comentario" placeholder="Deixe seu comentário" rows="10" ></textarea><br/><br/>
                             </div>
                             <div>
-                                <button class="botaoEntrarLogin">Enviar</button>
+                                <button id="btContato" class="botaoEntrarLogin" type="button">Enviar</button>
                             </div>
                         </fieldset>
                     </form>
@@ -44,4 +44,5 @@
             </center>
         </footer>
     </body>
+    <script src="../js/validaContato.js"></script>
 </html>

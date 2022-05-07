@@ -28,21 +28,21 @@
         </nav>
         <section>
             <center>
-                <form class="caixaDeFormsLoginEContato">
+                <form id="formRegistro" class="caixaDeFormsLoginEContato" action="../index.html">
                     <fieldset class="fieldsetPersonalizado">
                         <div>
                             <img src="../imagens/login.png" width="300">
                         </div>
                         <div >
-                            <input class="caixaDeEntrada" name="nome-usuario" placeholder="Nome" maxlength="50" required/><br/><br/>
-                            <input class="caixaDeEntrada" name="email-usuario" placeholder="Email" type="email" required/><br/><br/>
-                            <input class="caixaDeEntrada" name="ddd-usuario" placeholder="DDD" type="number" required/>
-                            <input class="caixaDeEntrada" name="numero-usuario" placeholder="Celular" required/><br/><br/>
-                            <input class="caixaDeEntrada" name="senha-usuario" placeholder="Senha" type="password" required/><br/><br/>
-                            <input class="caixaDeEntrada" name="confirmacao-senha-usuario" placeholder="Confirme a senha" type="password" required/><br/><br/>
+                            <input id="nomeUser" class="caixaDeEntrada" name="nome-usuario" placeholder="Nome" maxlength="50" /><br/><br/>
+                            <input id="emailUser" class="caixaDeEntrada" name="email-usuario" placeholder="Email" type="email" /><br/><br/>
+                            <input id="dddUser" class="caixaDeEntrada" name="ddd-usuario" placeholder="DDD" type="number" />
+                            <input id="telUser" class="caixaDeEntrada" name="numero-usuario" placeholder="Celular" type="tel"/><br/><br/>
+                            <input id="senhaUser" class="caixaDeEntrada" name="senha-usuario" placeholder="Senha" type="password" /><br/><br/>
+                            <input id="senhaC" class="caixaDeEntrada" name="confirmacao-senha-usuario" placeholder="Confirme a senha" type="password" /><br/><br/>
                         </div>
                         <div>
-                            <button class="botaoEntrarLogin">Cadastrar</button>
+                            <button id="btRegistro" class="botaoEntrarLogin" type="button">Cadastrar</button>
                         </div>        
                     </fieldset>
                 </form>
@@ -50,4 +50,5 @@
         </section>
         <footer></footer>
     </body>
+    <script src="../js/validaCadastro.js"></script>
 </html>
