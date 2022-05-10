@@ -1,47 +1,53 @@
-var tabelaPromocoes = document.querySelector("#tabelaPromocoes")
+var galeria = document.querySelector("#tabelaPromocoes")
+var textoLorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Est suscipit ipsa vel in laborum delectus nihil officiis optio repudiandae aliquam?"
 
-var promocoes = [
-    ["Video 1","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 2","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 3","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 4","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 5","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 6","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 7","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 8","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
-    ["Video 9","https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"]
+var videos = [
+    ["Video 1", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 2", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 3", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 4", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 5", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 6", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 7", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 8", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
+    ["Video 9", "https://capas-p.imagemfilmes.com.br/164908_000_p.jpg"],
 ]
 
-for(i=0; i<promocoes.length; i++){
-    var promocao = document.createElement("div")
-    promocao.setAttribute("class","col-sm-4 mt-3")
+for (let i = 0; i < videos.length; i++){
     
-    
-    var titulo = document.createElement("h5")
-    titulo.innerText=promocoes[i][0]
-    promocao.appendChild(titulo)
+    var divVideo = configuraElemento(criarDiv(), "col-sm-4 mt-4", galeria)
+    var tituloVideo = configuraElemento(criarTexto(videos[i][0], "h5"), "", divVideo)
+    var divDetalhes = configuraElemento(criarDiv(), "row", divVideo)
+    var divImagem = configuraElemento(criarDiv(), "col-sm-4", divDetalhes)
+    var imagem = configuraElemento(criarImg(videos[i][1]), "w-100", divImagem)
+    var divSinopse = configuraElemento(criarDiv(), "col-sm-8", divDetalhes);
+    var sinopse = configuraElemento(criarTexto(textoLorem,"p"), "text-dark", divSinopse)
+}
 
-    var detalhesPromocao = document.createElement("div")
-    detalhesPromocao.setAttribute("class","row")
 
-    var divImagem = document.createElement("div")
-    divImagem.setAttribute("class","col-sm-4")
+function criarDiv(){
+    var element = document.createElement("div")
+    return element;
+}
 
-    var imagem = document.createElement("img")
-    imagem.setAttribute("src", promocoes[i][1])
-    imagem.setAttribute("class", "w-100")
-    divImagem.appendChild(imagem)
+function criarTexto(valor, tipo){
+    var element = document.createElement(tipo)
+    element.innerHTML=valor;
+    return element;
+}
 
-    var divDescricao = document.createElement("div")
-    var sinopse = document.createElement("p")
-    sinopse.setAttribute("class","text-dark")
-    sinopse.innerHTML="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic enim consequatur repellat atque, quaerat veritatis possimus dolorem vero quae voluptatem nesciunt"
-    divDescricao.appendChild(sinopse)
-    divDescricao.setAttribute("class","col-sm-8")
+function criarImg(caminho){
+    var element = document.createElement("img")
+    element.setAttribute("src", caminho)
+    return element;
+}
 
-    detalhesPromocao.appendChild(divImagem)
-    detalhesPromocao.appendChild(divDescricao)
+function configuraElemento(element, config, destino){
+    element.setAttribute("class",config)
+    colocarDentro(destino, element)
+    return element;
+}
 
-    promocao.appendChild(detalhesPromocao)
-    tabelaPromocoes.appendChild(promocao)
+function colocarDentro(destino, element){
+    destino.appendChild(element)
 }
