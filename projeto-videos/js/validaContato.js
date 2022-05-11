@@ -1,17 +1,16 @@
-var formC=document.forms.formContato;
-document.querySelector("#btContato").onclick=function(){
-    if(verificaSeCampoVazio(formC.nomeContato.value, "nome"));
-    else if(verificaSeCampoVazio(formC.emailContato.value, "email"));
-    else if(verificaSeCampoVazio(formC.comentario.value, "comentário"));
-    else{ 
-       formC.submit()
+window.onload=function(){
+    var formC=document.forms.formContato
+    document.querySelector("#btContato").onclick=function(){
+        if(formC.nomeContato.value == ""){
+            alert("Preencha o nome!")
+        }else if(formC.emailContato.value ==""){
+            alert("Preecha o email!")
+        }else if(formC.assuntoContato.value ==""){
+            alert("Preecha o assunto!")            
+        }else if(formC.comentario.value == ""){
+            alert("Preencha o comentario!")
+        }else{ 
+            formC.submit()
+        }
     }
-}
-
-function verificaSeCampoVazio(valor, msg){
-    if(valor == ""){
-        alert("Preencha o campo " + msg)
-        return true
-    }
-    return false
 }

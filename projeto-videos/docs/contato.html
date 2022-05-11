@@ -1,48 +1,80 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta lang="pt-br">
-        <link rel="stylesheet" href="../css/estilo.css" type="text/css"/>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="../js/validaContato.js"></script>
         <title>Contato</title>
     </head>
-
-    <body class="bodyLoginEContato">
-        <header></header>
-
-        <nav>
-            <a href="../index.html"><button class="botaoNav">Principal</button></a>
-            <a href="produtos.html"><button class="botaoNav">Produtos</button></a>
-        </nav>
-
-        <section>
-            <div>
-                <center>
-                    <form id="formContato" class="caixaDeFormsLoginEContato">
-                        <fieldset class="fieldsetPersonalizado">
-                            <div>
-                                <img src="../imagens/suporte2.png" width="300">
-                            </div>
-                            <div>
-                                <input id="nomeContato" class="caixaDeEntrada" name="nome-contato" placeholder="Nome" ><br/><br/>
-                                <input id="emailContato" class="caixaDeEntrada" name="email-contato" placeholder="Email de Contato" type="email" ><br/><br/>
-                                <textarea id="comentario" class="caixaDeComentario" name="comentario" placeholder="Deixe seu comentário" rows="10" ></textarea><br/><br/>
-                            </div>
-                            <div>
-                                <button id="btContato" class="botaoEntrarLogin" type="button">Enviar</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </center>
+    <body>
+        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
+            <div class="col-sm-2 my-auto">
+                <a href="../index.html">
+                    <img src="../imagens/logovideo.png" class="w-100">
+                </a>
+            </div>  
+            <div class="col-sm-9 text-center my-auto">
+                <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
             </div>
+            <div class="col-sm-1 my-auto">
+            </div>  
+        </header>
+        <nav class="text-center mt-3 mb-4">
+            <a href="../docs/produtos.html"><button class="btn btn-info">Produtos</button></a>
+            <a href="../docs/contato.html"><button class="btn btn-info">Contato</button></a>
+            <a href="../docs/promocoes.html"><button class="btn btn-info">Promoções</button></a>
+        </nav>
+        <section class="container">
+            <h1 class="text-center mt-4">Formulário de Contato</h1>
+            <article>
+                <form id="formContato" method="post" action="../index.html" class="w-50 mx-auto p-3 mt-4 mb-3" style="border:1px solid #ccc; border-radius: 12px;">                     
+                    <fieldset>
+                        <legend class="text-center">Preencha as informações abaixo</legend>
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input class="form-control" name="nomeContato" id="nomeContato" maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" name="emailContato" id="emailContato" type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Assunto</label>
+                            <input class="form-control" name="assuntoContato" id="assuntoContato" maxlength="50" required>
+                        </div>                    
+                        <div class="form-group">
+                            <label>Comentários<br /></label>
+                            <textarea class="form-control" name="comentario" id="comentario" rows="8"></textarea> 
+                        </div>
+                        <div class="text-center">
+                            <button id="btContato" type="button" class="btn btn-info">Confirmar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>          
+            <article>
+                <h2 class="text-center mt-4 mb-2">Contatos da equipe de Suporte</h2>
+                <table class="mx-auto" border="1" width="500">
+                    <tr>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Telefone</th>
+                    </tr>
+                    <tr>
+                        <td>Jarbas Neto</td>
+                        <td>jarbas.neto@channelonline.com.br</td>
+                        <td>(11)96311-7304</td>
+                    </tr>
+                    <tr>
+                        <td>Aurora Bleiser</td>
+                        <td>aurora@channelonline.com.br</td>
+                        <td>(13)91341-4301</td>
+                    </tr>
+                </table>
+            </article>
         </section>
-
-        <footer>
-            <hr/>
-            <center>
-                <p>&copy;2022 Todos os Direitos Reservados</p>
-            </center>
+        <footer class="bg-dark p-4 text-white text-center mt-4">
+            <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
-    <script src="../js/validaContato.js"></script>
 </html>
