@@ -3,37 +3,36 @@
     <head>
         <meta charset="utf-8">
         <meta lang="pt-br">
-        <link rel="stylesheet" href="../css/estilo.css" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <title>Login</title>
     </head>
 
-    <style>
-        nav a button{
-            float: right;
-        }
-    </style>
-
-    <body class="bodyLoginEContato">
-        <nav>
-            <a href="registro.html"><button class="botaoNav">Cadastrar</button></a>
-        </nav>
-        <section>
-            <center>
-                <form id="formLogin" class="caixaDeFormsLoginEContato">
-                    <fieldset class="fieldsetPersonalizado">
-                        <div>
+    <body>
+        <section class="container">
+            <article>
+                <form id="formLogin" class="w-50 mx-auto p-3 mt-4 mb-4" style="border: 1px solid #ccc; border-radius: 12px;" action="../index.html">  
+                    <fieldset>
+                        <div class="text-center">
                             <img src="../imagens/login.png" width="300">
                         </div>
-                        <div >
-                            <input id="usuario" class="caixaDeEntrada" name="nome-usuario" placeholder="Usuário" type="email" /><br/><br/>
-                            <input id="senha" class="caixaDeEntrada" name="senha-usuario" placeholder="Senha" type="password" /><br/><br/>
+
+                        <div class="form-group">
+                            <label>Usuário :</label>
+                            <input id="usuario" class="form-control" name="nome-usuario" type="email" />
+                
                         </div>
-                        <div>
-                            <button id="btLogin" class="botaoEntrarLogin" type="button">Entrar</button>
+
+                        <div class="form-group">
+                            <label>Senha :</label>
+                            <input id="senha" class="form-control" name="senha-usuario" type="password" />
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button id="btLogin" class="w-100 btn btn-info" type="button">Entrar</button>
                         </div>        
                     </fieldset>
                 </form>
-            </center>
+            </article>        
         </section>
         <footer></footer>
     </body>
