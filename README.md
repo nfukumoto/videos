@@ -1,3 +1,4 @@
 # Videos
-Projeto de vídeos online
-Grupo 4
+Projeto de Vídeos Online
+Grupo 04
+git
