@@ -1,12 +1,13 @@
 var formR=document.forms.formRegistro;
 
 document.querySelector("#btRegistro").onclick=function(){
-    if(verificaSeCampoVazio(formR.nomeUser.value, "nome"));
-    else if(verificaSeCampoVazio(formR.emailUser.value, "email"));
-    else if(verificaSeCampoVazio(formR.dddUser.value, "ddd"));
-    else if(verificaSeCampoVazio(formR.telUser.value, "celular"));
-    else if(verificaSeCampoVazio(formR.senhaUser.value, "senha"));
-    else if(verificaSeCampoVazio(formR.senhaC.value, "confirmação de senha"));
+    if(verificaSeCampoVazio(formR.nomeUser.value, "nome")){}
+    else if(verificaSeCampoVazio(formR.emailUser.value, "email")){}
+    else if(verificaSeCampoVazio(formR.dddUser.value, "ddd")){}
+    else if(verificaSeCampoVazio(formR.telUser.value, "celular")){}
+    else if(verificaSeCampoVazio(formR.senhaUser.value, "senha")){}
+    else if(verificaSeCampoVazio(formR.senhaC.value, "confirmação de senha")){}
+    else if(verificaSePossuiTamanhoMinimo(formR.senhaC.value)){}
     else{ 
        verificaSeSenhasConferem(formR.senhaUser.value,formR.senhaC.value)
     }
@@ -27,4 +28,11 @@ function verificaSeSenhasConferem(senha, senhaC){
     }
     alert("Senhas Diferentes !")
     return false
+}
+ function verificaSePossuiTamanhoMinimo(valor){
+    for(var i=0;i<valor.length;i<8){
+        alert("A Senha deve Conter 8 Caracteres ou Mais!");
+        return true;
+    }
+    return false;
 }
