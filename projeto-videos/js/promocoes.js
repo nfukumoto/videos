@@ -18,7 +18,8 @@ for (let i = 0; i < videos.length; i++){
     var divVideo = configuraElemento(criarDiv(), "col-sm-4 mt-4", galeria)
     var tituloVideo = configuraElemento(criarTexto(videos[i][0], "h5"), "", divVideo)
     var divDetalhes = configuraElemento(criarDiv(), "row", divVideo)
-    var divImagem = configuraElemento(criarDiv(), "col-sm-4", divDetalhes)
+    var link = configuraElemento(criarLink("singleProduto.html"), "col-sm-4", divDetalhes)
+    var divImagem = configuraElemento(criarDiv(), "", link)
     var imagem = configuraElemento(criarImg(videos[i][1]), "w-100", divImagem)
     var divSinopse = configuraElemento(criarDiv(), "col-sm-8", divDetalhes);
     var sinopse = configuraElemento(criarTexto(textoLorem,"p"), "text-dark", divSinopse)
@@ -39,6 +40,12 @@ function criarTexto(valor, tipo){
 function criarImg(caminho){
     var element = document.createElement("img")
     element.setAttribute("src", caminho)
+    return element;
+}
+
+function criarLink(caminho){
+    var element = document.createElement("a")
+    element.setAttribute("href", caminho)
     return element;
 }
 
