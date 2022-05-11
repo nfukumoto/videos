@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta lang="pt-br">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Perfil</title>
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-sm-md bg-dark navbar-dark">
+
+            <a class="navbar-brand" href="#"><img src="https://images.vexels.com/media/users/3/137425/isolated/lists/f2ea1ded4d037633f687ee389a571086-logo-do-cone-do-youtube.png" class="w-25"></a>
+            <a class="navbar-brand" href="#"><h1 class="text-center">Perfil</h1></a> 
+             
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="produtos.html"><li class="nav-item">Produtos</li></a>
+                    <a class="nav-link" href="contato.html"><li class="nav-item">Contato</li></a>
+                </ul>
+            </div>
+            
+        </nav>
+
+        <section class="container">
+           <article>
+               <form id="formInfo" class="w-50 mx-auto bg-white p-3 mt-5 mb-5" style="border: 1px solid #ccc;border-radius:12px">
+                <legend><h2 class="text-center text-dark">Usuário</h2></legend>
+
+                    <fieldset class="form-group">
+                        <div class="text-center">
+                            <img src="../imagens/login.png" class="w-50">
+                        </div>
+                        
+                        <div id="informacoes">
+                            <h3 id="nome"class="text-center"></h3>
+                            <h5 id="idade" class="mt-4 text-dark">Idade: </h5>
+                            <h5 id="email" class="mt-3 text-dark">Email: </h5>
+                            <h5 id="preferencia" class="mt-3 text-dark">Preferencia: </h5>
+                            <h5 id="dataInicio" class="mt-3 text-dark">Data de Início: </h5>
+                            <h5 id="tipoAssinante" class="mt-3 text-dark">Tipo de Usuário: </h5>
+                            <h5 id="valor" class="mt-3 text-dark">Valor: </label>
+                        </div>
+                    </fieldset> 
+               </form>  
+           </article>
+        </section>
+
+        <footer class="bg-dark text-white text-center p-4 mt-5">
+            <p>&copy;2022 Todos os Direitos Reservados</p>
+        </footer>
+    </body>
+
+    <script src="../js/perfil-usuario.js"></script>
+</html>
