@@ -15,7 +15,8 @@ var videos = [
 
 for (let i = 0; i < videos.length; i++){
     
-    var divVideo = configuraElemento(criarDiv(), "col-sm-4 mt-4", galeria)
+    var divVideo = configuraElemento(criarDiv(), "col-sm-4 mt-4", galeria) 
+
     var tituloVideo = configuraElemento(criarTexto(videos[i][0], "h5"), "", divVideo)
     var divDetalhes = configuraElemento(criarDiv(), "row", divVideo)
     var divImagem = configuraElemento(criarDiv(), "col-sm-4", divDetalhes)
