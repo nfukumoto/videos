@@ -7,7 +7,7 @@ document.querySelector("#btRegistro").onclick=function(){
     else if(verificaSeCampoVazio(formR.telUser.value, "celular")){}
     else if(verificaSeCampoVazio(formR.senhaUser.value, "senha")){}
     else if(verificaSeCampoVazio(formR.senhaC.value, "confirmação de senha")){}
-    else if(verificaSePossuiTamanhoMinimo(formR.senhaC.value)){}
+    else if(verificaSePossuiTamanhoMinimo(formR.senhaUser.value)){}
     else{ 
        verificaSeSenhasConferem(formR.senhaUser.value,formR.senhaC.value)
     }
@@ -30,7 +30,7 @@ function verificaSeSenhasConferem(senha, senhaC){
     return false
 }
  function verificaSePossuiTamanhoMinimo(valor){
-    for(var i=0;i<valor.length;i<8){
+    if(valor.length < 8){
         alert("A Senha deve Conter 8 Caracteres ou Mais!");
         return true;
     }
