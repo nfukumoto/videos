@@ -1,40 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="utf-8" lang="pt-br">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <title>Galeria de Vídeos</title>
+        <title>Carrinho</title>
     </head>
-    <style>
-        .card {
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          max-width: 300px;
-          margin: auto;
-          text-align: center;
-          font-family: arial;
-        }
-        
-        .price {
-          color: grey;
-          font-size: 22px;
-        }
-        
-        .card button {
-          border: none;
-          outline: 0;
-          padding: 12px;
-          color: white;
-          background-color: #000;
-          text-align: center;
-          cursor: pointer;
-          width: 100%;
-          font-size: 18px;
-        }
-        
-        .card button:hover {
-          opacity: 0.7;
-        }
-        </style>
+
     <body>
         <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
             <div class="col-sm-2 my-auto">
@@ -52,36 +23,52 @@
                 <a href="docs/promocoes.html"><button class="btn btn-info">Promoções</button></a>
             </nav>
         <section class="container">
-            <div class="row mt-4">
-                <div class="col-sm-12">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 mt-3">
-                    <img src="https://capas-p.imagemfilmes.com.br/164908_000_p.jpg" class="w-100">
-                </div>
-                <hr />
-                <div class="col-sm-4 mt-3">
-                    <img src="https://capas-p.imagemfilmes.com.br/164908_000_p.jpg" class="w-100">
-                </div>  
-                <hr />
-                <div class="col-sm-4 mt-3">
-                    <img src="https://capas-p.imagemfilmes.com.br/164908_000_p.jpg" class="w-100">
-                </div>
-            </div> 
-            <h2 style="text-align:center">Product Card</h2>
+            
+            <h1><b>Meu carrinho</b></h1>
 
-<div class="card">
-  <img src="/w3images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
+            <article class="mt-5">
+                <div id="carrinho" class="row">
+                    <div class="col-sm-9">
+                        <div id="produtosAdquiridos">
+                            
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h3 class="text-dark">Produtos</h3>
+                                </div>
+        
+                                <div class="col-sm-4">
+                                    <h3 class="text-dark">Qtd</h3>
+                                </div>
+        
+                                <div class="col-sm-4">
+                                    <h3 class="text-dark">Preço</h3>
+                                </div>
+                            </div><hr>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-3">
+                        <form class="form-group p-3" style="border: 1px solid #ccc; border-radius: 12px">
+                            <fieldset>
+                                <div id="resumoCompra"></div>
+                                <div class="mt-5 text-white">
+                                    <button class="w-100 btn btn-danger">Continuar</button>
+                                </div>
+                                <div class="text-center">
+                                    <a href="produtos.html">Adicionar mais produtos</a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        
+    </section>
+            
         </section>
         <footer class="bg-dark p-4 text-white text-center mt-4">
             <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
+    <script src="carrinho.js"></script>
 </html>
