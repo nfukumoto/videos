@@ -3,40 +3,60 @@
     <head>
         <meta charset="utf-8">
         <meta lang="pt-br">
-        <link rel="stylesheet" href="../css/estilo.css" type="text/css"/>
-        <title>Login</title>
-    </head>
+            <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
-    <style>
-        nav a button{
-            float: right;
-        }
-    </style>
+</head>
 
-    <body class="bodyLoginEContato">
-        <nav>
-            <a href="registro.html"><button class="botaoNav">Cadastrar</button></a>
-        </nav>
-        <section>
-            <center>
-                <form id="formLogin" class="caixaDeFormsLoginEContato">
-                    <fieldset class="fieldsetPersonalizado">
+</head>
+
+
+    <body> <header class="text-center"> 
+        <img src="../imagens/login.png" class="text-center"></header>
+        
+        <section class="container">
+            <h1 class="text-center">login</h1>
+                <article>                
+             
+             <!--Formulário de login -->
+             <form id="formLogin" method="post" action="../index.html" class="w-50 mx-auto p-3 mt-5 mb-5" 
+             style="border:1px solid #ccc;border-radius: 12px;">
+             
+                 <fieldset>
+                     <legend>Preencha os campos para entrar</legend>
+                     <div class="form-group">
+                         <label>E-mail :</label>
+                         <input class="form-control" name="email" id="email" maxlength="50">
+                     </div>
+                     <div class="form-group">
+                         <label>Senha :</label>
+                         <input class="form-control" type="password" name="senha" id="senha" maxlength="8">
+                     </div>
+                     <div class="text-center">
+                        <button type="button" id="btLogin" class="btn btn-info">Confirmar</button>
+                    </div>
+                         <!--Final do Form Login -->
+                     
                         <div>
-                            <img src="../imagens/login.png" width="300">
-                        </div>
-                        <div >
-                            <input id="usuario" class="caixaDeEntrada" name="nome-usuario" placeholder="Usuário" type="email" /><br/><br/>
-                            <input id="senha" class="caixaDeEntrada" name="senha-usuario" placeholder="Senha" type="password" /><br/><br/>
-                        </div>
-                        <div>
-                            <button id="btLogin" class="botaoEntrarLogin" type="button">Entrar</button>
-                        </div>        
-                    </fieldset>
-                </form>
-            </center>
-        </section>
-        <footer></footer>
-    </body>
+                                <nav class="text-center mt-3 mb-3">
+                            <a href="../docs/registro.html"><button class="btn btn-info">Cadastrar</button></a>
+                             </nav>                          
     
-    <script src="../js/validaLogin.js"></script>
-</html>
+                        
+                    </div>
+                 </fieldset>
+             </form>
+         
+                            
+    
+             
+            
+         </article>  
+        </section>
+        <!--rodapé-->
+        <footer class="bg-dark p-4 text-white text-center mt-4">   
+            <p>             &copy;2022 - Todos os direitos reservados.         </p>
+            </footer>      
+    </body>
+    <script src="../js/validaLogin.js">   </script>
+    </html>
