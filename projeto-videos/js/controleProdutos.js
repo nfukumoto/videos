@@ -33,7 +33,7 @@ window.onload=function(){
         // Insere o tag h3 com o título
         conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-2">' + videos[i][0] + '</h3>'
         // Insere a imagem com 100% dentro de uma div com espaço 5
-        conteudo.innerHTML+='<div class="col-sm-5"><img src="../imagens/' + videos[i][1] + '" class="w-100" /></div>'
+        conteudo.innerHTML+='<div class="col-sm-5"><a href="singleProduto.html"><img src="../imagens/' + videos[i][1] + '" class="w-100" /></a></div>'
 
         conteudo.innerHTML+=resenha
 
@@ -59,7 +59,7 @@ window.onload=function(){
         conteudo.className='row'
 
         // Insere a imagem com 100% dentro de uma div com espaço 5
-        conteudo.innerHTML+='<div class="col-sm-10 mt-5 mb-2"><img src="../imagens/' + videos[i][1] + '" class="w-100" /></div>'
+        conteudo.innerHTML+='<div class="col-sm-10 mt-5 mb-2"><a href = "singleProduto.html"><img src="../imagens/' + videos[i][1] + '" class="w-100" /></a></div>'
 
         // Div recebe conteúdo
         div2.appendChild(conteudo)
