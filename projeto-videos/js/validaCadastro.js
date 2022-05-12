@@ -1,12 +1,13 @@
 var formR=document.forms.formRegistro;
 
 document.querySelector("#btRegistro").onclick=function(){
-    if(verificaSeCampoVazio(formR.nomeUser.value, "nome")){}
-    else if(verificaSeCampoVazio(formR.emailUser.value, "email")){}
-    else if(verificaSeCampoVazio(formR.telUser.value, "celular")){}
-    else if(verificaSeCampoVazio(formR.senhaUser.value, "senha")){}
-    else if(verificaSeCampoVazio(formR.senhaC.value, "confirmação de senha")){}
-    else if(verificaSePossuiTamanhoMinimo(formR.senhaUser.value)){}
+    if(verificaSeCampoVazio(formR.nomeUser.value, "nome"));
+    else if(verificaSeCampoVazio(formR.emailUser.value, "email"));
+    else if(verificaSeFormatoEmail(formR.emailUser.value));
+    else if(verificaSeCampoVazio(formR.telUser.value, "celular"));
+    else if(verificaSeCampoVazio(formR.senhaUser.value, "senha"));
+    else if(verificaSeCampoVazio(formR.senhaC.value, "confirmação de senha"));
+    else if(verificaSePossuiTamanhoMinimo(formR.senhaUser.value));
     else{ 
        verificaSeSenhasConferem(formR.senhaUser.value,formR.senhaC.value)
     }
@@ -22,10 +23,10 @@ function verificaSeCampoVazio(valor, msg){
 
 function verificaSeSenhasConferem(senha, senhaC){
     if(senha == senhaC){
-        formR.submit()
         localStorage.nomeUser=formR.nomeUser.value
         localStorage.emailUser=formR.emailUser.value
         localStorage.telUser=formR.telUser.value
+        formR.submit()
         return true;
     }
     alert("Senhas Diferentes !")
@@ -37,4 +38,12 @@ function verificaSeSenhasConferem(senha, senhaC){
         return true;
     }
     return false;
+}
+
+function verificaSeFormatoEmail(valor){
+    if(valor.indexOf('@') == -1){
+        alert("Formato de Email não reconhecido !")
+        return true;
+    }
+    return false
 }
