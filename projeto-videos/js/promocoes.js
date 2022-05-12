@@ -21,7 +21,7 @@ for (let i = 0; i < videos.length; i++){
     var divImagem = configuraElemento(criarDiv(), "", link)
     var imagem = configuraElemento(criarImg(videos[i][1]), "w-100", divImagem)
     var divSinopse = configuraElemento(criarDiv(), "col-sm-8", divDetalhes);
-    var textoSinopse= videos[i][4] + "<br/>" + "Categoria: " + videos[i][3] + "<br/>" + videos [i][2]
+    var textoSinopse= "Ano: " + videos[i][4] + "<br/>" + "Categoria: " + videos[i][3] + "<br/>" + videos [i][2]
     var sinopse = configuraElemento(criarTexto(textoSinopse,"p"), "text-dark", divSinopse)
    
 }
