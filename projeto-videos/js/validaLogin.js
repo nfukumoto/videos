@@ -1,8 +1,9 @@
 var formL = document.forms.formLogin;
 document.querySelector("#btLogin").onclick=function(){
-    if(verificaSeCampoVazio(formL.usuario.value, "usuario")){}
-    else if(verificaSeCampoVazio(formL.senha.value, "senha")){}
-    else if(verificaSePossuiTamanhoMinimo(formL.senha.value)){}
+    if(verificaSeCampoVazio(formL.usuario.value, "usuario"));
+    else if(verificaSeFormatoEmail(formL.usuario.value));
+    else if(verificaSeCampoVazio(formL.senha.value, "senha"));
+    else if(verificaSePossuiTamanhoMinimo(formL.senha.value));
     else{
         formL.submit();
     }
@@ -22,4 +23,12 @@ function verificaSePossuiTamanhoMinimo(valor){
         return true;
     }
     return false;
+}
+
+function verificaSeFormatoEmail(valor){
+    if(valor.indexOf('@') == -1){
+        alert("Formato de Email não reconhecido !")
+        return true;
+    }
+    return false
 }
