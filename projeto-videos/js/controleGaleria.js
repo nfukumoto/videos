@@ -19,28 +19,12 @@ window.onload=function(){
         // Cria um elemento div
         var div=document.createElement('div');
         // Adiciona a classe com espaço 4
-        div.classList.add('col-sm-4')
+        div.setAttribute("class","mt-2 col-sm-4")
         // Cria um elemnto div par o conteudo
-        var conteudo=document.createElement('div')
         // Define como linha para inserir as colunas abaixo
-        conteudo.className='row'
-
-        var descricao=(videos[i][2]).substring(0,90) + '...'
-
-        var categoria='<p class="text-uppercase">Categoria: ' + videos[i][3] + '</p>'
-        var anoPub='<p>Ano: ' + videos[i][4] + '</p>'
-        // Insere o parágrafo com variáveis da categoria, ano e resenha dentro de uma div com espaço 7
-        var resenha='<div class="col-sm-7"><p>' + categoria + anoPub + '<p>' + descricao + '</p></div>'
-
-        // Insere o tag h3 com o título
-        conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-2">' + videos[i][0] + '</h3>'
-        // Insere a imagem com 100% dentro de uma div com espaço 5
-        conteudo.innerHTML+='<div class="col-sm-5"><img src="imagens/' + videos[i][1] + '" class="w-100" /></div>'
-
-        conteudo.innerHTML+=resenha
+        div.innerHTML+='<a href="docs/singleProduto.html"><img src="imagens/' + videos[i][1] + '" class="w-100" /></a>'
 
         // Div recebe conteúdo
-        div.appendChild(conteudo)
         // Galeria recebe div
         galeria.appendChild(div)
     }

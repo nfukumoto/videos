@@ -1,11 +1,12 @@
-var produtos = [
-    ["https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", 3, 10.50],
-    ["https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", 2, 7.50],
-    ["https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", 5, 4.50],
+var produtosJSON = [
+    {img:"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", qtd:3, preco:10.50},
+    {img:"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", qtd:7, preco:2.50},
+    {img:"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", qtd:5, preco:7.50},
 ]
 
-carregaProdutosNoLayout(produtos)
-carregaResumoNoLayout(produtos)
+carregaProdutosNoLayout(produtosJSON)
+carregaResumoNoLayout(produtosJSON)
+carregaTitulosRelacionados(produtosJSON);
 
 // ========================== Funções Auxiliares ==========================//
 
@@ -21,9 +22,9 @@ function carregaProdutosNoLayout(produtos){
         var divQtdJSON = configuraElemento(criarDivJSON("col-sm-4"), produtoJSON);
         var divPrecoJSON = configuraElemento(criarDivJSON("col-sm-4"),produtoJSON);
     
-        var imagemJSON = configuraElemento(configurarImgProduto(produtos[i][0]), divImagemJSON); 
-        var qtdJSON = configuraElemento(configurarQtdProduto(produtos[i][1]), divQtdJSON);
-        var precoJSON = configuraElemento(configurarPrecoProduto(produtos[i][2]), divPrecoJSON);
+        var imagemJSON = configuraElemento(configurarImgProduto(produtos[i].img), divImagemJSON); 
+        var qtdJSON = configuraElemento(configurarQtdProduto(produtos[i].qtd), divQtdJSON);
+        var precoJSON = configuraElemento(configurarPrecoProduto(produtos[i].preco), divPrecoJSON);
         
         produtosAdquiridosJSON.element.appendChild(document.createElement("hr"))
     }
@@ -95,7 +96,7 @@ function colocarDentro(destino, element){
     destino.appendChild(element)
 }
 
-function carregaResumoNoLayout(){
+function carregaResumoNoLayout(produtos){
     var resumoCompraJSON = getElementJSON();
     resumoCompraJSON.element = document.querySelector("#resumoCompra")
 
@@ -103,14 +104,25 @@ function carregaResumoNoLayout(){
     var totalCompra = 0;
 
     for(var i = 0; i < produtos.length; i++){
-        totalProdutos += produtos[i][1];
-        totalCompra += produtos[i][1] * produtos[i][2]
-        console.log()
+        totalProdutos += produtos[i].qtd;
+        totalCompra += produtos[i].qtd * produtos[i].preco
     }
 
     var divResumo = configuraElemento(criarDivJSON(""), resumoCompraJSON)
     var paragrafoResumoJSON = getElementJSON();
     var paragrafo = totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
     paragrafoResumoJSON.element = criarTexto(paragrafo,"p");
-    configuraElemento(paragrafoResumoJSON, resumoCompraJSON)
+    configuraElemento(paragrafoResumoJSON, divResumo)
+}
+
+function carregaTitulosRelacionados(produtos){
+    var titulosRelacionados = getElementJSON();
+    titulosRelacionados.element = document.querySelector("#produtos")
+    for(var i = 0; i < produtos.length; i++){
+        var divImg = configuraElemento(criarDivJSON("col-sm-4"), titulosRelacionados)
+        var imagem = getElementJSON();
+        imagem.element = criarImg(produtos[i].img);
+        imagem.class = "w-100"
+        imagem = configuraElemento(imagem, divImg)
+    }
 }
