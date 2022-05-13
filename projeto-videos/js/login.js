@@ -5,6 +5,7 @@ document.querySelector("#btLogin").onclick=function(){
     else if(verificaSeCampoVazio(formL.senha.value, "senha"));
     else if(verificaSePossuiTamanhoMinimo(formL.senha.value));
     else{
+        localStorage.emailUser=formL.usuario.value // Recupera a informação do email para usar como nome do usuário.
         formL.submit();
     }
 }
