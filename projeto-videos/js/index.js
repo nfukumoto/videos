@@ -2,7 +2,7 @@ window.onload=function(){
 
     // Saudação ao usuário, link para login e sair
 
-/*     let user= localStorage.emailUser
+    let user= localStorage.emailUser
     let bemVindo=document.querySelector("#bemVindo")
     let entrar=document.querySelector("#entrar")
     let sair=document.querySelector("#sair")
