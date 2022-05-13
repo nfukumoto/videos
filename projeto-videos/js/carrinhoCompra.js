@@ -1,12 +1,11 @@
-var produtosJSON = [
-    {img:"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", qtd:3, preco:10.50},
-    {img:"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", qtd:7, preco:2.50},
-    {img:"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg", qtd:5, preco:7.50},
-]
+let produtosJSON = JSON.parse(localStorage.produtosNoCarrinho);
+if(produtosJSON!=null)
+{
+    carregaProdutosNoLayout(produtosJSON)
+    carregaResumoNoLayout(produtosJSON)
+    carregaTitulosRelacionados(produtosJSON);
+}
 
-carregaProdutosNoLayout(produtosJSON)
-carregaResumoNoLayout(produtosJSON)
-carregaTitulosRelacionados(produtosJSON);
 
 // ========================== Funções Auxiliares ==========================//
 
@@ -28,6 +27,19 @@ function carregaProdutosNoLayout(produtos){
         
         produtosAdquiridosJSON.element.appendChild(document.createElement("hr"))
     }
+
+    var btnEsvaziarJSON = getElementJSON();
+    var btnEsvaziar = document.createElement("button")
+    btnEsvaziar.innerHTML= "Excluir Itens"
+    btnEsvaziar.setAttribute("type", "button");
+    btnEsvaziar.onclick = function(){
+        localStorage.removeItem("produtosNoCarrinho")
+        location.href="carrinhoCompra.html";
+    }
+
+    btnEsvaziarJSON.class = "btn btn-danger w-100";
+    btnEsvaziarJSON.element = btnEsvaziar;
+    configuraElemento(btnEsvaziarJSON, produtosAdquiridosJSON)
 }
 
 function getElementJSON(){
@@ -104,8 +116,8 @@ function carregaResumoNoLayout(produtos){
     var totalCompra = 0;
 
     for(var i = 0; i < produtos.length; i++){
-        totalProdutos += produtos[i].qtd;
-        totalCompra += produtos[i].qtd * produtos[i].preco
+        totalProdutos += parseInt(produtos[i].qtd);
+        totalCompra += parseFloat(produtos[i].qtd) * parseFloat(produtos[i].preco)
     }
 
     var divResumo = configuraElemento(criarDivJSON(""), resumoCompraJSON)
