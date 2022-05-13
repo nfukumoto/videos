@@ -1,8 +1,3 @@
-localStorage.nome = "Nélio Fukumoto";
-localStorage.email = "neo.nhf@gmail.com";
-localStorage.tel = "(31)98312-2285"
-
-    
     // Escopos de variáveis (var, let (não se repete), const(não altera o valor))
     let infoUsuario='{"nome":"Nélio Fukumoto", "idade":44, "email":"neo.nhf@gmail.com", "tel":"","preferencia":"Mensal", "dataInicio":"01/01/2022", "tipoAssinante":"Lorde", "valor":"R$ 50,00"}'
 
@@ -10,9 +5,9 @@ localStorage.tel = "(31)98312-2285"
 
     let infoUsuarioJSON=JSON.parse(infoUsuario) // Conversão de string para objeto
 
-    infoUsuarioJSON.nome = localStorage.nome;
-    infoUsuarioJSON.email = localStorage.email;
-    infoUsuarioJSON.tel = localStorage.tel;
+    infoUsuarioJSON.nome = localStorage.nomeUser;
+    infoUsuarioJSON.email = localStorage.emailUser;
+    infoUsuarioJSON.tel = localStorage.telUser;
 
     let perfil=document.querySelector('#perfil')
     let h3=document.querySelector("#perfil h4")
