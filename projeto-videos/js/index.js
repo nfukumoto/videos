@@ -22,12 +22,11 @@ window.onload=function(){
         location.href='index.html'
     }
 
-    //localStorage.emailUser ? bemVindo.innerHTML='Olá ' + user : null // Montagem sem uso de função
-    localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair. */
+    localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair.
 
     // -------------------------------------------------------------------------------- //
 
-    // Montagem dos elentos da tela com Javascript
+    // Montagem dos elementos da tela com Javascript
 
     //Declaração do array videos com 3 posições: 0=título; 1=imagem; 2=resenha; 3=categoria; 4=ano
     var videos=[
