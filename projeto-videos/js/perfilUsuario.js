@@ -1,14 +1,18 @@
-window.onload=function(){
-    console.log('Testando JS')
+localStorage.nome = "Nélio Fukumoto";
+localStorage.email = "neo.nhf@gmail.com";
+localStorage.tel = "(31)98312-2285"
 
+    
     // Escopos de variáveis (var, let (não se repete), const(não altera o valor))
-    let videos='{"nome":"Nélio Fukumoto", "idade":44, "email":"neo.nhf@gmail.com", "preferencia":"Mensal", "dataInicio":"01/01/2022", "tipoAssinante":"Lorde", "valor":"R$ 50,00"}'
+    let infoUsuario='{"nome":"Nélio Fukumoto", "idade":44, "email":"neo.nhf@gmail.com", "tel":"","preferencia":"Mensal", "dataInicio":"01/01/2022", "tipoAssinante":"Lorde", "valor":"R$ 50,00"}'
 
-    console.log(videos)
+    console.log(infoUsuario)
 
-    let videosJSON=JSON.parse(videos) // Conversão de string para objeto
+    let infoUsuarioJSON=JSON.parse(infoUsuario) // Conversão de string para objeto
 
-    console.log(videosJSON)
+    infoUsuarioJSON.nome = localStorage.nome;
+    infoUsuarioJSON.email = localStorage.email;
+    infoUsuarioJSON.tel = localStorage.tel;
 
     let perfil=document.querySelector('#perfil')
     let h3=document.querySelector("#perfil h4")
@@ -18,12 +22,13 @@ window.onload=function(){
     let p4=document.querySelector("#p4")
     let p5=document.querySelector("#p5")
     let p6=document.querySelector("#p6")
-    //conteudo.innerHTML=videosJSON.tipo
-    h3.innerHTML="Nome: " + videosJSON.nome
-    p1.innerHTML="Idade: " + videosJSON.idade
-    p2.innerHTML="E-mail: " + videosJSON.email
-    p3.innerHTML="Preferência: " + videosJSON.preferencia
-    p4.innerHTML="Data de inicio: " + videosJSON.dataInicio
-    p5.innerHTML="Tipo de Assinante: " + videosJSON.tipoAssinante
-    p6.innerHTML="Valor: " + videosJSON.valor
-}
+    let p7=document.querySelector("#p7")
+    //conteudo.innerHTML=infoUsuarioJSON.tipo
+    h3.innerHTML="Nome: " + infoUsuarioJSON.nome
+    p1.innerHTML="Idade: " + infoUsuarioJSON.idade
+    p2.innerHTML="E-mail: " + infoUsuarioJSON.email
+    p3.innerHTML="Telefone: " + infoUsuarioJSON.tel
+    p4.innerHTML="Preferência: " + infoUsuarioJSON.preferencia
+    p5.innerHTML="Data de inicio: " + infoUsuarioJSON.dataInicio
+    p6.innerHTML="Tipo de Assinante: " + infoUsuarioJSON.tipoAssinante
+    p7.innerHTML="Valor: " + infoUsuarioJSON.valor
