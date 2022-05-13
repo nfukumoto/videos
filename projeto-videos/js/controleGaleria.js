@@ -1,5 +1,34 @@
 window.onload=function(){
 
+    // Saudação ao usuário, link para login e sair
+
+/*     let user= localStorage.emailUser
+    let bemVindo=document.querySelector("#bemVindo")
+    let entrar=document.querySelector("#entrar")
+    let sair=document.querySelector("#sair")
+
+    function msgUser(){ // Função para ocultar link entrar quando logado.
+        let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
+        bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
+        entrar.style.display="none"
+    }
+
+    function resetUser(){ // Função para ocultar link sair quando não estivar logado.
+        sair.style.display="none"
+    }
+
+    sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial
+        localStorage.removeItem('emailUser')
+        location.href='index.html'
+    }
+
+    //localStorage.emailUser ? bemVindo.innerHTML='Olá ' + user : null // Montagem sem uso de função
+    localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair. */
+
+    // -------------------------------------------------------------------------------- //
+
+    // Montagem dos elentos da tela com Javascript
+
     //Declaração do array videos com 3 posições: 0=título; 1=imagem; 2=resenha; 3=categoria; 4=ano
     var videos=[
         ["Mick","mick.jpg","Mick Jagger não exagera ao afirmar que se escrevesse sobre sua vida “em todos os detalhes, as pessoas ficariam aterrorizadas”. Nesta biografia do líder dos Rolling Stones, o jornalista americano Christopher Andersen não poupa fãs e leitores dos detalhes polêmicos e nada glamourosos da trajetória artística e pessoal de um dos astros mais originais do rock contemporâneo.","Biografias",2012],
@@ -19,12 +48,28 @@ window.onload=function(){
         // Cria um elemento div
         var div=document.createElement('div');
         // Adiciona a classe com espaço 4
-        div.setAttribute("class","mt-2 col-sm-4")
+        div.classList.add('col-sm-4')
         // Cria um elemnto div par o conteudo
+        var conteudo=document.createElement('div')
         // Define como linha para inserir as colunas abaixo
-        div.innerHTML+='<a href="docs/singleProduto.html"><img src="imagens/' + videos[i][1] + '" class="w-100" /></a>'
+        conteudo.className='row'
+
+        var descricao=(videos[i][2]).substring(0,90) + '...'
+
+        var categoria='<p class="text-uppercase">Categoria: ' + videos[i][3] + '</p>'
+        var anoPub='<p>Ano: ' + videos[i][4] + '</p>'
+        // Insere o parágrafo com variáveis da categoria, ano e resenha dentro de uma div com espaço 7
+        var resenha='<div class="col-sm-7"><p>' + categoria + anoPub + '<p>' + descricao + '</p></div>'
+
+        // Insere o tag h3 com o título
+        conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-2">' + videos[i][0] + '</h3>'
+        // Insere a imagem com 100% dentro de uma div com espaço 5
+        conteudo.innerHTML+='<div class="col-sm-5"><img src="imagens/' + videos[i][1] + '" class="w-100" /></div>'
+
+        conteudo.innerHTML+=resenha
 
         // Div recebe conteúdo
+        div.appendChild(conteudo)
         // Galeria recebe div
         galeria.appendChild(div)
     }
