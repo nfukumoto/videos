@@ -1,5 +1,6 @@
-let produtosJSON = JSON.parse(localStorage.produtosNoCarrinho);
-if(produtosJSON!=null)
+let produtosJSON = new Array();
+produtosJSON=JSON.parse(localStorage.produtosNoCarrinho);
+if(produtosJSON.length)
 {
     carregaProdutosNoLayout(produtosJSON)
     carregaResumoNoLayout(produtosJSON)
@@ -16,14 +17,17 @@ function carregaProdutosNoLayout(produtos){
     for (let i = 0; i < produtos.length; i++) {
     
         var produtoJSON = configuraElemento(criarDivJSON("row"), produtosAdquiridosJSON)
+        produtoJSON.element.setAttribute("id",i)
     
         var divImagemJSON = configuraElemento(criarDivJSON("col-sm-4"), produtoJSON);
-        var divQtdJSON = configuraElemento(criarDivJSON("col-sm-4"), produtoJSON);
-        var divPrecoJSON = configuraElemento(criarDivJSON("col-sm-4"),produtoJSON);
-    
+        var divQtdJSON = configuraElemento(criarDivJSON("col-sm-3"), produtoJSON);
+        var divPrecoJSON = configuraElemento(criarDivJSON("col-sm-3"),produtoJSON);
+        var divLixeiraJSON = configuraElemento(criarDivJSON("col-sm-2 mt-4"), produtoJSON);
+
         var imagemJSON = configuraElemento(configurarImgProduto(produtos[i].img), divImagemJSON); 
         var qtdJSON = configuraElemento(configurarQtdProduto(produtos[i].qtd), divQtdJSON);
         var precoJSON = configuraElemento(configurarPrecoProduto(produtos[i].preco), divPrecoJSON);
+        var lixeira = configuraElemento(configuraLixeira(i), divLixeiraJSON);
         
         produtosAdquiridosJSON.element.appendChild(document.createElement("hr"))
     }
@@ -94,6 +98,27 @@ function criarImg(caminho){
     var element = document.createElement("img")
     element.setAttribute("src", caminho)
     return element;
+}
+
+function configuraLixeira(index){
+    var elementJSON = getElementJSON();
+    var element = document.createElement("a");
+    var imagem = document.createElement("img");
+    imagem.setAttribute("src","../imagens/lixeira.png")
+    imagem.setAttribute("class","w-50")
+    element.appendChild(imagem)
+    element.setAttribute("type", "button")
+    element.onclick = function(){
+        var child = element.parentElement.parentElement;
+        var parent = child.parentElement;
+        produtosJSON.splice(child.id,1);
+        localStorage.setItem("produtosNoCarrinho", JSON.stringify(produtosJSON))
+        child.remove()
+        location.href="carrinhoCompra.html"
+    }
+    elementJSON.element = element;
+    elementJSON.class = "btn btn-light"
+    return elementJSON
 }
 
 function configuraElemento(elementJSON, destino){
