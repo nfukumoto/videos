@@ -28,7 +28,7 @@
         <section class="container">
             <h1 class="text-center mt-4">Formulário de Contato</h1>
             <article>
-                <form id="formContato" method="post" action="../index.html" class="w-50 mx-auto p-3 mt-4 mb-3" style="border:1px solid #ccc; border-radius: 12px;">                     
+                <form id="formContato" method="post" class="w-50 mx-auto p-3 mt-4 mb-3" style="border:1px solid #ccc; border-radius: 12px;">                     
                     <fieldset>
                         <legend class="text-center">Preencha as informações abaixo</legend>
                         <div class="form-group">
@@ -46,6 +46,9 @@
                         <div class="form-group">
                             <label>Comentários<br /></label>
                             <textarea class="form-control" name="comentario" id="comentario" rows="8"></textarea> 
+                        </div>
+                        <div>
+                            <input type="checkbox" name="chamado" id="chamado"><label for="chamado">Quero abrir um chamado para este assunto.</label>
                         </div>
                         <div class="text-center">
                             <button id="btContato" type="button" class="btn btn-info">Confirmar</button>
