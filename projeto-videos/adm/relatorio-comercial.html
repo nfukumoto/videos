@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Relatório Comercial</title>
+    </head>
+    <body>
+        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
+            <div class="col-sm-2 my-auto">
+                <a href="../index.html">
+                    <img src="../imagens/logovideo.png" class="w-100">
+                </a>
+            </div>  
+            <div class="col-sm-9 text-center my-auto">
+                <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
+            </div>
+            <div class="col-sm-1 my-auto">
+            </div>  
+        </header>
+        <section id="tabs" class="project-tab row mt-5 mr-5 ml-5">
+            <div class="col-sm-8 card pb-3">
+                <!-- Navegação -->
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#assinantes" role="tab" aria-controls="nav-home" aria-selected="true">Assinantes</a>
+
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#aluguel" role="tab" aria-controls="nav-profile" aria-selected="false">Aluguel</a>
+                        
+                    </div>
+                </nav>
+                <!-- Final navegação -->
+                
+                <!-- Assinantes | Aluguel -->
+                <div class="tab-content" id="nav-tabContent">
+
+                    <!-- Assinantes inicio-->
+                    <div class="tab-pane fade show active" id="assinantes" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <table class="table" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Descrição do Serviço</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <hr>
+                            </thead>
+                            <tbody id="tabAssinaturas">
+
+                            </tbody>
+                        </table>
+                        <hr>
+                        <span><b>Total: R$ </b></span><span id="totalAssinaturasTab"></span>
+                    </div>
+
+                    <!-- Aluguel -->
+                    <div class="tab-pane fade" id="aluguel" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <table class="table" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Descrição do Serviço</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <hr>
+                            </thead>
+                            <tbody id="tabAluguel">
+
+                            </tbody>
+                        </table>
+                        <hr>
+                            <span><b>Total: R$ </b></span><span id="totalAluguelTab"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h5 class="text-center">Visão Macro</h5>
+                <div class="card p-2">
+                    <div>
+                        <span><b>Assinantes: </b></span><span id="numAssinantes"></span>
+                        <br>
+                        <span><b>Total: R$ </b></span><span id="totalAssinantes"></span>
+                    </div>
+                    <div>
+                        <br>
+                        <span><b>Filmes Alugados: </b></span><span id="numAlugados"></span>
+                        <br>
+                        <span><b>Total: R$ </b></span><span id="totalAlugados"></span>
+                    </div>
+                    <div>
+                        <br>
+                        <p><b>Média de filmes alugados:  </b></p><span id="mediaFilmes"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 col-sm-12">
+                <div class="col"></div>
+                <div class="card col-sm-3 p-5"></div>
+                <div class="col"></div>
+                <div class="card col-sm-3 p-5"></div>
+                <div class="col"></div>
+                <div class="card col-sm-3 p-5"></div>
+                <div class="col"></div>
+            </div>
+        </section>
+        <footer class="bg-dark p-4 text-white text-center mt-4">
+            <p>&copy;2022 - Todos os direitos reservados</p>
+        </footer>
+    </body>
+    <script src="../jsAdm/relatorio-comercial.js"></script>
+</html>
