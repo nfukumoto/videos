@@ -1,3 +1,6 @@
+var totalProdutos = 0;
+var totalCompra = 0;
+
 let produtosJSON = new Array();
 produtosJSON=JSON.parse(localStorage.produtosNoCarrinho);
 if(produtosJSON.length)
@@ -137,9 +140,6 @@ function carregaResumoNoLayout(produtos){
     var resumoCompraJSON = getElementJSON();
     resumoCompraJSON.element = document.querySelector("#resumoCompra")
 
-    var totalProdutos = 0;
-    var totalCompra = 0;
-
     for(var i = 0; i < produtos.length; i++){
         totalProdutos += parseInt(produtos[i].qtd);
         totalCompra += parseFloat(produtos[i].qtd) * parseFloat(produtos[i].preco)
@@ -149,6 +149,7 @@ function carregaResumoNoLayout(produtos){
     var paragrafoResumoJSON = getElementJSON();
     var paragrafo = totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
     paragrafoResumoJSON.element = criarTexto(paragrafo,"p");
+    paragrafoResumoJSON.element.setAttribute('id','pResumoJSON')
     configuraElemento(paragrafoResumoJSON, divResumo)
 }
 
@@ -161,5 +162,25 @@ function carregaTitulosRelacionados(produtos){
         imagem.element = criarImg(produtos[i].img);
         imagem.class = "w-100"
         imagem = configuraElemento(imagem, divImg)
+    }
+}
+
+let btnCupom = document.querySelector('#btnCupom')
+btnCupom.onclick=function(){
+    var inputCupom = document.querySelector('#cupom')
+    if (inputCupom.value == 123){
+        alert('Cupom validado! Você ganhou 10% de desconto')
+        totalCompra = totalCompra * 0.9
+        var paragrafo = document.querySelector('#pResumoJSON')
+        console.log(paragrafo)
+        paragrafo.innerHTML=totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
+    }else if(inputCupom.value == 456 ){
+        alert('Cupom validado! Você ganhou 20% de desconto')
+        totalCompra = totalCompra * 0.8
+        var paragrafo = document.querySelector('#pResumoJSON')
+        console.log(paragrafo)
+        paragrafo.innerHTML=totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
+    }else{
+        alert('Cupom inválido!')
     }
 }
