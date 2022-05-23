@@ -6,11 +6,13 @@ window.onload=function(){
     let bemVindo=document.querySelector("#bemVindo")
     let entrar=document.querySelector("#entrar")
     let sair=document.querySelector("#sair")
+    let cadastrar=document.querySelector("#cadastrar")
 
     function msgUser(){ // Função para ocultar link entrar quando logado.
         let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
         bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
         entrar.style.display="none"
+        cadastrar.style.display="none"
     }
 
     function resetUser(){ // Função para ocultar link sair quando não estivar logado.

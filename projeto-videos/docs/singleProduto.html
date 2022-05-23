@@ -12,40 +12,35 @@
     </head>
 
     <body>
-
-        <nav class="navbar navbar-expand-sm-md bg-dark navbar-dark">
-
-            <a class="navbar-brand" href="#"><img src="https://images.vexels.com/media/users/3/137425/isolated/lists/f2ea1ded4d037633f687ee389a571086-logo-do-cone-do-youtube.png" class="w-25"></a>
-            <a class="navbar-brand" href="#"><h1>Frase Slogan</h1></a> 
-             
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <a href="produtos.html"><button class="btn btn-info">Produtos</button></a>
-                    <a href="contato.html"><button class="btn btn-info">Contato</button></a>
-                    <a href="promocoes.html"><button class="btn btn-info">Promoções</button></a>
-                    <a href="carrinhoCompra.html"><button class="btn btn-info">Carrinho</button></a>
-                </ul>
+        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
+            <div class="col-sm-2 my-auto">
+                <a href="../index.html">
+                    <img src="../imagens/logovideo.png" class="w-100">
+                </a>
+            </div>  
+            <div class="col-sm-9 text-center my-auto">
+                <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
             </div>
-            
+            <div class="col-sm-1 my-auto">
+            </div>  
+        </header>
+        <nav class="text-center mt-3 mb-4">
+            <a href="produtos.html"><button class="btn btn-info">Produtos</button></a>
+            <a href="contato.html"><button class="btn btn-info">Contato</button></a>
+            <a href="promocoes.html"><button class="btn btn-info">Promoções</button></a>
+            <a href="carrinhoCompra.html"><button class="btn btn-info">Carrinho</button></a>
         </nav>
-
         <section class="container">
+            <h1 class="text-center mt-4">Descrição do Produto Escolhido</h1>
             <div class="row">
-                <div class="col-sm-6 mt-4 text-dark">
+                <div class="col-sm-12 mt-4 text-dark">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur ex optio quidem a nesciunt veritatis nemo sint. Est, aperiam? Neque, minus dolor nostrum facilis sunt in amet reprehenderit assumenda numquam suscipit deserunt, odio debitis dolore doloremque maxime voluptate inventore libero modi cum perspiciatis asperiores. Incidunt voluptate harum odio fugiat nemo!</p>
                 </div>
-                <div class="col-sm-6 mt-4"></div>
             </div>
-
             <div class="mt-2">
                 <h2 id="tituloFilme">Filme Escolhido</h2>
                 <div class="row">
                     <div id="imagemFilme" class="col-sm-4">
-                        
                     </div>
                     <div class="col-sm-8">
                         <p id="sinopseFilme" class="text-dark"></p>
@@ -53,7 +48,6 @@
                             <div class="col-sm-3">
                                 <input id="quantidade" class="form-control" type="number">
                             </div>
-
                             <div class="col-sm-9">
                                 <button onclick="btnClick()" id="btnAdd" class=" w-100 btn btn-danger" type="button">Adicionar ao Carrinho</button>
                             </div>
@@ -80,9 +74,8 @@
             
         </section>
 
-        <footer class="bg-dark text-center text-white p-4 mt-4">
-            <hr/>
-                <p>&copy;2022 Todos os Direitos Reservados</p>
+        <footer class="bg-dark p-4 text-white text-center mt-4">
+            <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
 
