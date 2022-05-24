@@ -1,13 +1,49 @@
-var totalProdutos = 0;
-var totalCompra = 0;
+var resumoCompraJSON = getElementJSON();
+resumoCompraJSON.element = document.querySelector("#resumoCompra")
+let carrinho = {
+    produtos:new Array(),
+    numProdutos: 0,
+    totalProduto:0,
+    totalCompra:0,
+    esvaziarCarrinho:function(){
+        localStorage.removeItem("produtosNoCarrinho")
+        location.href="carrinhoCompra.html";
+    },
+    excluirItem:function(element){
+        var child = element.parentElement.parentElement;
+        var parent = child.parentElement;
+        carrinho.produtos.splice(child.id,1);
+        localStorage.setItem("produtosNoCarrinho", JSON.stringify(this.produtos))
+        child.remove()
+        location.href="carrinhoCompra.html"
+    },
+    multiplicarTelas:function(produto){
+        this.numProdutos += parseInt(produto.qtd);
+        this.totalProduto = (produto.qtd - 1) * 0.07 * produto.preco + produto.preco
+        return this.totalProduto
+    },
+    montarResumo:function(){
+        resumoCompraJSON.element.innerHTML=''
+        var divResumo = configuraElemento(criarDivJSON(""), resumoCompraJSON)
+        var paragrafoResumoJSON = getElementJSON();
+        var paragrafo = carrinho.numProdutos + " Produtos<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",");
+        console.log(paragrafoResumoJSON.element)
+        paragrafoResumoJSON.element = criarTexto(paragrafo,"p");
+        paragrafoResumoJSON.element.setAttribute('id','pResumoJSON')
+        configuraElemento(paragrafoResumoJSON, divResumo)
+    }
+}
 
-let produtosJSON = new Array();
-produtosJSON=JSON.parse(localStorage.produtosNoCarrinho);
-if(produtosJSON.length)
+let cupom = {
+
+}
+
+carrinho.produtos=JSON.parse(localStorage.produtosNoCarrinho);
+if(carrinho.produtos.length)
 {
-    carregaProdutosNoLayout(produtosJSON)
-    carregaResumoNoLayout(produtosJSON)
-    carregaTitulosRelacionados(produtosJSON);
+    carregaProdutosNoLayout(carrinho.produtos)
+    carregaResumoNoLayout(carrinho.produtos)
+    carregaTitulosRelacionados(carrinho.produtos);
 }
 
 
@@ -40,8 +76,7 @@ function carregaProdutosNoLayout(produtos){
     btnEsvaziar.innerHTML= "Excluir Itens"
     btnEsvaziar.setAttribute("type", "button");
     btnEsvaziar.onclick = function(){
-        localStorage.removeItem("produtosNoCarrinho")
-        location.href="carrinhoCompra.html";
+        carrinho.esvaziarCarrinho()
     }
 
     btnEsvaziarJSON.class = "btn btn-danger w-100";
@@ -72,9 +107,17 @@ function configurarImgProduto(caminho){
 
 function configurarQtdProduto(quantidade){
     var elementJSON = getElementJSON();
-    elementJSON.element = criarTexto(quantidade, "h4")
-    elementJSON.class = "text-dark mt-5"
-    
+    elementJSON.element = document.createElement('input')
+    elementJSON.element.value = quantidade
+    elementJSON.element.setAttribute('type','number')
+    elementJSON.element.setAttribute('min',1)
+    elementJSON.element.setAttribute('max',5)
+    elementJSON.class = "form-control"
+    elementJSON.element.onchange=function(){
+        console.log(elementJSON.element.parentElement.parentElement)
+        alteraQuantidade(elementJSON.element.parentElement.parentElement.id,elementJSON.element)
+    }
+
     return elementJSON;
 }
 
@@ -108,16 +151,13 @@ function configuraLixeira(index){
     var element = document.createElement("a");
     var imagem = document.createElement("img");
     imagem.setAttribute("src","../imagens/lixeira.png")
-    imagem.setAttribute("class","w-50")
+    imagem.setAttribute("style","width:30px")
     element.appendChild(imagem)
     element.setAttribute("type", "button")
     element.onclick = function(){
-        var child = element.parentElement.parentElement;
-        var parent = child.parentElement;
-        produtosJSON.splice(child.id,1);
-        localStorage.setItem("produtosNoCarrinho", JSON.stringify(produtosJSON))
-        child.remove()
-        location.href="carrinhoCompra.html"
+        if(confirm('Você tem certeza?')){
+            carrinho.excluirItem(element)
+        }
     }
     elementJSON.element = element;
     elementJSON.class = "btn btn-light"
@@ -137,20 +177,14 @@ function colocarDentro(destino, element){
 }
 
 function carregaResumoNoLayout(produtos){
-    var resumoCompraJSON = getElementJSON();
-    resumoCompraJSON.element = document.querySelector("#resumoCompra")
-
+    carrinho.numProdutos=0
+    carrinho.totalProduto=0
+    carrinho.totalCompra=0
     for(var i = 0; i < produtos.length; i++){
-        totalProdutos += parseInt(produtos[i].qtd);
-        totalCompra += parseFloat(produtos[i].qtd) * parseFloat(produtos[i].preco)
+        carrinho.totalCompra += carrinho.multiplicarTelas(produtos[i])
     }
 
-    var divResumo = configuraElemento(criarDivJSON(""), resumoCompraJSON)
-    var paragrafoResumoJSON = getElementJSON();
-    var paragrafo = totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
-    paragrafoResumoJSON.element = criarTexto(paragrafo,"p");
-    paragrafoResumoJSON.element.setAttribute('id','pResumoJSON')
-    configuraElemento(paragrafoResumoJSON, divResumo)
+    carrinho.montarResumo()
 }
 
 function carregaTitulosRelacionados(produtos){
@@ -170,17 +204,22 @@ btnCupom.onclick=function(){
     var inputCupom = document.querySelector('#cupom')
     if (inputCupom.value == 123){
         alert('Cupom validado! Você ganhou 10% de desconto')
-        totalCompra = totalCompra * 0.9
+        carrinho.totalCompra = carrinho.totalCompra * 0.9
         var paragrafo = document.querySelector('#pResumoJSON')
-        console.log(paragrafo)
-        paragrafo.innerHTML=totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
+        paragrafo.innerHTML=carrinho.numProdutos + " Produtos<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",");
     }else if(inputCupom.value == 456 ){
         alert('Cupom validado! Você ganhou 20% de desconto')
-        totalCompra = totalCompra * 0.8
+        carrinho.totalCompra = carrinho.totalCompra * 0.8
         var paragrafo = document.querySelector('#pResumoJSON')
         console.log(paragrafo)
-        paragrafo.innerHTML=totalProdutos + " Produtos<br>"+"Total R$ "+(totalCompra.toFixed(2)).toString().replace(".",",");
+        paragrafo.innerHTML=carrinho.numProdutos + " Produtos<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",");
     }else{
         alert('Cupom inválido!')
     }
+}
+
+function alteraQuantidade(index,element){
+    carrinho.produtos[index].qtd=element.value
+
+    carregaResumoNoLayout(carrinho.produtos)
 }
