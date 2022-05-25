@@ -1,4 +1,42 @@
+let trailers = [
+    "https://www.youtube.com/embed/rsQEor4y2hg",
+    'https://www.youtube.com/embed/094n7ami6N0',
+    'https://www.youtube.com/embed/5DrcREFWblA',
+    'https://www.youtube.com/embed/jsgd_jVH83',
+    'https://www.youtube.com/embed/ivIwdQBlS10',
+    'https://www.youtube.com/embed/bldAkEUANWA',
+    'https://www.youtube.com/embed/wITUolzfkwI',
+    'https://www.youtube.com/embed/PJza3ZaFeAU',
+    'https://www.youtube.com/embed/8Ik0iKJbK1A',
+    'https://www.youtube.com/embed/KD7R3qLIWkQ',
+    'https://www.youtube.com/embed/4rXR4z4cfzg',
+    'https://www.youtube.com/embed/pLLuHeWu-TE',
+    'https://www.youtube.com/embed/FKy5DyTEnj4'
+]
+
+let trailersParaUso = trailers;
+
 window.onload=function(){
+
+    let trailer1 = document.querySelector("#trailer1");
+    let trailer2 = document.querySelector("#trailer2");
+    let trailer3 = document.querySelector("#trailer3");
+
+    var index1 = parseInt(Math.random()*trailersParaUso.length)
+    var link1 = trailersParaUso[index1]
+    trailersParaUso.splice(index1,1)
+
+    var index2 = parseInt(Math.random()*trailersParaUso.length)
+    var link2 = trailersParaUso[index2]
+    trailersParaUso.splice(index2,1)
+
+    var index3 = parseInt(Math.random()*trailersParaUso.length)
+    var link3 = trailersParaUso[index3]
+    trailersParaUso.splice(index3,1)
+    
+    trailer1.setAttribute("src", link1)
+    trailer2.setAttribute("src", link2)
+    trailer3.setAttribute("src", link3)
 
     //Declaração do array videos com 3 posições: 0=título; 1=imagem; 2=resenha; 3=categoria; 4=ano
     var videos=[

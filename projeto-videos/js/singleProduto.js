@@ -1,24 +1,22 @@
 var titulo = document.querySelector("#tituloFilme")
-var imagem = document.querySelector("#imagemFilme")
+var trailer = document.querySelector("#trailer")
 var sinopse = document.querySelector("#sinopseFilme")
-var elementoImagem = document.createElement("img");
-elementoImagem.setAttribute("class", "w-100")
+trailer.setAttribute("width", "80%")
+trailer.setAttribute("height", "100%")
 var textoLorem = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur ex optio quidem a nesciunt veritatis nemo sint. Est, aperiam? Neque, minus dolor nostrum facilis sunt in amet reprehenderit assumenda numquam suscipit deserunt, odio debitis dolore doloremque maxime voluptate inventore libero modi cum perspiciatis asperiores. Incidunt voluptate harum odio fugiat nemo!"
 
-let filme = '{"titulo":"Titulo Escolhido", "imagem":"https://capas-p.imagemfilmes.com.br/164908_000_p.jpg","sinopse":"Lorem aqui", "preco":10.50}'
+let filme = '{"titulo":"Titulo Escolhido", "trailer":"https://www.youtube.com/embed/ZxgPySJkxN8","sinopse":"Lorem aqui", "preco":10.50}'
 var filmeJSON = JSON.parse(filme)
 
 filmeJSON.sinopse = textoLorem;
 
-elementoImagem.setAttribute("src",filmeJSON.imagem)
-imagem.appendChild(elementoImagem)
+trailer.setAttribute("src",filmeJSON.trailer)
 titulo.innerHTML = filmeJSON.titulo
 sinopse.innerHTML = (filmeJSON.sinopse).substring(0, 400) + "...";
 
 let lista = new Array();
 
 function btnClick(){
-    console.log("botao funciona");
     var quantidade = document.querySelector("#quantidade").value;
     if(confereSeVazio(quantidade));
     else if(confereSeMenorQueUm(quantidade));
