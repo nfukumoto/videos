@@ -19,7 +19,7 @@ let carrinho = {
     },
     multiplicarTelas:function(produto){
         this.numProdutos += parseInt(produto.qtd);
-        this.totalProduto = (produto.qtd - 1) * 0.07 * produto.preco + produto.preco
+        this.totalProduto = produto.preco * (1.07)**(produto.qtd-1)
         return this.totalProduto
     },
     montarResumo:function(){

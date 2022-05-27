@@ -15,6 +15,10 @@ imagem.setAttribute("src",filmeEscolhido.img)
 titulo.innerHTML = filmeEscolhido.titulo
 sinopse.innerHTML = (filmeEscolhido.descricao).substring(0, 400) + "...";
 
+let pref= JSON.parse(localStorage.getItem("preferencias"))
+let titulosRelacionados = document.querySelector("#relacionados")
+carregaProdutosRelacionados(pref)
+
 let lista = new Array();
 
 function btnClick(){
@@ -47,7 +51,7 @@ function confereSeMenorQueUm(value){
 }
 
 function addProduto(value){
-    lista.push({img:filmeJSON.imagem, qtd: value, preco: filmeJSON.preco});
+    lista.push({img:filmeEscolhido.img, qtd: value, preco: filmeEscolhido.preco});
     console.log(lista);
     localStorage.setItem("produtosNoCarrinho", JSON.stringify(lista))
     
@@ -56,4 +60,15 @@ function addProduto(value){
 function getProdutoJSON(){
     var produtoJSON = {img:"", qtd:"", preco:""}
     return produtoJSON;
+}
+
+function carregaProdutosRelacionados(produtos){
+    for (let i = produtos.length-1; i >= 0; i--) {
+        if(filmeEscolhido.titulo != produtos[i].titulo){
+            var imagem = document.createElement("img")
+            imagem.setAttribute("src", produtos[i].img)
+            imagem.setAttribute("class","col-sm-4 w-50")
+            titulosRelacionados.appendChild(imagem)
+        }
+    }
 }
