@@ -1,4 +1,9 @@
 window.onload=function(){
+    let chamadas = new Array();
+    if(localStorage.getItem("chamadas") != null){
+        chamadas = JSON.parse(localStorage.getItem("chamadas"))
+    }
+
     var formC=document.forms.formContato
     document.querySelector("#btContato").onclick=function(){
         if(formC.nomeContato.value == ""){
@@ -20,11 +25,14 @@ window.onload=function(){
 
     function addChamado(){
         let id=parseInt(Math.random()*90000 + 10000)
-        let valor=new Array 
-            valor.push(formC.nomeContato.value)
-            valor.push(formC.emailContato.value)
-            valor.push(formC.assuntoContato.value)
-            valor.push(formC.comentario.value)
-        localStorage.setItem('chamado-'+id,JSON.stringify(valor))
+        let valor={
+            id:id,
+            nome:formC.nomeContato.value,
+            email:formC.emailContato.value,
+            assunto:formC.assuntoContato.value,
+            comentario:formC.comentario.value
+        }
+        chamadas.push(valor)
+        localStorage.setItem("chamadas", JSON.stringify(chamadas))
     }
 }
