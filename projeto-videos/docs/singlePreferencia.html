@@ -10,7 +10,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
         <title>Página Produto</title>
     </head>
-
     <body>
         <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
             <div class="col-sm-2 my-auto">
@@ -37,49 +36,41 @@
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur ex optio quidem a nesciunt veritatis nemo sint. Est, aperiam? Neque, minus dolor nostrum facilis sunt in amet reprehenderit assumenda numquam suscipit deserunt, odio debitis dolore doloremque maxime voluptate inventore libero modi cum perspiciatis asperiores. Incidunt voluptate harum odio fugiat nemo!</p>
                 </div>
             </div>
-            <div class="mt-2">
-                <h2 id="tituloFilme">Filme Escolhido</h2>
-                <div class="row">
-                    <div class="col-sm-7 text-center">
-                        <img id="img" src=""/>
-                    </div>
-                    
-                    <div class="col-sm-5">
-                        <p id="sinopseFilme" class="text-dark"></p>
-                        <div class="align-items-end row">
-                            <div class="col-sm-3">
-                                <input id="quantidade" class="form-control" type="number" min='1' max='5'>
-                            </div>
-                            <div class="col-sm-9">
-                                <button onclick="btnClick()" id="btnAdd" class=" w-100 btn btn-danger" type="button">Adicionar ao Carrinho</button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row mt-2 pb-2 text-center" style="border-width: 1px; border-style: solid; border-radius: 12px;">
+                <div class="col-sm-3 mt-3 mb-1 mx-auto">
+                    <h2>TITULO</h2>
+                    <h2 id="tituloFilme" class="mb-1">Filme Escolhido</h2>
+                    <img id="img" class="mx-auto" style="width:fit-content;" src="" />
                 </div>
-                <div class="row">
-                    <h2 class="col-sm-12 text-center mt-5">Confira o trailer:</h2>
-                    <div class="col"></div>
-                    <div class="col-sm-11 mt-3">
-                        <div class="embed-responsive embed-responsive-16by9">
-                          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/w1KM0ChBuCA" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                <div class="col-sm-6 mt-3 mx-auto">
+                    <section>
+                        <h2>TRAILER</h2>
+                        <div class="mt-5 embed-responsive embed-responsive-16by9">
+                            <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/VUi2OHA0_sw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-sm-3 mt-3 mx-auto">
+                    <h2 class="mb-5">SINOPSE</h2>
+                    <p id="sinopseFilme" class="text-dark text-left"></p>
+                    <div class="align-items-end row">
+                        <div class="col-sm-4 mt-1">
+                            <input id="quantidade" class="form-control my-auto mx-auto" type="number" min='1' max='5'>
+                        </div>
+                        <div class="col-sm-8">
+                            <button onclick="btnClick()" id="btnAdd" class=" w-100 btn btn-danger" type="button">Adicionar ao Carrinho</button>
                         </div>
                     </div>
-                    <div class="col"></div>
                 </div>
             </div>
-
             <div>
                 <div id="relacionados" class="row mt-5">
-
                 </div>
             </div>
-            
         </section>
-
         <footer class="bg-dark p-4 text-white text-center mt-4">
             <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
-
     <script src="../js/singlePreferencia.js"></script>
 </html>
