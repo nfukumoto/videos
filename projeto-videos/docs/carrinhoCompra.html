@@ -5,63 +5,62 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <title>Carrinho</title>
     </head>
-
     <body>
-        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
+        <header class="row mt-5 mx-auto my-auto p-1">
             <div class="col-sm-2 my-auto">
                 <img src="../imagens/logovideo.png" class="w-100">
             </div>  
             <div class="col-sm-9 text-center my-auto">
-                <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
+<!--                 <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1> -->
+                <h1 class="font-weight-bold" style="font-size:40px; color:blueviolet;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
             </div>
             <div class="col-sm-1 my-auto">
             </div>  
         </header>
-            <nav class="text-center mt-3 mb-4">
+<!--             <nav class="text-center mt-3 mb-4">
                 <a href="produtos.html"><button class="btn btn-info">Produtos</button></a>
                 <a href="contato.html"><button class="btn btn-info">Contato</button></a>
                 <a href="promocoes.html"><button class="btn btn-info">Promoções</button></a>
+            </nav> -->
+            <nav class="navbar navbar-light mb-4" style="border-radius: 10px; background-color:lightyellow;">
+                <form class="form-inline">
+                    <a class="navbar-brand" href="produtos.html"><button class="btn btn-outline-info" type="button">Produtos</button></a>
+                    <a class="navbar-brand" href="contato.html"><button class="btn btn-outline-info" type="button">Contato</button></a>
+                    <a class="navbar-brand" href="promocoes.html"><button class="btn btn-outline-info" type="button">Promoções</button></a>
+                </form>
             </nav>
         <section class="mr-5 ml-5">
-            
-            <h1 id="tituloPagina"><b>Meu carrinho</b></h1>
+            <h1 id="tituloPagina" class="text-center"><b>Meu carrinho</b></h1>
             <div class="text-center" style="display: none;">
                 <a href="produtos.html">Adicionar mais produtos</a>
             </div>
             <article class="mt-5">
                 <div id="carrinho" class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                         <div id="produtosAdquiridos">
-                            
                             <div class="row text-center">
-                                <div class="col-sm-3">
-                                    <h3 class="text-dark">Produtos</h3>
+                                <div class="col-sm-4">
+                                    <h3 class="text-dark">Produto(s)</h3>
                                 </div>
-
                                 <div class="col-sm-3">
-                                    <h3 class="text-dark">Telas</h3>
+                                    <h3 class="text-dark">Tela(s)</h3>
                                 </div>
-
                                 <div class="col-sm-3">
                                     <h3 class="text-dark">Preço</h3>
                                 </div>
-
-                                <div class="col-sm-3">
-                                    <h3 class="text-dark"></h3>
+                                <div class="col-sm-2">
+                                    <h3 class="text-dark">Excluir</h3>
                                 </div>
                             </div><hr>
-                            
                         </div>
                     </div>
-                    
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <form class="form-group p-3" style="border: 1px solid #ccc; border-radius: 12px">
                             <fieldset>
                                 <div id="resumoCompra"></div>
-                                <div class="row ml-2 mr-2">
-                                    <input type="number" id="cupom" class="w-100 form-control col-sm-6" placeholder="Cupom de Desconto">
-                                    <div class="col-sm-1"></div>
-                                    <button type="button" class="btn btn-info col-sm-5" id="btnCupom">Validar</button>
+                                <div class="row">
+                                    <input type="number" id="cupom" class="w-100 form-control col-sm-7 mx-auto" placeholder="Cupom de Desconto">
+                                    <button type="button" class="btn btn-info col-sm-3 mx-auto" id="btnCupom">Validar</button>
                                 </div>
                                 <div class="mt-5 text-white">
                                     <button class="w-100 btn btn-danger">Continuar</button>
@@ -74,15 +73,10 @@
                     </div>
                 </div>
             </article>
-
             <article>
                 <div id="produtos" class="row mt-5">
-
                 </div>
             </article>
-        
-    </section>
-            
         </section>
         <footer class="bg-dark p-4 text-white text-center mt-4">
             <p>&copy;2022 - Todos os direitos reservados</p>
