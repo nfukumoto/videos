@@ -1,9 +1,9 @@
 var titulo = document.querySelector("#tituloFilme")
 var imagem = document.querySelector("#img")
 var sinopse = document.querySelector("#sinopseFilme") 
-imagem.setAttribute("class", "w-50") 
+imagem.setAttribute("class", "w-100") 
 
-var textoLorem = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur ex optio quidem a nesciunt veritatis nemo sint. Est, aperiam? Neque, minus dolor nostrum facilis sunt in amet reprehenderit assumenda numquam suscipit deserunt, odio debitis dolore doloremque maxime voluptate inventore libero modi cum perspiciatis asperiores. Incidunt voluptate harum odio fugiat nemo!"
+var textoLorem = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, aperiam? Neque, minus dolor nostrum facilis sunt in amet reprehenderit assumenda numquam suscipit deserunt, odio debitis dolore doloremque maxime voluptate inventore libero modi cum perspiciatis asperiores. Incidunt voluptate harum odio fugiat nemo!"
 
 let filme = '{"titulo":"Titulo Escolhido",  "trailer":"https://www.youtube.com/embed/ZxgPySJkxN8","sinopse":"Lorem aqui", "preco":10.50}'
 var filmeJSON = JSON.parse(filme)
@@ -54,7 +54,6 @@ function addProduto(value){
     lista.push({img:filmeEscolhido.img, qtd: value, preco: filmeEscolhido.preco});
     console.log(lista);
     localStorage.setItem("produtosNoCarrinho", JSON.stringify(lista))
-    
 }
 
 function getProdutoJSON(){

@@ -1,24 +1,24 @@
-var resumoCompraJSON = getElementJSON();
+var resumoCompraJSON = getElementJSON()
 resumoCompraJSON.element = document.querySelector("#resumoCompra")
 let carrinho = {
     produtos:new Array(),
-    numProdutos: 0,
+    numProdutos:0,
     totalProduto:0,
     totalCompra:0,
     esvaziarCarrinho:function(){
         localStorage.removeItem("produtosNoCarrinho")
-        location.href="carrinhoCompra.html";
+        location.href="carrinhoCompra.html"
     },
     excluirItem:function(element){
         var child = element.parentElement.parentElement;
-        var parent = child.parentElement;
-        carrinho.produtos.splice(child.id,1);
+        var parent = child.parentElement
+        carrinho.produtos.splice(child.id,1)
         localStorage.setItem("produtosNoCarrinho", JSON.stringify(this.produtos))
         child.remove()
         location.href="carrinhoCompra.html"
     },
     multiplicarTelas:function(produto){
-        this.numProdutos += parseInt(produto.qtd);
+        this.numProdutos += parseInt(produto.qtd)
         this.totalProduto = produto.preco * (1.07)**(produto.qtd-1)
         return this.totalProduto
     },
@@ -26,24 +26,23 @@ let carrinho = {
         resumoCompraJSON.element.innerHTML=''
         var divResumo = configuraElemento(criarDivJSON(""), resumoCompraJSON)
         var paragrafoResumoJSON = getElementJSON();
-        var paragrafo = carrinho.numProdutos + " Produtos<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",");
+        var paragrafo = "Tem "+carrinho.numProdutos+" Produto(s) no carrinho.<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",")
         console.log(paragrafoResumoJSON.element)
-        paragrafoResumoJSON.element = criarTexto(paragrafo,"p");
+        paragrafoResumoJSON.element = criarTexto(paragrafo,"p")
         paragrafoResumoJSON.element.setAttribute('id','pResumoJSON')
         configuraElemento(paragrafoResumoJSON, divResumo)
     }
 }
 
 let cupom = {
-
 }
 
-carrinho.produtos=JSON.parse(localStorage.produtosNoCarrinho);
+carrinho.produtos=JSON.parse(localStorage.produtosNoCarrinho)
 if(carrinho.produtos.length)
 {
     carregaProdutosNoLayout(carrinho.produtos)
     carregaResumoNoLayout(carrinho.produtos)
-    carregaTitulosRelacionados(carrinho.produtos);
+    carregaTitulosRelacionados(carrinho.produtos)
 }
 
 
@@ -58,100 +57,94 @@ function carregaProdutosNoLayout(produtos){
         var produtoJSON = configuraElemento(criarDivJSON("row"), produtosAdquiridosJSON)
         produtoJSON.element.setAttribute("id",i)
     
-        var divImagemJSON = configuraElemento(criarDivJSON("col-sm-4"), produtoJSON);
-        var divQtdJSON = configuraElemento(criarDivJSON("col-sm-3"), produtoJSON);
-        var divPrecoJSON = configuraElemento(criarDivJSON("col-sm-3"),produtoJSON);
-        var divLixeiraJSON = configuraElemento(criarDivJSON("col-sm-2 mt-4"), produtoJSON);
+        var divImagemJSON = configuraElemento(criarDivJSON("col-sm-4 mt-2 text-center"), produtoJSON)
+        var divQtdJSON = configuraElemento(criarDivJSON("col-sm-3 mt-2 text-center"), produtoJSON)
+        var divPrecoJSON = configuraElemento(criarDivJSON("col-sm-3 mt-2 text-center"),produtoJSON)
+        var divLixeiraJSON = configuraElemento(criarDivJSON("col-sm-2 mt-1 text-center"), produtoJSON)
 
-        var imagemJSON = configuraElemento(configurarImgProduto(produtos[i].img), divImagemJSON); 
-        var qtdJSON = configuraElemento(configurarQtdProduto(produtos[i].qtd), divQtdJSON);
-        var precoJSON = configuraElemento(configurarPrecoProduto(produtos[i].preco), divPrecoJSON);
-        var lixeira = configuraElemento(configuraLixeira(i), divLixeiraJSON);
-        
+        var imagemJSON = configuraElemento(configurarImgProduto(produtos[i].img), divImagemJSON)
+        var qtdJSON = configuraElemento(configurarQtdProduto(produtos[i].qtd), divQtdJSON)
+        var precoJSON = configuraElemento(configurarPrecoProduto(produtos[i].preco), divPrecoJSON)
+        var lixeira = configuraElemento(configuraLixeira(i), divLixeiraJSON)
         produtosAdquiridosJSON.element.appendChild(document.createElement("hr"))
     }
 
-    var btnEsvaziarJSON = getElementJSON();
+    var btnEsvaziarJSON = getElementJSON()
     var btnEsvaziar = document.createElement("button")
     btnEsvaziar.innerHTML= "Excluir Itens"
-    btnEsvaziar.setAttribute("type", "button");
+    btnEsvaziar.setAttribute("type", "button")
     btnEsvaziar.onclick = function(){
         carrinho.esvaziarCarrinho()
     }
 
-    btnEsvaziarJSON.class = "btn btn-danger w-100";
-    btnEsvaziarJSON.element = btnEsvaziar;
+    btnEsvaziarJSON.class = "btn btn-danger w-100"
+    btnEsvaziarJSON.element = btnEsvaziar
     configuraElemento(btnEsvaziarJSON, produtosAdquiridosJSON)
 }
 
 function getElementJSON(){
     var elementJSON = '{"element":"", "class":"", "destino":""}'
-    return JSON.parse(elementJSON);
+    return JSON.parse(elementJSON)
 }
 
 function criarDivJSON(classe){
-    var elementJSON = getElementJSON();
-    elementJSON.element = criarDiv();
-    elementJSON.class = classe;
-    
-    return elementJSON;
+    var elementJSON = getElementJSON()
+    elementJSON.element = criarDiv()
+    elementJSON.class = classe
+    return elementJSON
 }
 
 function configurarImgProduto(caminho){
-    var elementJSON = getElementJSON();
+    var elementJSON = getElementJSON()
     elementJSON.element = criarImg(caminho)
-    elementJSON.class = "w-75 mt-2"
-
-    return elementJSON;
+    elementJSON.class = "w-75"
+    return elementJSON
 }
 
 function configurarQtdProduto(quantidade){
-    var elementJSON = getElementJSON();
+    var elementJSON = getElementJSON()
     elementJSON.element = document.createElement('input')
     elementJSON.element.value = quantidade
     elementJSON.element.setAttribute('type','number')
     elementJSON.element.setAttribute('min',1)
     elementJSON.element.setAttribute('max',5)
-    elementJSON.class = "form-control"
+    elementJSON.class = "form-control w-50 mx-auto text-center"
     elementJSON.element.onchange=function(){
-        console.log(elementJSON.element.parentElement.parentElement)
         alteraQuantidade(elementJSON.element.parentElement.parentElement.id,elementJSON.element)
     }
-
-    return elementJSON;
+    return elementJSON
 }
 
 function configurarPrecoProduto(preco){
-    var elementJSON = getElementJSON();
+    var elementJSON = getElementJSON()
     elementJSON.element = criarTexto("R$ " + (preco.toFixed(2)).toString().replace(".",","), "h4")
-    elementJSON.class = "text-dark mt-5"
-
-    return elementJSON;
+    elementJSON.class = "text-dark"
+    return elementJSON
 }
 
 function criarDiv(){
     var element = document.createElement("div")
-    return element;
+    return element
 }
 
 function criarTexto(valor, tipo){
     var element = document.createElement(tipo)
-    element.innerHTML=valor;
-    return element;
+    element.innerHTML=valor
+    return element
 }
 
 function criarImg(caminho){
     var element = document.createElement("img")
     element.setAttribute("src", caminho)
-    return element;
+    return element
 }
 
 function configuraLixeira(index){
-    var elementJSON = getElementJSON();
-    var element = document.createElement("a");
-    var imagem = document.createElement("img");
+    var elementJSON = getElementJSON()
+    var element = document.createElement("a")
+    var imagem = document.createElement("img")
     imagem.setAttribute("src","../imagens/lixeira.png")
-    imagem.setAttribute("style","width:30px")
+    imagem.setAttribute("style","width:25px")
     element.appendChild(imagem)
     element.setAttribute("type", "button")
     element.onclick = function(){
@@ -168,8 +161,7 @@ function configuraElemento(elementJSON, destino){
     (elementJSON.element).setAttribute("class", elementJSON.class)
     elementJSON.destino = destino.element
     colocarDentro(destino.element, elementJSON.element)
-
-    return elementJSON;
+    return elementJSON
 }
 
 function colocarDentro(destino, element){
@@ -183,17 +175,16 @@ function carregaResumoNoLayout(produtos){
     for(var i = 0; i < produtos.length; i++){
         carrinho.totalCompra += carrinho.multiplicarTelas(produtos[i])
     }
-
     carrinho.montarResumo()
 }
 
 function carregaTitulosRelacionados(produtos){
-    var titulosRelacionados = getElementJSON();
+    var titulosRelacionados = getElementJSON()
     titulosRelacionados.element = document.querySelector("#produtos")
     for(var i = 0; i < produtos.length; i++){
         var divImg = configuraElemento(criarDivJSON("col-sm-4"), titulosRelacionados)
-        var imagem = getElementJSON();
-        imagem.element = criarImg(produtos[i].img);
+        var imagem = getElementJSON()
+        imagem.element = criarImg(produtos[i].img)
         imagem.class = "w-100"
         imagem = configuraElemento(imagem, divImg)
     }
@@ -206,13 +197,13 @@ btnCupom.onclick=function(){
         alert('Cupom validado! Você ganhou 10% de desconto')
         carrinho.totalCompra = carrinho.totalCompra * 0.9
         var paragrafo = document.querySelector('#pResumoJSON')
-        paragrafo.innerHTML=carrinho.numProdutos + " Produtos<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",");
+        paragrafo.innerHTML="Tem "+carrinho.numProdutos + " Produto(s) no carrinho.<br>"+"Total com desconto R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",")
     }else if(inputCupom.value == 456 ){
         alert('Cupom validado! Você ganhou 20% de desconto')
         carrinho.totalCompra = carrinho.totalCompra * 0.8
         var paragrafo = document.querySelector('#pResumoJSON')
         console.log(paragrafo)
-        paragrafo.innerHTML=carrinho.numProdutos + " Produtos<br>"+"Total R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",");
+        paragrafo.innerHTML="Tem "+carrinho.numProdutos + " Produto(s) np carrinho.<br>"+"Total com desconto R$ "+(carrinho.totalCompra.toFixed(2)).toString().replace(".",",")
     }else{
         alert('Cupom inválido!')
     }
@@ -220,6 +211,5 @@ btnCupom.onclick=function(){
 
 function alteraQuantidade(index,element){
     carrinho.produtos[index].qtd=element.value
-
     carregaResumoNoLayout(carrinho.produtos)
 }
