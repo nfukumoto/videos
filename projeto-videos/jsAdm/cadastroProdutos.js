@@ -6,7 +6,9 @@ document.querySelector("#btCadastroprodutos").onclick=function(){
     else if(verificaSeCampoVazio(formC.anoFilme.value, "Ano"));
     else if(verificaSeCampoVazio(formC.imagemFilme.value, "Imagem"));
     else if(verificaSeCampoVazio(formC.sinopseFilme.value, "Sinopse"));
-       
+    else{
+        formC.submit();
+    }
 }
 
 function verificaSeCampoVazio(valor, msg){
