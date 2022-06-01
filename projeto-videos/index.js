@@ -5,6 +5,7 @@ const port = 3000
 app.use(express.static('projeto-videos'))
 app.use("/imagens",express.static('imagens'))
 app.use("/js",express.static("js"))
+app.use("/jsAdm", express.static("jsAdm"))
 
 app.get('/Home',(req,res)=>{
     res.sendFile(`${__dirname}/index.html`)
@@ -36,6 +37,22 @@ app.get('/Cadastro', (req,res) => {
 
 app.get('/Produto', (req,res) => {
     res.sendFile(`${__dirname}/docs/singlePreferencia.html`)
+})
+
+app.get('/HomeAdm', (req,res) => {
+    res.sendFile(`${__dirname}/adm/indexAdm.html`)
+})
+
+app.get('/CadastroProduto', (req,res) => {
+    res.sendFile(`${__dirname}/adm/cadastroProdutos.html`)
+})
+
+app.get('/RelatorioChamadas', (req,res) => {
+    res.sendFile(`${__dirname}/adm/relatorio-chamadas.html`)
+})
+
+app.get('/RelatorioComercial', (req,res) => {
+    res.sendFile(`${__dirname}/adm/relatorio-comercial.html`)
 })
 
 app.listen(port, () => {
