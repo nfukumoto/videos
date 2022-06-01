@@ -7,7 +7,7 @@ let carrinho = {
     totalCompra:0,
     esvaziarCarrinho:function(){
         localStorage.removeItem("produtosNoCarrinho")
-        location.href="carrinhoCompra.html"
+        location.href="/Carrinho"
     },
     excluirItem:function(element){
         var child = element.parentElement.parentElement;
@@ -15,7 +15,7 @@ let carrinho = {
         carrinho.produtos.splice(child.id,1)
         localStorage.setItem("produtosNoCarrinho", JSON.stringify(this.produtos))
         child.remove()
-        location.href="carrinhoCompra.html"
+        location.href="/Carrinho"
     },
     multiplicarTelas:function(produto){
         this.numProdutos += parseInt(produto.qtd)
