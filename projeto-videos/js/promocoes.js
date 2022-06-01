@@ -81,7 +81,7 @@ function selecionarProduto(element){
         preferencias.push(filmeEscolhido)
     }
     localStorage.setItem("preferencias",JSON.stringify(preferencias))
-    location.href="../docs/singlePreferencia.html"
+    location.href="/Produto"
 }
 
 function configuraElemento(element, config, destino){

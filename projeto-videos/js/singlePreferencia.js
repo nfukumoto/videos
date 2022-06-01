@@ -30,7 +30,7 @@ function btnClick(){
             lista = JSON.parse(localStorage.produtosNoCarrinho);
         }    
         addProduto(quantidade)
-        location.href="carrinhoCompra.html"
+        location.href="/Carrinho"
     }
 }
 

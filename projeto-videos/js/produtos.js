@@ -155,6 +155,6 @@ let videos=[ // DONT TOUCH !!!!!!!!!!!!!!!!!!
             preferencias.push(filmeEscolhido)
         }
         localStorage.setItem("preferencias",JSON.stringify(preferencias))
-        location.href="../docs/singlePreferencia.html"
+        location.href="/Produto"
     }
 }

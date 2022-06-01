@@ -21,9 +21,7 @@ function verificaSeCampoVazio(valor, msg){
 
 function verificaSeSenhasConferem(senha, senhaC){
     if(senha == senhaC){
-        localStorage.nomeUser=formR.nomeUser.value
         localStorage.emailUser=formR.emailUser.value
-        localStorage.telUser=formR.telUser.value
         formR.submit()
         return true;
     }
