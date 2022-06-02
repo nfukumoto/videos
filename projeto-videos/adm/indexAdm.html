@@ -14,7 +14,7 @@
                 <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:firebrick">ÁREA DO ADMINISTRADOR, SEJA BEM-VINDO!</h1>
             </div>
             <div class="col-sm-2">
-                <span id="bemVindo" class="ml-5"></span>
+                <span id="bemVindo" class="ml-2"></span>
                 <a id="sair" style="cursor:pointer; text-decoration:underline" href="/LoginAdm"class="ml-2">Sair</a> <!--Redirecionado pelo JS-->
             </div>  
         </header>
@@ -59,6 +59,29 @@
                 </div>
                 </div>
             </div>
+            <script>
+                let user= localStorage.emailUser
+                let bemVindo=document.querySelector("#bemVindo")
+                let sair=document.querySelector("#sair")
+
+                function msgUser(){ // Função para ocultar link entrar quando logado.
+                    let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
+                    bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
+                }
+
+                function resetUser(){ // Função para ocultar link sair quando não estivar logado.
+                    entrar.style.display="none"
+                    sair.style.display="none"
+                }
+
+                sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial
+                    localStorage.removeItem('emailUser')
+                    location.href='/LoginAdm'
+                }
+
+                localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair.
+
+            </script>
         </section>
         <footer class="bg-dark p-4 text-warning text-center mt-4">
             <p> &copy;2022 - Todos os direitos reservados.</p>

@@ -1,6 +1,5 @@
-
 var formL = document.forms.formLogin;
-document.querySelector("#btLogin").onclick=function(){
+document.querySelector("#entrar").onclick=function(){
     if(verificaSeCampoVazio(formL.usuario.value, "usuario"));
     else if(verificaSeFormatoEmail(formL.usuario.value));
     else if(verificaSeCampoVazio(formL.senha.value, "senha"));
@@ -9,10 +8,7 @@ document.querySelector("#btLogin").onclick=function(){
         localStorage.emailUser=formL.usuario.value // Recupera a informação do email para usar como nome do usuário.
         formL.submit();  
     }
-
-        
-    }    
-
+}    
 
 function verificaSeCampoVazio(valor, msg){
     if(valor==""){
@@ -37,4 +33,3 @@ function verificaSeFormatoEmail(valor){
     }
     return false
 }
-

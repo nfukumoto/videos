@@ -14,7 +14,9 @@
             <div class="col-sm-8 text-center my-auto">
                 <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:firebrick">ÁREA DO ADMINISTRADOR, SEJA BEM-VINDO!</h1>
             </div>
-            <div class="col-sm-2 my-auto">
+            <div class="col-sm-2">
+                <span id="bemVindo" class="ml-2"></span>
+                <a id="cadastrar" href="/CadastroAdm" style="cursor:pointer; text-decoration:underline" class="ml-3">Cadastrar ADM</button></a>
             </div>  
         </header>
         <section class="container mt-3">
@@ -29,14 +31,14 @@
                         <legend class="text-center text-primary"><b>Preencha os campos para entrar</b></legend>
                         <div class="form-group mt-3">
                             <label>E-mail :</label>
-                            <input class="form-control" name="email" id="usuario" maxlength="50">
+                            <input class="form-control" name="usuario" id="usuario" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label>Senha :</label>
                             <input class="form-control" type="password" name="senha" id="senha" maxlength="8">
                         </div>
                         <div class="text-center mt-3">
-                            <button type="button" id="btLogin" class="w-100 btn btn-info">Confirmar</button>
+                            <button type="button" id="entrar" class="w-100 btn btn-info">Confirmar</button>
                         </div>
                     </fieldset>
                 </form>               
