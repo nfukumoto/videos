@@ -23,6 +23,7 @@ else{
     let entrar=document.querySelector("#entrar")
     let sair=document.querySelector("#sair")
     let cadastrar=document.querySelector("#cadastrar")
+    let perfil=document.querySelector("#perfil")
 
     function msgUser(){ // Função para ocultar link entrar quando logado.
         let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
@@ -33,6 +34,7 @@ else{
 
     function resetUser(){ // Função para ocultar link sair quando não estivar logado.
         sair.style.display="none"
+        perfil.style.display="none"
     }
 
     sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial

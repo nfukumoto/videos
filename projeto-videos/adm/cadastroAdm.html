@@ -7,44 +7,46 @@
         <title>Cadastro Adm</title>
     </head>
     <body>
-        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:firebrick; border-radius: 12px;">
+        <header class="row mx-auto my-auto p-1">
             <div class="col-sm-2 my-auto">
-                <img src="../imagens/logovideo.png" class="w-100">
+                <img src="../imagens/logovideo.png" class="w-50 mt-4 mb-0">
             </div>  
-            <div class="col-sm-9 text-center my-auto">
-                <h1 class="font-weight-bold" style="font-size:40px; color: white;">LIVE STREAMING ADMINISTRATIVO<BR>CADASTRO DE ADM</h1>
+            <div class="col-sm-8 text-center my-auto">
+                <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:firebrick">ÁREA DO ADMINISTRADOR, SEJA BEM-VINDO!</h1>
             </div>
-            <div class="col-sm-1 my-auto">
+            <div class="col-sm-2 my-auto">
             </div>  
         </header>
     <body class="bodyLoginEContato">
-        <section>
+        <section class="container">
+            <h1 class="text-center mt-3" style="background-color:#E0D1FA ;"><b>Cadastro de Administradores</b></h1>
             <center>
-            <div class="form-group">
-                <form id="formRegistro" class="w-50 mx-auto" action="indexAdm.html">
-                    <fieldset class="fieldsetPersonalizado">
+            <div class="form-group mt-4">
+                <form id="formRegistro" class="w-50 mx-auto" action="/HomeAdm" class="w-50 mx-auto p-3 mt-4 mb-5" 
+                style="border:1px solid #ccc;border-radius: 12px;">
+                    <fieldset class="fieldsetPersonalizado p-3 mt-3">
+                        <legend class="text-center text-primary"><b>Preencha os dados para o cadastro</b></legend>
                         <div>
-                            <img src="../imagens/login.png" width="300">
+                            <img class="w-25" src="../imagens/login.png">
                         </div>
-
                         <div>
-                            <input id="emailUser" class="form-control w-50 mt-3" name="email-usuario" placeholder="Email" type="email" />
-                            <input id="senhaUser" class="form-control w-50 mt-3" name="senha-usuario" placeholder="Senha" type="password" />
-                            <input id="senhaC" class="form-control w-50 mt-3" name="confirmacao-senha-usuario" placeholder="Confirme a senha" type="password" />
-                            <select name="nivel" class="form-control w-50 mt-3">
+                            <input id="emailUser" class="form-control w-100 mt-3" name="email-usuario" placeholder="Email" type="email" />
+                            <input id="senhaUser" class="form-control w-100 mt-3" name="senha-usuario" placeholder="Senha" type="password" />
+                            <input id="senhaC" class="form-control w-100 mt-3" name="confirmacao-senha-usuario" placeholder="Confirme a senha" type="password" />
+                            <select name="nivel" class="form-control w-100 mt-3">
                                 <option value="1">Adm</option>
                                 <option value="2">Master</option>
                             </select>
                         </div>
                             <div> 
-                              <button id="btRegistro" class="mt-3 btn btn-primary" type="button">Cadastrar</button>
+                              <button id="btRegistro" class="mt-3 btn btn-info" type="button">Cadastrar</button>
                         </div>        
                     </fieldset>
                 </form>
             </div>
             </center>
         </section>
-        <footer class="bg-dark p-4 text-white text-center mt-4">
+        <footer class="bg-dark p-4 text-warning text-center mt-4">
             <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>

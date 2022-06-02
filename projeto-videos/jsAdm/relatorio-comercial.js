@@ -24,7 +24,7 @@ tabAssinaturas.appendChild(linhaTab)
 
     dTabCliente.innerHTML=AssinaturasJSON[i].cliente
     dTabDesc.innerHTML=AssinaturasJSON[i].desc
-    dTabValor.innerHTML=(AssinaturasJSON[i].valor.toFixed(2)).toString().replace('.',',')
+    dTabValor.innerHTML="R$ "+(AssinaturasJSON[i].valor.toFixed(2)).toString().replace('.',',')
 
     somaTotAss += AssinaturasJSON[i].valor
 }
@@ -58,7 +58,7 @@ for(var i=0;i<aluguel.length;i++){
 
     dTabCliente.innerHTML=AluguelJSON[i].cliente
     dTabDesc.innerHTML=AluguelJSON[i].desc
-    dTabValor.innerHTML=(AluguelJSON[i].valor.toFixed(2)).toString().replace('.',',')
+    dTabValor.innerHTML="R$ "+(AluguelJSON[i].valor.toFixed(2)).toString().replace('.',',')
 
     somaTotAlug += AluguelJSON[i].valor
 }
