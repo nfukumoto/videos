@@ -3,10 +3,10 @@ let preferencias = new Array();
 
 if(localStorage.getItem("preferencias") == null){
     preferencias = [
-        {titulo:"", img: "", descricao:""}, // 0
-        {titulo:"", img: "", descricao:""}, // 1
-        {titulo:"", img: "", descricao:""}, // 2
-        {titulo:"", img: "", descricao:""}, // 3
+        {titulo:"", img:"", descricao:"", preco:""}, // 0
+        {titulo:"", img:"", descricao:"", preco:""}, // 1
+        {titulo:"", img:"", descricao:"", preco:""}, // 2
+        {titulo:"", img:"", descricao:"", preco:""}, // 3
     ]
 }
 else{
@@ -84,7 +84,7 @@ let videos=[ // DONT TOUCH !!!!!!!!!!!!!!!!!!
         var categoria='<p class="text-uppercase">Categoria: ' + videos[i].categoria + '</p>'
         var anoPub='<p>Ano: ' + videos[i].ano + '</p>'
         // Insere o parágrafo com variáveis da categoria, ano e resenha dentro de uma div com espaço 7
-        var resenha='<div class="col-sm-7"><p>' + categoria + anoPub + '<p>' + descricao + '</p></div>'
+        var resenha='<div class="col-sm-7 text-left"><p>' + categoria + anoPub + '<p>' + descricao + '</p></div>'
 
         // Insere o tag h3 com o título
         conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-2">' + videos[i].titulo + '</h3>'

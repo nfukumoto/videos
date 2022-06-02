@@ -39,6 +39,10 @@ app.get('/Produto', (req,res) => {
     res.sendFile(`${__dirname}/docs/singlePreferencia.html`)
 })
 
+app.get('/Perfil', (req,res) => {
+    res.sendFile(`${__dirname}/docs/perfilUsuario.html`)
+})
+
 app.get('/HomeAdm', (req,res) => {
     res.sendFile(`${__dirname}/adm/indexAdm.html`)
 })

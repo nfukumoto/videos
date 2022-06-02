@@ -3,48 +3,45 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <title>Galeria de Vídeos!</title>
+        <title>Galeria de Vídeos</title>
     </head>
     <body>
-        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
+        <header class="row mx-auto my-auto p-1">
             <div class="col-sm-2 my-auto">
-                <img src="imagens/logovideo.png" class="w-100">
+                <img src="../imagens/logovideo.png" class="w-50 mt-4 mb-0">
             </div>  
             <div class="col-sm-8 text-center my-auto">
-                <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
+                <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:#5A18C9">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
             </div>
             <div class="col-sm-2">
-                <span id="bemVindo" class="ml-5"></span>
-                <a id="entrar" style="cursor:pointer; text-decoration:underline" href="/Login" class="mr-2">Entrar</a>
-                <a id="sair" style="cursor:pointer; text-decoration:underline" href="/Home"class="ml-2">Sair</a> <!--Redirecionado pelo JS-->
+                <span id="bemVindo" class="ml-2"></span>
+                <a id="entrar" style="cursor:pointer; text-decoration:underline" href="/Login">Entrar</a>
+                <a id="sair" style="cursor:pointer; text-decoration:underline" href="/Home" class="ml-2">Sair</a> <!--Redirecionado pelo JS-->                
+                <a id="cadastrar" href="/Cadastro" style="cursor:pointer; text-decoration:underline" class="ml-3">Cadastre-se</button></a>
             </div>  
-        </header>
-            <nav class="row text-center mt-3 mb-4">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-8">
-                    <a href="/Produtos"><button class="btn btn-info">Produtos</button></a>
-                    <a href="/Contato"><button class="btn btn-info">Contato</button></a>
-                    <a href="/Promocoes"><button class="btn btn-info mr-5">Promoções</button></a>
-                    <a href="/Carrinho"><button class="btn btn-info">Carrinho</button></a>
-                </div>
-                <div class="col-sm-2">
-                    <a id="cadastrar" href="/Cadastro" style="cursor:pointer; text-decoration:underline" class="mr-5">Cadastre-se</button></a>
-                </div>
-            </nav>
+        </header>        
+            <nav class="navbar navbar-light mb-2">
+                <hr style="height:1px; width:100%; border-width:0; background-color:#5A18C9">
+                <form class="form-inline mx-auto">
+                    <a class="navbar-brand"><button class="btn btn-outline-dark btn-sm disabled" disabled>Home</button></a>
+                    <a class="navbar-brand" href="/Produtos"><button class="btn btn-outline-dark btn-sm" type="button">Produtos</button></a>
+                    <a class="navbar-brand" href="/Promocoes"><button class="btn btn-outline-dark btn-sm" type="button">Promoções</button></a>
+                    <a class="navbar-brand" href="/Contato"><button class="btn btn-outline-dark btn-sm" type="button">Contato</button></a>
+                    <a class="navbar-brand" href="/Carrinho"><button class="btn btn-outline-dark btn-sm">Carrinho</button></a>                    
+                </form>
+            </nav>        
         <section class="container">
-            <div class="row mt-4">
+            <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="text-center">Sejam bem vindos, Maratonistas</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
+                    <h1 class="text-center" style="background-color:#E0D1FA ;"><b>Sejam bem vindos, Maratonistas</b></h1>
+                    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
                 </div>
             </div>
-
             <article>
                 <div id="galeria" class="row"></div>
             </article>
-            
         </section>
-        <footer class="bg-dark p-4 text-white text-center mt-4">
+        <footer class="bg-dark p-4 text-warning text-center mt-4">
             <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
