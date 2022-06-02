@@ -28,7 +28,8 @@ function verificaSeSenhasConferem(senha, senhaC){
     alert("Senhas Diferentes !")
     return false
 }
- function verificaSePossuiTamanhoMinimo(valor){
+
+function verificaSePossuiTamanhoMinimo(valor){
     if(valor.length < 8){
         alert("A Senha deve Conter 8 Caracteres ou Mais!");
         return true;

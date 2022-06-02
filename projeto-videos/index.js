@@ -47,6 +47,10 @@ app.get('/LoginAdm', (req,res) => {
     res.sendFile(`${__dirname}/adm/loginAdm.html`)
 })
 
+app.get('/CadastroAdm', (req,res) => {
+    res.sendFile(`${__dirname}/adm/cadastroAdm.html`)
+})
+
 app.get('/HomeAdm', (req,res) => {
     res.sendFile(`${__dirname}/adm/indexAdm.html`)
 })
