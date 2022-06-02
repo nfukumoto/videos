@@ -9,27 +9,23 @@
         <title>Relatório Comercial</title>
     </head>
     <body>
-        <header class="row mx-auto my-auto p-1" style="border:1px solid #ccc; background-color:cornflowerblue; border-radius: 12px;">
+        <header class="row mx-auto my-auto p-1">
             <div class="col-sm-2 my-auto">
-                <a href="../index.html">
-                    <img src="../imagens/logovideo.png" class="w-100">
-                </a>
+                <img src="../imagens/logovideo.png" class="w-50 mt-4 mb-0">
             </div>  
-            <div class="col-sm-9 text-center my-auto">
-                <h1 class="font-weight-bold" style="font-size:40px; color: white;">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
+            <div class="col-sm-8 text-center my-auto">
+                <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:firebrick">ÁREA DO ADMINISTRADOR, SEJA BEM-VINDO!</h1>
             </div>
-            <div class="col-sm-1 my-auto">
+            <div class="col-sm-2 my-auto">
             </div>  
         </header>
-        <section id="tabs" class="project-tab row mt-5 mr-5 ml-5">
+        <section id="tabs" class="project-tab row mt-4 mr-5 ml-5">
             <div class="col-sm-8 card pb-3">
                 <!-- Navegação -->
                 <nav>
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#assinantes" role="tab" aria-controls="nav-home" aria-selected="true">Assinantes</a>
-
                         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#aluguel" role="tab" aria-controls="nav-profile" aria-selected="false">Aluguel</a>
-                        
                     </div>
                 </nav>
                 <!-- Final navegação -->
@@ -53,7 +49,9 @@
                             </tbody>
                         </table>
                         <hr>
-                        <span><b>Total: R$ </b></span><span id="totalAssinaturasTab"></span>
+                        <div class="mr-5"style="text-align: right;">
+                            <span><b>Total: R$ </b></span><span id="totalAssinaturasTab"></span>
+                        </div>
                     </div>
 
                     <!-- Aluguel -->
@@ -72,7 +70,9 @@
                             </tbody>
                         </table>
                         <hr>
+                        <div class="mr-5"style="text-align: right;">
                             <span><b>Total: R$ </b></span><span id="totalAluguelTab"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                 <div class="col"></div>
             </div>
         </section>
-        <footer class="bg-dark p-4 text-white text-center mt-4">
+        <footer class="bg-dark p-4 text-warning text-center mt-4">
             <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
