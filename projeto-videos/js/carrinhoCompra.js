@@ -71,7 +71,7 @@ function carregaProdutosNoLayout(produtos){
 
     var btnEsvaziarJSON = getElementJSON()
     var btnEsvaziar = document.createElement("button")
-    btnEsvaziar.innerHTML= "Excluir Itens"
+    btnEsvaziar.innerHTML= "Excluir TODOS os Itens do Carrinho"
     btnEsvaziar.setAttribute("type", "button")
     btnEsvaziar.onclick = function(){
         carrinho.esvaziarCarrinho()
