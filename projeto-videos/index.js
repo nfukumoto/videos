@@ -2,69 +2,71 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.set("view engine", "ejs")
+
 app.use(express.static('projeto-videos'))
 app.use("/imagens",express.static('imagens'))
 app.use("/js",express.static("js"))
 app.use("/jsAdm", express.static("jsAdm"))
 
 app.get('/Home',(req,res)=>{
-    res.sendFile(`${__dirname}/index.html`)
+    res.render(`index`)
 })
 
 app.get('/Produtos', (req,res) => {
-    res.sendFile(`${__dirname}/docs/produtos.html`)
+    res.render(`produtos`)
 })
 
 app.get('/Contato', (req,res) => {
-    res.sendFile(`${__dirname}/docs/contato.html`)
+    res.render(`contato`)
 })
 
 app.get('/Promocoes', (req,res) => {
-    res.sendFile(`${__dirname}/docs/promocoes.html`)
+    res.render(`promocoes`)
 })
 
 app.get('/Carrinho', (req,res) => {
-    res.sendFile(`${__dirname}/docs/carrinhoCompra.html`)
+    res.render(`carrinhoCompra`)
 })
 
 app.get('/Login', (req,res) => {
-    res.sendFile(`${__dirname}/docs/login.html`)
+    res.render(`login`)
 })
 
 app.get('/Cadastro', (req,res) => {
-    res.sendFile(`${__dirname}/docs/cadastro.html`)
+    res.render(`cadastro`)
 })
 
 app.get('/Produto', (req,res) => {
-    res.sendFile(`${__dirname}/docs/singlePreferencia.html`)
+    res.render(`singlePreferencia`)
 })
 
 app.get('/Perfil', (req,res) => {
-    res.sendFile(`${__dirname}/docs/perfilUsuario.html`)
+    res.render(`perfilUsuario`)
 })
 
 app.get('/LoginAdm', (req,res) => {
-    res.sendFile(`${__dirname}/adm/loginAdm.html`)
+    res.render(`loginAdm`)
 })
 
 app.get('/CadastroAdm', (req,res) => {
-    res.sendFile(`${__dirname}/adm/cadastroAdm.html`)
+    res.render(`cadastroAdm`)
 })
 
 app.get('/HomeAdm', (req,res) => {
-    res.sendFile(`${__dirname}/adm/indexAdm.html`)
+    res.render(`indexAdm`)
 })
 
-app.get('/CadastroProduto', (req,res) => {
-    res.sendFile(`${__dirname}/adm/cadastroProdutos.html`)
+app.get('/CadastroProdutos', (req,res) => {
+    res.render(`cadastroProdutos`)
 })
 
 app.get('/RelatorioChamadas', (req,res) => {
-    res.sendFile(`${__dirname}/adm/relatorio-chamadas.html`)
+    res.render(`relatorio-chamadas`)
 })
 
 app.get('/RelatorioComercial', (req,res) => {
-    res.sendFile(`${__dirname}/adm/relatorio-comercial.html`)
+    res.render(`relatorio-comercial`)
 })
 
 app.listen(port, () => {
