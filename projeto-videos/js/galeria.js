@@ -14,41 +14,39 @@ else{
 }
 
 
-//window.onload=function(){
+// Saudação ao usuário, link para login e sair
 
-    // Saudação ao usuário, link para login e sair
+let user= localStorage.emailUser
+let bemVindo=document.querySelector("#bemVindo")
+let entrar=document.querySelector("#entrar")
+let sair=document.querySelector("#sair")
+let cadastrar=document.querySelector("#cadastrar")
+let perfil=document.querySelector("#perfil")
 
-    let user= localStorage.emailUser
-    let bemVindo=document.querySelector("#bemVindo")
-    let entrar=document.querySelector("#entrar")
-    let sair=document.querySelector("#sair")
-    let cadastrar=document.querySelector("#cadastrar")
-    let perfil=document.querySelector("#perfil")
+function msgUser(){ // Função para ocultar link entrar quando logado.
+    let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
+    bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
+    entrar.style.display="none"
+    cadastrar.style.display="none"
+}
 
-    function msgUser(){ // Função para ocultar link entrar quando logado.
-        let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
-        bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
-        entrar.style.display="none"
-        cadastrar.style.display="none"
-    }
+function resetUser(){ // Função para ocultar link sair quando não estivar logado.
+    sair.style.display="none"
+    perfil.style.display="none"
+}
 
-    function resetUser(){ // Função para ocultar link sair quando não estivar logado.
-        sair.style.display="none"
-        perfil.style.display="none"
-    }
+sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial
+    localStorage.removeItem('emailUser')
+    location.href='index.html'
+}
 
-    sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial
-        localStorage.removeItem('emailUser')
-        location.href='index.html'
-    }
+localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair.
 
-    localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair.
+// -------------------------------------------------------------------------------- //
 
-    // -------------------------------------------------------------------------------- //
+// Montagem dos elementos da tela com Javascript
 
-    // Montagem dos elementos da tela com Javascript
-
-    //Declaração do array videos com 3 posições: 0=título; 1=imagem; 2=resenha; 3=categoria; 4=ano
+//Declaração do array videos com 3 posições: 0=título; 1=imagem; 2=resenha; 3=categoria; 4=ano
 let videos=[ // DONT TOUCH !!!!!!!!!!!!!!!!!!
     {titulo:"Mick",img:"mick.jpg",descricao:"Mick Jagger não exagera ao afirmar que se escrevesse sobre sua vida “em todos os detalhes, as pessoas ficariam aterrorizadas”. Nesta biografia do líder dos Rolling Stones, o jornalista americano Christopher Andersen não poupa fãs e leitores dos detalhes polêmicos e nada glamourosos da trajetória artística e pessoal de um dos astros mais originais do rock contemporâneo.",categoria:"Biografias",ano:2012,preco:89.68},
     {titulo:"Quem somos nós",img:"quem-somos-nos.jpg",descricao:"De que são feitos o pensamento e a realidade? E como um pensamento muda a natureza da realidade? Este livro conduz por meio da ciência para dentro de um universo que é mais vivo do que se pode imaginar - a fronteira final do conhecimento científico sobre a consciência a percepção a química do corpo e a estrutura cerebral. Uma obra sobre física quântica espiritualidade e o significado da vida.",categoria:"Física Quântica",ano:2010,preco:9.50},
@@ -86,8 +84,6 @@ function carregaGaleria(){
     }
 }
     
-
-//}
 
 function criarLink(){
     var element = document.createElement("a")          // Link que redireciona para singleProdutos
