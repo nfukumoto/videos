@@ -2,43 +2,67 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
         <title>Galeria de Vídeos</title>
     </head>
     <body>
-        <header class="row mx-auto my-auto p-1">
-            <div class="col-sm-2 my-auto">
-                <img src="../imagens/logovideo.png" class="w-50 mt-4 mb-0">
+        <div style="height: 70px;"></div>
+        <header class="container-fluid row mx-auto p-1" style="margin: top 80px;">
+            <div class="col-sm-2">
+                <img src="../imagens/logovideo.png" class="w-50">
             </div>  
-            <div class="col-sm-8 text-center my-auto">
-                <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:#5A18C9">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
+            <div class="col-sm-8 text-center">
+                <h1 class="font-weight-bold" style="font-size:30px; color:#5A18C9">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
             </div>
             <div class="col-sm-2">
                 <span id="bemVindo" class="ml-2"></span>
                 <a id="entrar" style="cursor:pointer; text-decoration:underline" href="/Login">Entrar</a>
                 <a id="sair" style="cursor:pointer; text-decoration:underline" href="/Home" class="ml-2">Sair</a> <!--Redirecionado pelo JS-->                
-                <a id="cadastrar" href="/Cadastro" style="cursor:pointer; text-decoration:underline" class="ml-3">Cadastre-se</button></a>
+                <a id="cadastrar" href="/Cadastro" style="cursor:pointer; text-decoration:underline" class="ml-2">Cadastre-se</button></a>
             </div>  
-        </header>        
-            <nav class="navbar navbar-light mb-2">
-                <hr style="height:1px; width:100%; border-width:0; background-color:#5A18C9">
+        </header> 
+        <div class="container">
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top mb-3">
                 <form class="form-inline mx-auto">
-                    <a class="navbar-brand"><button class="btn btn-outline-dark btn-sm disabled" disabled>Home</button></a>
-                    <a class="navbar-brand" href="/Produtos"><button class="btn btn-outline-dark btn-sm" type="button">Produtos</button></a>
-                    <a class="navbar-brand" href="/Promocoes"><button class="btn btn-outline-dark btn-sm" type="button">Promoções</button></a>
-                    <a class="navbar-brand" href="/Contato"><button class="btn btn-outline-dark btn-sm" type="button">Contato</button></a>
-                    <a class="navbar-brand" href="/Carrinho"><button class="btn btn-outline-dark btn-sm" type="button">Carrinho</button></a>
-                    <a id="perfil" class="navbar-brand" href="/Perfil"><button class="btn btn-outline-dark btn-sm" type="button">Perfil</button></a>
+                    <a class="navbar-brand"><button class="btn btn-outline-light btn-sm disabled" disabled>Home</button></a>
+                    <a class="navbar-brand" href="/Produtos"><button class="btn btn-outline-light btn-sm" type="button">Produtos</button></a>
+                    <a class="navbar-brand" href="/Promocoes"><button class="btn btn-outline-warning btn-sm" type="button">Promoções</button></a>
+                    <a class="navbar-brand" href="/Contato"><button class="btn btn-outline-info btn-sm" type="button">Contato</button></a>
+                    <a class="navbar-brand" href="/Carrinho"><button class="btn btn-outline-danger btn-sm" type="button">Carrinho</button></a>
+                    <a id="perfil" class="navbar-brand" href="/Perfil"><button class="btn btn-outline-primary btn-sm" type="button">Perfil</button></a>
                 </form>
             </nav>        
-        <section class="container">
+        </div>       
+        <section class="container-fluid"  style="margin: top 80px;">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="text-center" style="background-color:#E0D1FA ;"><b>Sejam bem vindos, Maratonistas</b></h1>
+                    <h1 class="text-center" style="background-color:#E0D1FA;"><b>Sejam bem vindos, Maratonistas</b></h1>
                     <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
                 </div>
             </div>
             <article>
+
+                <div class="row">
+                    <!--Inicio da iteração-->
+                    <% galeria.forEach((item, n) => { 
+                        if (n<=11) {
+                    %>
+                        <div class="col-md-16 col-sm-16 col-lg-3 mb-4">
+                            <div class="card">
+                                <a href="/Produto?id=<%=item.filmes_id%>">
+                                    <img class="card-img-top" src="imagens/<%=item.imagem_fi%>" alt="Card image cap">
+                                </a>
+                            </div>
+                        </div>
+                    <% }
+                    }) %>
+                    <!--Fim do bloco de iteração-->
+                </div>
+
                 <div id="galeria" class="row"></div>
             </article>
         </section>
