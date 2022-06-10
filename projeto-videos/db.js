@@ -46,13 +46,21 @@ async function updatePromo(promo, id){ // Altera a coluna promo para 0 ou 1 atra
     const conectado = await conecta()
     const values = [promo, id]
     return await conectado.query("update filmes set promo_fi=? where filmes_id=?",values)
+    return rows
 }
 
 //updatePromo(1,3)
 
+async function setProduct(data){
+    const conectado = await conecta()
+    //const [result] = await conectado.query("UPDATE filmes SET imagem_fi = ? WHERE (filmes_id = 25)",data[7]);
+    const [result] = await conectado.query("INSERT INTO filmes (titulo_fi,diretor_fi,link_trailer_fi,ano_fi,genero_fi, sinopse_fi,valor_fi, imagem_fi) VALUES (?,?,?,?,?,?,?,?)", [data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]])
+}
+
 //selectFilmes()
 //selectFilme()
 //selectSingle(10)
+
 
 module.exports = {
     selectFilmes,
@@ -61,3 +69,4 @@ module.exports = {
     selectPromo,
     updatePromo
 }
+

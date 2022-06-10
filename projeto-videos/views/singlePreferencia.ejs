@@ -38,53 +38,22 @@
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur ex optio quidem a nesciunt veritatis nemo sint. Est, aperiam? Neque, minus dolor nostrum facilis sunt in amet reprehenderit assumenda numquam suscipit deserunt, odio debitis dolore doloremque maxime voluptate inventore libero modi cum perspiciatis asperiores. Incidunt voluptate harum odio fugiat nemo!</p>
                 </div>
             </div>
-            <div class="row">
 
-                <div class="livro col-md-12 col-sm-12 col-lg-12">
-                    <div class="card">
-                        <img class="card-img-top w-25" src="imagens/<%=galeria[0].imagem_fi%>" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><%=galeria[0].titulo_fi%></h4>
-                            <p class="card-text"><%=galeria[0].sinopse_fi%></p>
-                            <h2>R$ <%=galeria[0].valor_fi%></h2>
-                            <a href="carrinhoCompra/?id=<%=galeria[0].filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
-                        </div>
+            <div class="card p-3">
+                <div class="card-body row">
+                    <div class="col-sm-4">
+                        <img class="w-80" src="data:image/png;base64,<%=galeria[0].imagem_fi%>" alt="Card image cap">
                     </div>
-                </div>
-
-            </div>
-
-
-            <div class="row mt-2 pb-2 text-center" style="border-width: 1px; border-style: solid; border-radius: 12px;">
-                <div class="col-sm-3 mt-3 mb-1 mx-auto">
-                    <h2>TITULO</h2>
-                    <h2 id="tituloFilme" class="mb-1">Filme Escolhido</h2>
-                    <img id="img" class="mx-auto" style="width:fit-content;" src="" />
-                </div>
-                <div class="col-sm-6 mt-3 mx-auto">
-                    <section>
-                        <h2>TRAILER</h2>
-                        <div class="mt-5 embed-responsive embed-responsive-16by9">
-                            <iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/VUi2OHA0_sw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-sm-3 mt-3 mx-auto">
-                    <h2 class="mb-5">SINOPSE</h2>
-                    <p id="sinopseFilme" class="text-dark text-left"></p>
-                    <div class="align-items-end row">
-                        <div class="col-sm-4 mt-1">
-                            <input id="quantidade" class="form-control my-auto mx-auto" type="number" min='1' max='5'>
-                        </div>
-                        <div class="col-sm-8">
-                            <button onclick="btnClick()" id="btnAdd" class=" w-100 btn btn-danger" type="button">Adicionar ao Carrinho</button>
-                        </div>
+                    <div class="col-sm-8">
+                        <h4 class="card-title"><%=galeria[0].titulo_fi%></h4>
+                        <p class="card-text"><%=galeria[0].sinopse_fi%></p>
+                        <h2>R$ <%=galeria[0].valor_fi%></h2>
+                        <a href="carrinhoCompra/?id=<%=galeria[0].filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
                     </div>
                 </div>
             </div>
-            <div>
-                <div id="relacionados" class="row mt-5">
-                </div>
+            <div class="mt-5 embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" class="embed-responsive-item" src="<%=galeria[0].link_trailer_fi%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
             </div>
         </section>
         <footer class="bg-dark p-4 text-warning text-center mt-4">
