@@ -149,8 +149,11 @@
         res.render(`indexAdm`)
     })
 
-    app.get('/RelatorioChamadas', (req,res) => {
-        res.render(`relatorio-chamadas`)
+    app.get('/RelatorioChamadas', async (req,res) => {
+        let result = await db.getChamados()
+        console.log(result);
+        res.render('relatorio-chamadas',{chamadas:result})
+        //res.render(`relatorio-chamadas`)
     })
 
     app.get('/RelatorioComercial', (req,res) => {
@@ -179,6 +182,13 @@
             })()
         })
 
+    })
+
+    app.post('/enviarChamado', async function(req, res){
+        const result = req.body;
+        let data = [result.nomeContato, result.assuntoContato, result.comentario, false, result.emailContato]
+        await db.setChamado(data)
+        res.redirect('/Contato')
     })
 
 })()
