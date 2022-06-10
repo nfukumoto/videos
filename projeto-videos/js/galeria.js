@@ -47,42 +47,42 @@ localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica 
 // Montagem dos elementos da tela com Javascript
 
 //Declaração do array videos com 3 posições: 0=título; 1=imagem; 2=resenha; 3=categoria; 4=ano
-let videos=[ // DONT TOUCH !!!!!!!!!!!!!!!!!!
-    {titulo:"Mick",img:"mick.jpg",descricao:"Mick Jagger não exagera ao afirmar que se escrevesse sobre sua vida “em todos os detalhes, as pessoas ficariam aterrorizadas”. Nesta biografia do líder dos Rolling Stones, o jornalista americano Christopher Andersen não poupa fãs e leitores dos detalhes polêmicos e nada glamourosos da trajetória artística e pessoal de um dos astros mais originais do rock contemporâneo.",categoria:"Biografias",ano:2012,preco:89.68},
-    {titulo:"Quem somos nós",img:"quem-somos-nos.jpg",descricao:"De que são feitos o pensamento e a realidade? E como um pensamento muda a natureza da realidade? Este livro conduz por meio da ciência para dentro de um universo que é mais vivo do que se pode imaginar - a fronteira final do conhecimento científico sobre a consciência a percepção a química do corpo e a estrutura cerebral. Uma obra sobre física quântica espiritualidade e o significado da vida.",categoria:"Física Quântica",ano:2010,preco:9.50},
-    {titulo:"A cura quântica",img:"cura-quantica.jpg",descricao:"Há uma abordagem da medicina na qual a mente, a consciência e a inteligência ocupam papéis principais. Segundo essa vertente, as doenças ocorrem quando nosso corpo vital está ferido.",categoria:"Física Quântica",ano:2019,preco:12.50},
-    {titulo:"O Pequeno Príncipe",img:"pequeno-principe.jpg",descricao:"Nesta clássica história que marcou gerações de leitores em todo o mundo, um piloto cai com seu avião no deserto do Saara e encontra um pequeno príncipe, que o leva a uma jornada filosófica e poética através de planetas que encerram a solidão humana. A edição conta com a clássica tradução do poeta imortal dom Marcos Barbosa, e é a versão mais consagrada da obra, publicada no Brasil desde 1952.",categoria:"Infantil",ano:1960,preco:10.50},
-    {titulo:"Mick",img:"mick.jpg",descricao:"Mick Jagger não exagera ao afirmar que se escrevesse sobre sua vida “em todos os detalhes, as pessoas ficariam aterrorizadas”. Nesta biografia do líder dos Rolling Stones, o jornalista americano Christopher Andersen não poupa fãs e leitores dos detalhes polêmicos e nada glamourosos da trajetória artística e pessoal de um dos astros mais originais do rock contemporâneo.",categoria:"Biografias",ano:2012,preco:89.68},
-    {titulo:"Quem somos nós",img:"quem-somos-nos.jpg",descricao:"De que são feitos o pensamento e a realidade? E como um pensamento muda a natureza da realidade? Este livro conduz por meio da ciência para dentro de um universo que é mais vivo do que se pode imaginar - a fronteira final do conhecimento científico sobre a consciência a percepção a química do corpo e a estrutura cerebral. Uma obra sobre física quântica espiritualidade e o significado da vida.",categoria:"Física Quântica",ano:2010, preco:9.50}
-]
+// let videos=[ // DONT TOUCH !!!!!!!!!!!!!!!!!!
+//     {titulo:"Mick",img:"mick.jpg",descricao:"Mick Jagger não exagera ao afirmar que se escrevesse sobre sua vida “em todos os detalhes, as pessoas ficariam aterrorizadas”. Nesta biografia do líder dos Rolling Stones, o jornalista americano Christopher Andersen não poupa fãs e leitores dos detalhes polêmicos e nada glamourosos da trajetória artística e pessoal de um dos astros mais originais do rock contemporâneo.",categoria:"Biografias",ano:2012,preco:89.68},
+//     {titulo:"Quem somos nós",img:"quem-somos-nos.jpg",descricao:"De que são feitos o pensamento e a realidade? E como um pensamento muda a natureza da realidade? Este livro conduz por meio da ciência para dentro de um universo que é mais vivo do que se pode imaginar - a fronteira final do conhecimento científico sobre a consciência a percepção a química do corpo e a estrutura cerebral. Uma obra sobre física quântica espiritualidade e o significado da vida.",categoria:"Física Quântica",ano:2010,preco:9.50},
+//     {titulo:"A cura quântica",img:"cura-quantica.jpg",descricao:"Há uma abordagem da medicina na qual a mente, a consciência e a inteligência ocupam papéis principais. Segundo essa vertente, as doenças ocorrem quando nosso corpo vital está ferido.",categoria:"Física Quântica",ano:2019,preco:12.50},
+//     {titulo:"O Pequeno Príncipe",img:"pequeno-principe.jpg",descricao:"Nesta clássica história que marcou gerações de leitores em todo o mundo, um piloto cai com seu avião no deserto do Saara e encontra um pequeno príncipe, que o leva a uma jornada filosófica e poética através de planetas que encerram a solidão humana. A edição conta com a clássica tradução do poeta imortal dom Marcos Barbosa, e é a versão mais consagrada da obra, publicada no Brasil desde 1952.",categoria:"Infantil",ano:1960,preco:10.50},
+//     {titulo:"Mick",img:"mick.jpg",descricao:"Mick Jagger não exagera ao afirmar que se escrevesse sobre sua vida “em todos os detalhes, as pessoas ficariam aterrorizadas”. Nesta biografia do líder dos Rolling Stones, o jornalista americano Christopher Andersen não poupa fãs e leitores dos detalhes polêmicos e nada glamourosos da trajetória artística e pessoal de um dos astros mais originais do rock contemporâneo.",categoria:"Biografias",ano:2012,preco:89.68},
+//     {titulo:"Quem somos nós",img:"quem-somos-nos.jpg",descricao:"De que são feitos o pensamento e a realidade? E como um pensamento muda a natureza da realidade? Este livro conduz por meio da ciência para dentro de um universo que é mais vivo do que se pode imaginar - a fronteira final do conhecimento científico sobre a consciência a percepção a química do corpo e a estrutura cerebral. Uma obra sobre física quântica espiritualidade e o significado da vida.",categoria:"Física Quântica",ano:2010, preco:9.50}
+// ]
 
-// Galeria faz acesso ao elemento html div com id=galeria
-let galeria=document.querySelector("#galeria")
-// Lógica de iteração para o consumo do array
-carregaGaleria()
+// // Galeria faz acesso ao elemento html div com id=galeria
+// let galeria=document.querySelector("#galeria")
+// // Lógica de iteração para o consumo do array
+// carregaGaleria()
 
-function carregaGaleria(){
-    for(var i=0; i<videos.length; i++){
-        // Início da div principal
+// function carregaGaleria(){
+//     for(var i=0; i<videos.length; i++){
+//         // Início da div principal
         
-        // Cria um elemento div
-        var div=document.createElement('div');
-        div.setAttribute("id", i)
-        // Adiciona a classe com espaço 4
-        div.classList.add('col-sm-4')
+//         // Cria um elemento div
+//         var div=document.createElement('div');
+//         div.setAttribute("id", i)
+//         // Adiciona a classe com espaço 4
+//         div.classList.add('col-sm-4')
 
-        var img = document.createElement("img")
-        img.setAttribute("class","w-75")
-        img.setAttribute("src", "imagens/" + videos[i].img)
+//         var img = document.createElement("img")
+//         img.setAttribute("class","w-75")
+//         img.setAttribute("src", "imagens/" + videos[i].img)
 
-        var link = criarLink()
+//         var link = criarLink()
 
-        link.appendChild(img)
-        div.appendChild(link)
-        // Galeria recebe div
-        galeria.appendChild(div)
-    }
-}
+//         link.appendChild(img)
+//         div.appendChild(link)
+//         // Galeria recebe div
+//         galeria.appendChild(div)
+//     }
+// }
     
 
 function criarLink(){
