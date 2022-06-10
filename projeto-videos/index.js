@@ -35,9 +35,13 @@
     //console.log(consulta[0].video)
 
     app.get('/Home',(req,res)=>{
+        let result = consultaFilme;
+        for (let i = 0; i < result.length; i++) {
+            result[i].imagem_fi = result[i].imagem_fi.toString('base64');
+            
+        }
         res.render(`index`,{
-            video:consulta,
-            galeria:consultaFilme
+            galeria:result
         })
     })
 
@@ -57,9 +61,13 @@
     })
 
     app.get('/Promocoes', (req,res) => {
+        let result = consultaFilme
+        for (let i = 0; i < result.length; i++) {
+            result[i].imagem_fi = result[i].imagem_fi.toString('base64');
+            
+        }
         res.render(`promocoes`,{
-            video:consulta,
-            galeria:consultaFilme
+            galeria:result
         })
     })
 
