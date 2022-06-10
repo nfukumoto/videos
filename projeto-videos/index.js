@@ -104,8 +104,11 @@
         })
     })
 
-    app.get('/Carrinho', (req,res) => {
-        res.render(`carrinhoCompra`)
+    app.get('/Carrinho', async(req,res) => {
+        const car= await db.selectCarrinhoU()
+        res.render(`carrinhoCompra`,{
+            item:car
+        })
     })
 
     app.get('/Login', (req,res) => {
