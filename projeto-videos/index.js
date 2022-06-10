@@ -1,11 +1,28 @@
 (async () => {
-    const { application } = require('express')
     const express = require('express')
+    const fs = require('fs')
     const app = express()
     const db = require("./db.js")
+    const path = require('path')
     const url = require("url")
     const port = 3000
+    const bodyParser = require('body-parser')
+    const multer = require('multer')
 
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb){
+            cb(null, 'uploads/')
+        },
+            
+        filename: function(req, file, cb){
+            cb(null, `${file.originalname}${Date.now()}${path.extname(file.originalname)}`)
+        } 
+    })
+
+    const uploads = multer({storage})
+
+    app.use(bodyParser.urlencoded({extended: false}))
+    app.use(bodyParser.json())
     app.set("view engine", "ejs")
     app.use(express.static('projeto-videos'))
     app.use("/imagens",express.static("imagens"))
@@ -25,9 +42,13 @@
     })
 
     app.get('/Produtos', (req,res) => {
+        let result = consultaFilme
+        for(var i = 0; i < result.length; i++){
+            result[i].imagem_fi = result[i].imagem_fi.toString('base64')
+        }
+
         res.render(`produtos`,{
-            video:consulta,
-            galeria:consultaFilme
+            galeria:result
         })
     })
 
@@ -58,14 +79,13 @@
         let infoUrl = req.url
         let urlProp = url.parse(infoUrl,true)
         let q = urlProp.query
-        const consultaSingle = await db.selectSingle(q.id)
-        const consultaInit = await db.selectSingle(4)
+        let consultaSingle = await db.selectSingle(q.id)
+        //const consultaInit = await db.selectSingle(25)
+        consultaSingle[0].imagem_fi = consultaSingle[0].imagem_fi.toString('base64')
         res.render(`singlePreferencia`,{
             titulo:"Conheça nossos livros",
             promo:"- Compre com 10% de desconto!",
-            video:consulta,
-            galeria:consultaSingle,
-            inicio:consultaInit
+            galeria:consultaSingle
         })
     })
 
@@ -85,10 +105,6 @@
         res.render(`indexAdm`)
     })
 
-    app.get('/CadastroProdutos', (req,res) => {
-        res.render(`cadastroProdutos`)
-    })
-
     app.get('/RelatorioChamadas', (req,res) => {
         res.render(`relatorio-chamadas`)
     })
@@ -99,6 +115,26 @@
 
     app.listen(port, () => {
         console.log("Servidor Online")
+    })
+
+    app.get('/CadastroProdutos',uploads.single('file'),function(req,res){
+        let file = fs.readdirSync('uploads/')[0]
+        res.render(`cadastroProdutos`)
+    })
+
+    app.post('/CadastroProduto',uploads.single('file'),function(req,res){
+        let file = fs.readdirSync('uploads/')
+        let buf = fs.readFileSync(`uploads/${file[0]}`)
+        fs.unlink(`uploads/${file[0]}`, function(err){
+            if(err) throw err;
+            let data = [req.body.titulo_fi, req.body.diretor_fi, req.body.link_trailer_fi, req.body.ano_fi, req.body.genero_fi, req.body.sinopse_fi, req.body.valor_fi, buf]
+            console.log(data);
+            (async()=>{
+                await db.setProduct(data)
+                res.send(data)
+            })()
+        })
+
     })
 
 })()

@@ -22,20 +22,23 @@
                 <h1 class="text-center" style="background-color:#E0D1FA ;"><b>Cadastro de Produtos</b></h1>
                 <center>
                 <div class="form-group mt-4">
-                    <form id="formCadastroprodutos" class="w-50 mx-auto" action="/CadastroProduto" class="w-50 mx-auto p-3 mt-4 mb-5" 
+                    <form id="formCadastroprodutos" enctype="multipart/form-data" method="post" class="w-50 mx-auto" action="/CadastroProduto" class="w-50 mx-auto p-3 mt-4 mb-5" 
                     style="border:1px solid #ccc;border-radius: 12px;">
                         <fieldset class="fieldsetPersonalizado mt-3">
                             <legend class="text-center text-primary"><b>Preencha os dados do produto</b></legend>
                             <div class="p-3">
-                                <input id="nomeFilme" class="form-control w-100 mt-3" name="nome-filme" placeholder="Filme" maxlength="50" />
-                                <input id="categoriaFilme" class="form-control w-100 mt-3" name="categoriaFilme" placeholder="Categoria" type="text" />
-                                <input id="anoFilme" class="form-control w-100 mt-3" name="anoFilme" placeholder="Ano" type="Inteiro"/>
-                                <input id="imagemFilme" class="form-control w-100 mt-3" name="imagemFilme" placeholder="Imagem" type="img" />
+                                <input id="nomeFilme" class="form-control w-100 mt-3" name="titulo_fi" placeholder="Filme" maxlength="50" />
+                                <input id="categoriaFilme" class="form-control w-100 mt-3" name="genero_fi" placeholder="Categoria" type="text" />
+                                <input id="anoFilme" class="form-control w-100 mt-3" name="ano_fi" placeholder="Ano" type="text"/>
+                                <input class="form-control w-100 mt-3" name="diretor_fi" placeholder="Diretor" type="text"/>
+                                <input class="form-control w-100 mt-3" name="valor_fi" placeholder="R$ 00.00" type="text"/>
+                                <input class="form-control w-100 mt-3" name="link_trailer_fi" placeholder="Link Trailer" type="url"/>
+                                <input id="imagemFilme" class="form-control w-100 mt-3" name="file" placeholder="Imagem" type="file"  accept=".jpg"/>
                                 <div>
-                                    <textarea name="sinopseFilme" class="form-control w-100 mt-3" id="descriçãoFilme" rows="8"placeholder="Sinopse"></textarea>
+                                    <textarea name="sinopse_fi" class="form-control w-100 mt-3" id="sinopse_fi" rows="8"placeholder="Sinopse"></textarea>
                                 </div>
                                 <div>
-                                    <button id="btCadastroprodutos" class="mt-2 btn btn-info" type="button">Salvar</button>
+                                    <button id="btCadastroprodutos" class="mt-2 btn btn-info" type="submit">Salvar</button>
                                 </div>
                             </div>    
                             <div class="text-center mt-2 mb-2">
