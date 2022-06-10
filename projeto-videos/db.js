@@ -57,6 +57,17 @@ async function setProduct(data){
     const [result] = await conectado.query("INSERT INTO filmes (titulo_fi,diretor_fi,link_trailer_fi,ano_fi,genero_fi, sinopse_fi,valor_fi, imagem_fi) VALUES (?,?,?,?,?,?,?,?)", [data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]])
 }
 
+async function setChamado(data){
+    const conectado = await conecta()
+    const [result] = await conectado.query('INSERT INTO chamados (nome_ch,assunto_ch,comentario_ch,atendido_ch,email_ch) VALUES (?,?,?,?,?)',[data[0], data[1], data[2], data[3], data[4]])
+}
+
+async function getChamados(){
+    const conectado = await conecta()
+    const [result] = await conectado.query(`SELECT * FROM chamados WHERE atendido_ch=${false}`)
+    return result
+}
+
 //selectFilmes()
 //selectFilme()
 //selectSingle(10)
@@ -67,6 +78,8 @@ module.exports = {
     selectFilme,
     selectSingle,
     selectPromo,
-    updatePromo
+    updatePromo,
+    setProduct,
+    setChamado,
+    getChamados
 }
-

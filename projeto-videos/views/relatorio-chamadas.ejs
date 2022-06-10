@@ -24,12 +24,19 @@
                         <h2 class="card-title">Relatório de Chamadas</h2><hr>
                         <div class="row">
                             <div class="col-sm-3"><h4>Cliente</h4></div>
-                            <div class="col-sm-3">
-                            <h4>Email</h4></div>
-                            <div class="col-sm-3"><h4>Telefone</h4></div>
                             <div class="col-sm-3"><h4>Assunto</h4></div>
+                            <div class="col-sm-3"><h4>Descricao</h4></div>
+                            <div class="col-sm-3"><h4>Email</h4></div>
+
                         </div><hr>
-                        <div id="dadosChamado" class="row"></div><hr>
+                        <div id="dadosChamado" class="row">
+                            <%chamadas.forEach(chamada => {%>
+                                <div class="col-sm-3"><span><%=chamada.nome_ch%></span></div>
+                                <div class="col-sm-3"><span><%=chamada.assunto_ch%></span></div>
+                                <div class="col-sm-3"><span><%=chamada.comentario_ch%></span></div>
+                                <div class="col-sm-3"><span><%=chamada.email_ch%></span></div>
+                            <%})%>
+                        </div><hr>
                         <div class="row">
                             <div class="col-sm-5">
                                 <p>Próximo cliente a ser atendido:</p>
@@ -38,7 +45,7 @@
                             <div class="col-sm-7"><button type="button" id="confAtendimento" class="btn btn-info">Confirmar Atendimento</button></div>
                         </div>
                     </div>
-                    <div class="col-sm-4 card text-left p-3">
+                    <div class="col-sm-3 card text-left p-3">
                         <p>CHAMADAS ATENDIDAS</p>
                         <p>Total: <span id="chAtend"></span></p>
                         <p>CHAMADAS PENDENTES</p>
@@ -56,5 +63,5 @@
             <p>&copy;2022 - Todos os direitos reservados</p>
         </footer>
     </body>
- <script src="../jsAdm/relatorio-chamadas.js"></script>
+ <!-- <script src="../jsAdm/relatorio-chamadas.js"></script> -->
 </html>
