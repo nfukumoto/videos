@@ -31,8 +31,6 @@ let trailers = [
 
 let trailersParaUso = trailers;
 
-window.onload=function(){
-
     let trailer1 = document.querySelector("#trailer1");
     let trailer2 = document.querySelector("#trailer2");
     let trailer3 = document.querySelector("#trailer3");
@@ -157,4 +155,3 @@ let videos=[ // DONT TOUCH !!!!!!!!!!!!!!!!!!
         localStorage.setItem("preferencias",JSON.stringify(preferencias))
         location.href="/Produto"
     }
-}

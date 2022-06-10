@@ -45,6 +45,17 @@
         })
     })
 
+    app.get("/UpdPromo",async(req, res) => { // Chama a página de atualização e traz a mudadas variáveis
+        const consultaPromo = await db.selectPromo()
+        res.render(`adm/atualizaPromocoes`,{
+            titulo:"Conheça nossos livros",
+            promo:"- Compre com 10% de desconto!",
+            video:consulta,
+            galeria:consultaPromo,
+            inicio:consultaFilme
+        })
+    })
+
     app.get('/Produtos', (req,res) => {
         let result = consultaFilme
         for(var i = 0; i < result.length; i++){
@@ -60,7 +71,29 @@
         res.render(`contato`)
     })
 
-    app.get('/Promocoes', (req,res) => {
+
+    app.get("/AtualizaPromo",async(req,res) => { // Chama a página e altera o campo promo_fi de um filme_id
+        let qs = url.parse(req.url,true).query
+        await db.updatePromo(qs.promo,qs.id) // localhost:8080/atualiza-promo?promo=1&id=9  (No banco, o filme_id=(9), tem que estar com o campo promo_fi=(0))
+        const consultaPromo = await db.selectPromo()
+        res.render(`adm/atualizaPromocoes`,{
+            titulo:"Conheça nossos livros",
+            promo:"- Compre com 10% de desconto!",
+            video:consulta,
+            galeria:consultaPromo,
+            inicio:consultaFilme
+        })
+    })
+
+    app.get("/Promocoes",async(req, res) => { // Chama a página promocoes e mostra os itens específicos
+        const consultaPromo = await db.selectPromo()
+        res.render(`promocoes`,{
+            titulo:"Conheça nossos livros",
+            promo:"- Compre com 10% de desconto!",
+            //livro:consulta,
+            galeria:consultaPromo
+
+    app.get('/Promocoes2', (req,res) => {
         let result = consultaFilme
         for (let i = 0; i < result.length; i++) {
             result[i].imagem_fi = result[i].imagem_fi.toString('base64');
