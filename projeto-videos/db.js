@@ -31,12 +31,33 @@ async function selectSingle(id){
     const conectado = await conecta()
     const values = [id]
     const [rows] = await conectado.query("select * from filmes where filmes_id=?",values)
-    console.log(rows)
+    //console.log(rows)
     return rows
 }
+
+async function selectPromo(){ // Consulta registros com a coluna promo = 1
+    const conectado = await conecta()
+    const [rows] = await conectado.query("select * from filmes where promo_fi=1")
+    //console.log(rows)
+    return rows
+}
+
+async function updatePromo(promo, id){ // Altera a coluna promo para 0 ou 1 através da coluna livros_id
+    const conectado = await conecta()
+    const values = [promo, id]
+    return await conectado.query("update filmes set promo_fi=? where filmes_id=?",values)
+}
+
+//updatePromo(1,3)
 
 //selectFilmes()
 //selectFilme()
 //selectSingle(10)
 
-module.exports = {selectFilmes,selectFilme,selectSingle}
+module.exports = {
+    selectFilmes,
+    selectFilme,
+    selectSingle,
+    selectPromo,
+    updatePromo
+}
