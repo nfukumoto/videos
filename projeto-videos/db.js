@@ -62,7 +62,8 @@ async function selectCarrinhoU(){
     const conectado = await conecta()
     const [rows] = await conectado.query("SELECT f.titulo_fi, f.valor_fi, cu.carrinho_id, cu.qtd, cu.filme_id FROM carrinho_user AS cu INNER JOIN filmes AS f ON cu.filme_id = f.filmes_id ORDER BY cu.carrinho_id ASC")
     //console.log(rows)
-    return rows 
+    return rows
+}
 
 async function setChamado(data){
     const conectado = await conecta()
