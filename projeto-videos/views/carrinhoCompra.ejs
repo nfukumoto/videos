@@ -27,7 +27,7 @@
                             <div class="row mb-2" id="car<%=n.carrinho_id %>">
                                     <div class="col-sm-6 mt-2"><p><%=n.titulo_fi%></p></div>
                                     <div class="col-sm-2 mt-2 text-center"><p><%=n.qtd%></p></div>
-                                    <div class="col-sm-2 mt-2 text-right"><p>R$ <%=n.valor_fi%></p></div>
+                                    <div class="col-sm-2 mt-2 text-right"><p>R$ <%=n.valor_fi.toFixed(2).toString().replace(".",",")%></p></div>
                                     <div class="col-sm-2">
                                         <a type="button" class="btn"><img src="imagens/lixeira.png" class="w-25" alt=""></a>
                                     </div>
