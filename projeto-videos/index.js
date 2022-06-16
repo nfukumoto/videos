@@ -1,48 +1,30 @@
 (async () => {
     const express = require('express')
-    const fs = require('fs')
     const app = express()
-    const db = require("./db.js")
-    const path = require('path')
+    const db = require("./database/db.js")
     const url = require("url")
     const port = 3000
     const bodyParser = require('body-parser')
-    const multer = require('multer')
 
-    const storage = multer.diskStorage({
-        destination: function(req, file, cb){
-            cb(null, 'uploads/')
-        },
-            
-        filename: function(req, file, cb){
-            cb(null, `${file.originalname}${Date.now()}${path.extname(file.originalname)}`)
-        } 
-    })
-
-    const uploads = multer({storage})
+    const connection = require('./database/Database')
+    const contatoController = require('./contato/contatoController')
+    const filmesController = require('./filmes/filmesController')
+    const carrinhoController = require('./carrinho/carrinhoController')
 
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
     app.set("view engine", "ejs")
-    app.use(express.static('projeto-videos'))
-    app.use("/imagens",express.static("imagens"))
-    app.use("/js",express.static("js"))
-    app.use("/jsAdm", express.static("jsAdm"))
+    app.use('/public',express.static('public'))
+    app.use('/', contatoController)
+    app.use('/', filmesController)
+    app.use('/', carrinhoController)
 
-    const consulta = await db.selectFilmes()
-    //console.log(consulta[0].video)
-    const consultaFilme = await db.selectFilme()
-    //console.log(consulta[0].video)
+    connection.authenticate()
+        .then(()=>{console.log('Mysql conectado')})
+        .catch((err)=>{console.log(err)})
 
-    app.get('/Home',(req,res)=>{
-        let result = consultaFilme;
-        for (let i = 0; i < result.length; i++) {
-            result[i].imagem_fi = result[i].imagem_fi.toString('base64')
-        }
-        res.render(`index`,{
-            galeria:result
-        })
-    })
+    const consulta = undefined//await db.selectFilmes()
+    const consultaFilme = undefined//await db.selectFilme()
 
     app.get("/UpdPromo",async(req, res) => { // Chama a página de atualização e traz a mudadas variáveis
         let result = await db.selectPromo()
@@ -56,20 +38,6 @@
             galeria:result,
             inicio:consultaFilme
         })
-    })
-
-    app.get('/Produtos', (req,res) => {
-        let result = consultaFilme
-        for(var i = 0; i < result.length; i++){
-            result[i].imagem_fi = result[i].imagem_fi.toString('base64')
-        }
-        res.render(`produtos`,{
-            galeria:result
-        })
-    })
-
-    app.get('/Contato', (req,res) => {
-        res.render(`contato`)
     })
 
     app.get("/AtualizaPromo",async(req,res) => { // Chama a página e altera o campo promo_fi de um filme_id
@@ -88,33 +56,6 @@
         })
     })
 
-/*     app.get("/Promocoes",async(req, res) => { // Chama a página promocoes e mostra os itens específicos
-        const consultaPromo = await db.selectPromo()
-        res.render(`promocoes`,{
-            titulo:"Conheça nossos livros",
-            promo:"- Compre com 10% de desconto!",
-            //livro:consulta,
-            galeria:consultaPromo
-        })
-    }) */
-
-    app.get('/Promocoes', async(req,res) => {
-        let result = await db.selectPromo()
-        for (let i = 0; i < result.length; i++) {
-            result[i].imagem_fi = result[i].imagem_fi.toString('base64')
-        }
-        res.render(`promocoes`,{
-            galeria:result
-        })
-    })
-
-    app.get('/Carrinho', async(req,res) => {
-        const car= await db.selectCarrinhoU()
-        res.render(`carrinhoCompra`,{
-            item:car
-        })
-    })
-
     app.get('/Login', (req,res) => {
         res.render(`login`)
     })
@@ -123,72 +64,24 @@
         res.render(`cadastro`)
     })
 
-    app.get("/Produto",async(req, res) => {
-        let infoUrl = req.url
-        let urlProp = url.parse(infoUrl,true)
-        let q = urlProp.query
-        let consultaSingle = await db.selectSingle(q.id)
-        //const consultaInit = await db.selectSingle(25)
-        consultaSingle[0].imagem_fi = consultaSingle[0].imagem_fi.toString('base64')
-        res.render(`singlePreferencia`,{
-            titulo:"Conheça nossos livros",
-            promo:"- Compre com 10% de desconto!",
-            galeria:consultaSingle
-        })
-    })
-
     app.get('/Perfil', (req,res) => {
-        res.render(`perfilUsuario`)
+        res.render(`usuario/perfilUsuario`)
     })
 
     app.get('/LoginAdm', (req,res) => {
-        res.render(`loginAdm`)
+        res.render(`adm/loginAdm`)
     })
 
     app.get('/CadastroAdm', (req,res) => {
-        res.render(`cadastroAdm`)
+        res.render(`adm/cadastroAdm`)
     })
 
     app.get('/HomeAdm', (req,res) => {
-        res.render(`indexAdm`)
-    })
-
-    app.get('/RelatorioChamadas', async (req,res) => {
-        let result = await db.getChamados()
-        console.log(result);
-        res.render('relatorio-chamadas',{chamadas:result})
-        //res.render(`relatorio-chamadas`)
+        res.render(`adm/indexAdm`)
     })
 
     app.get('/RelatorioComercial', (req,res) => {
-        res.render(`relatorio-comercial`)
-    })
-
-    app.get('/CadastroProdutos',uploads.single('file'),function(req,res){
-        let file = fs.readdirSync('uploads/')[0]
-        res.render(`cadastroProdutos`)
-    })
-
-    app.post('/CadastroProduto',uploads.single('file'),function(req,res){
-        let file = fs.readdirSync('uploads/')
-        let buf = fs.readFileSync(`uploads/${file[0]}`)
-        fs.unlink(`uploads/${file[0]}`, function(err){
-            if(err) throw err;
-            let data = [req.body.titulo_fi, req.body.diretor_fi, req.body.link_trailer_fi, req.body.ano_fi, req.body.genero_fi, req.body.sinopse_fi, req.body.valor_fi, buf]
-            console.log(data);
-            (async()=>{
-                await db.setProduct(data)
-                res.send(data)
-            })()
-        })
-
-    })
-
-    app.post('/enviarChamado', async function(req, res){
-        const result = req.body;
-        let data = [result.nomeContato, result.assuntoContato, result.comentario, false, result.emailContato]
-        await db.setChamado(data)
-        res.redirect('/Contato')
+        res.render(`adm/relatorio-comercial`)
     })
 
     app.listen(port, () => {
