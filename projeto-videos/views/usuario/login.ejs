@@ -9,7 +9,7 @@
     <body>
         <header class="row mx-auto my-auto p-1">
             <div class="col-sm-2 my-auto">
-                <img src="../imagens/logovideo.png" class="w-50 mt-4 mb-0">
+                <img src="/public/imagens/logovideo.png" class="w-50 mt-4 mb-0">
             </div>  
             <div class="col-sm-8 text-center my-auto">
                 <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:#5A18C9">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
@@ -20,10 +20,10 @@
          <section class="container mt-2">
             <h1 class="text-center mt-2" style="background-color:#E0D1FA ;"><b>Login do Usuário</b></h1>
             <article>                
-                <form id="formLogin" method="get" action="/Home" class="w-50 mx-auto p-3 mt-3 mb-5" style="border:1px solid #ccc;border-radius: 12px;">
+                <form id="formLogin" method="post" action="/verificaUser" class="w-50 mx-auto p-3 mt-3 mb-5" style="border:1px solid #ccc;border-radius: 12px;">
                     <fieldset>           
                         <div class="text-center">
-                            <img class="w-25" src="../imagens/login.png">
+                            <img class="w-25" src="/public/imagens/login.png">
                         </div>
                         <legend class="text-center"><b>Preencha os campos para entrar</b></legend>
                         <div class="form-group mt-3">
@@ -35,7 +35,7 @@
                             <input class="form-control" type="password" name="senha" id="senha" maxlength="8">
                         </div>
                         <div class="text-center mt-3">
-                            <button type="button" id="btLogin" class="w-100 btn btn-info">Confirmar</button>
+                            <button type="submit" id="btLogin" class="w-100 btn btn-info">Confirmar</button>
                         </div>
                             <div class="text-center mt-2">
                                 <a href="/Cadastro"><p>Cadastre-se agora</a>                    
