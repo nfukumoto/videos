@@ -20,11 +20,11 @@ router.post('/enviarChamado', function(req, res){
     })
 })
 
-/*app.get('/RelatorioChamadas', async (req,res) => {
-    let result = await db.getChamados()
-    console.log(result);
-    res.render('relatorio-chamadas',{chamadas:result})
-})*/
+// app.get('/RelatorioChamadas', async (req,res) => {
+//     let result = await db.getChamados()
+//     console.log(result);
+//     res.render('relatorio-chamadas',{chamadas:result})
+// })
 
 
 module.exports = router;

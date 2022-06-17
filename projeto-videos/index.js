@@ -10,6 +10,7 @@
     const contatoController = require('./contato/contatoController')
     const filmesController = require('./filmes/filmesController')
     const carrinhoController = require('./carrinho/carrinhoController')
+    const usuarioController = require('./usuario/usuarioController')
 
     app.use(bodyParser.urlencoded({extended: false}))
     app.use(bodyParser.json())
@@ -18,6 +19,7 @@
     app.use('/', contatoController)
     app.use('/', filmesController)
     app.use('/', carrinhoController)
+    app.use('/', usuarioController)
 
     connection.authenticate()
         .then(()=>{console.log('Mysql conectado')})
@@ -54,26 +56,6 @@
             galeria:result,
             inicio:consultaFilme
         })
-    })
-
-    app.get('/Login', (req,res) => {
-        res.render(`login`)
-    })
-
-    app.get('/Cadastro', (req,res) => {
-        res.render(`cadastro`)
-    })
-
-    app.get('/Perfil', (req,res) => {
-        res.render(`usuario/perfilUsuario`)
-    })
-
-    app.get('/LoginAdm', (req,res) => {
-        res.render(`adm/loginAdm`)
-    })
-
-    app.get('/CadastroAdm', (req,res) => {
-        res.render(`adm/cadastroAdm`)
     })
 
     app.get('/HomeAdm', (req,res) => {
