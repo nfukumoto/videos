@@ -1,0 +1,59 @@
+<%- include('../partials/usuario/header.ejs') %>
+<%- include('../partials/usuario/nav.ejs') %>
+
+        <section class="container-fluid" style="margin: top 80px;">
+            <h1 class="alert text-center" style="background-color:#E0D1FA ;"><b>Trailers dos Nossos Produtos em Destaque</b></h1>
+            <div class="row">
+                <div class="col-sm-4 mt-3">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe id="trailer1" class="embed-responsive-item" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe id="trailer2" class="embed-responsive-item"  allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe id="trailer3" class="embed-responsive-item" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-sm-12">
+                    <h1 class="text-center"><b>Aproveite e Confira também estes Sucessos</b></h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
+                </div>
+            </div>
+            <article>
+
+                <div class="row">
+                    <!--Inicio da iteração-->
+                    <% galeria.forEach((item) => { %>
+                    <div class="col-sm-3 mt-3">
+                        <div class="card" style="height: 135vh;">
+                            <a href="/Produto?id=<%=item.filmes_id%>">
+                                <img class="card-img-top" src="data:image/png;base64,<%=item.imagem_fi%>" alt="Card image cap">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title"><%=item.titulo_fi%></h4>
+                                <p class="card-text"><%=item.sinopse_fi.substring(0, 200)%>...</p>
+                            <div class="text-left w-100" style="position: absolute;bottom:2vh;">
+                                <h2>R$ <%=item.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
+                                <a href="carrinho/?id=<%=item.livros_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
+                            </div>
+                                
+                        </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <!--Fim do bloco de iteração-->
+                </div>
+
+<!--                 <div id="galeria" class="row"></div>
+                <div id="galeria2" class="row"></div> -->
+            </article>
+        </section>
+    <script src="/public/js/produtos.js"></script>
+<%- include('../partials/usuario/footer.ejs') %>

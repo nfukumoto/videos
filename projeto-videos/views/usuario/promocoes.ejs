@@ -1,0 +1,39 @@
+<%- include('../partials/usuario/header.ejs') %>
+<%- include('../partials/usuario/nav.ejs') %>
+
+        <section class="container-fluid" style="margin: top 80px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="alert text-center" style="background-color:#E0D1FA ;"><b>Conheça as Nossas Promoções</b></h1>
+                    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
+                </div>
+            </div>
+            <article>
+
+                <div class="row">
+                    <!--Inicio da iteração-->
+                    <% galeria.forEach((item) => { %>
+                    <div class="col-md-16 col-sm-16 col-lg-3">
+                        <div class="card" style="height: 140vh;">
+                            <a href="/Produto?id=<%=item.filmes_id%>">
+                                <img class="card-img-top" src="data:image/png;base64,<%=item.imagem_fi%>" alt="Card image cap">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title"><%=item.titulo_fi%></h4>
+                                <p class="card-text"><%=item.sinopse_fi%></p>
+                                <div style="position: absolute;bottom:2vh;">
+                                    <h2>R$ <%=item.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
+                                    <a href="carrinho/?id=<%=item.livros_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                    <!--Fim do bloco de iteração-->
+                </div>
+
+<!--                 <div id="tabelaPromocoes" class="row"></div> <!--Controlado pelo arquivo promocoes.js -->
+            </article>
+        </section>
+    <script src="/public/js/promocoes.js"></script>
+<%- include('../partials/usuario/footer.ejs') %>

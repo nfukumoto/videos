@@ -1,0 +1,32 @@
+<%- include('../partials/usuario/header.ejs') %>
+<%- include('../partials/usuario/nav.ejs') %>
+
+        <section class="container-fluid" style="margin: top 80px;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1 class="alert text-center" style="background-color:#E0D1FA;"><b>Sejam bem vindos, Maratonistas</b></h1>
+                    <p class="mt-4" style="color: purple;">"Streaming" - Definição: Fluxo contínuo, fluxo de média, fluxo de mídia ou transmissão contínua, é uma forma de distribuição digital, em oposição à descarga de dados. A difusão de dados, geralmente em uma rede através de pacotes, é frequentemente utilizada para distribuir conteúdo multimídia através da Internet. Aqui na Live Streaming, você entra e se diverte muuuuito! Aproveite, você merece! Confira alguns títulos mais assistidos...</p>
+                </div>
+            </div>
+            <article>
+
+                <div class="row">
+                    <!--Inicio da iteração-->
+                    <% galeria.forEach((item, n) => { 
+                        if (n<=11) {
+                    %>
+                        <div class="col-md-16 col-sm-16 col-lg-3 mb-4">
+                            <div class="card">
+                                <a href="/Produto?id=<%=item.filmes_id%>">
+                                    <img class="card-img-top" src="data:image/png;base64,<%=item.imagem_fi%>" alt="Card image cap">
+                                </a>
+                            </div>
+                        </div>
+                    <% }
+                    }) %>
+                    <!--Fim do bloco de iteração-->
+                </div>
+
+            </article>
+        </section>
+<%- include('../partials/usuario/footer.ejs') %>
