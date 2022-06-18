@@ -2,8 +2,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host:"localhost",
-        user:"kayke",
-        password:"K310104+a",
+        user:"nfukumoto",
+        password:"24052003nN@!",
         database: "projeto_video"
     })
     console.log("mySQL conectado!")
@@ -86,6 +86,13 @@ async function getChamados(){
     return result
 }
 
+async function insertUsuario(usuario){
+    const conectado = await conecta()
+    const values = [usuario.nome,usuario.email,usuario.telefone,usuario.senha]
+    const [rows] = await conectado.query("insert into usuarios(nome_us, email_us, telefone_us, senha_us) values(?,?,?,?)",values)
+    //console.log("Insert OK!")
+    return rows
+}
 
 module.exports = {
     selectFilmes,

@@ -25,8 +25,9 @@
         .then(()=>{console.log('Mysql conectado')})
         .catch((err)=>{console.log(err)})
 
-    const consulta = undefined//await db.selectFilmes()
-    const consultaFilme = undefined//await db.selectFilme()
+    const consulta = await db.selectFilmes()
+    const consultaFilme = await db.selectFilme()
+
 
     app.get("/UpdPromo",async(req, res) => { // Chama a página de atualização e traz a mudadas variáveis
         let result = await db.selectPromo()
@@ -60,6 +61,17 @@
 
     app.get('/HomeAdm', (req,res) => {
         res.render(`adm/indexAdm`)
+    })
+
+    app.get('/CadastroProdutos', (req,res) => {
+        res.render(`adm/cadastroProdutos`)
+    })
+    
+    app.get('/RelatorioChamadas', async(req,res) => {
+        let chamados = await db.getChamados()
+        res.render(`adm/relatorio-chamadas`,{
+            chamadas:chamados
+        })
     })
 
     app.get('/RelatorioComercial', (req,res) => {
