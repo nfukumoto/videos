@@ -1,5 +1,5 @@
-<%- include('header.ejs') %>
-<%- include('nav.ejs') %>
+<%-include('../partials/adm/header.ejs')%>
+<%-include('../partials/adm/nav.ejs')%>
 
         <section class="container-fluid" style="margin: top 80px;">
 
@@ -36,7 +36,7 @@
                             <p class="card-text"><%=item.sinopse_fi%></p>
                             <div style="position: absolute;bottom:2vh;">
                                 <h2>R$ <%=item.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
-                                <a href="carrinho/?id=<%=item.livros_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
+                                <a href="carrinho/?id=<%=item.filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
                             </div>
                         </div>
                     </div>
@@ -47,4 +47,4 @@
 
         </section>
     <script src="../js/singlePreferencia.js"></script>
-<%- include('footer.ejs') %>
+<%-include('../partials/adm/footer.ejs')%>

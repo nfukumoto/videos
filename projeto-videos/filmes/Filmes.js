@@ -39,6 +39,10 @@ const Filmes = connection.define('filmes', {
     imagem_fi:{
         type: Sequelize.BLOB('long'),
         allowNull: false
+    },
+    promo_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 })
 

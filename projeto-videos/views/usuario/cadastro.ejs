@@ -1,23 +1,25 @@
 <%- include('../partials/usuario/header.ejs') %>
+<%- include('../partials/usuario/nav.ejs') %>
+
     <section>
         <center>
         <h1 class="text-center mt-2" style="background-color:#E0D1FA ;"><b>Cadastro de Novo Cliente</b></h1>
         <div class="form-group">
-            <form id="formRegistro" class="w-50 mx-auto p-3 mt-3 mb-5" style="border:1px solid #ccc;border-radius: 12px;" action="/Home">
-                <fieldset class="fieldsetPersonalizado">
+            <form action="" method="POST" class="w-50 mx-auto p-3 mt-3 mb-5" style="border:1px solid #ccc;border-radius: 12px;">
+                <fieldset>
                     <div>
                         <img class="w-25" src="../imagens/login.png">
                     </div>
                     <legend class="text-center"><b>Preencha os campos abaixo</b></legend>
                     <div>
-                        <input id="nomeUser" class="form-control w-100 mt-3" name="nome-usuario" placeholder="Nome" maxlength="50" />
-                        <input id="emailUser" class="form-control w-100 mt-3" name="email-usuario" placeholder="Email" type="email" />
-                        <input id="telUser" class="form-control w-100 mt-3" name="numero-usuario" placeholder="Celular" type="tel"/>
-                        <input id="senhaUser" class="form-control w-100 mt-3" name="senha-usuario" placeholder="Senha" type="password" />
-                        <input id="senhaC" class="form-control w-100 mt-3" name="confirmacao-senha-usuario" placeholder="Confirme a senha" type="password" />
+                        <input id="nomeUser" class="form-control w-100 mt-3" name="nome_usuario" placeholder="Nome" maxlength="50" />
+                        <input id="emailUser" class="form-control w-100 mt-3" name="email_usuario" placeholder="Email" type="email" />
+                        <input id="telUser" class="form-control w-100 mt-3" name="numero_usuario" placeholder="Celular" type="tel"/>
+                        <input id="senhaUser" class="form-control w-100 mt-3" name="senha_usuario" placeholder="Senha" type="password" />
+                        <input id="senhaC" class="form-control w-100 mt-3" name="confirmacao_senha_usuario" placeholder="Confirme a senha" type="password" />
                     </div>
                     <div>
-                        <button id="btRegistro" class="mt-3 btn btn-info" type="button">Cadastrar</button>
+                        <button id="btRegistro" class="mt-3 btn btn-info" type="submit">Cadastrar</button>
                     </div>        
                 </fieldset>
             </form>
@@ -25,4 +27,16 @@
         </center>
     </section>
     <script src="../js/cadastro.js"></script>
+    <script>
+        const senha = document.getElementById('senhaUser')
+        const senhaC = document.getElementById('senhaC')
+
+        function verificaSenha(event){
+            if(senha.value == senhaC.value);
+            else{
+                event.preventDefault();
+                alert('Senhas Diferentes!')
+            }
+        }
+    </script>
 <%- include('../partials/usuario/footer.ejs') %>

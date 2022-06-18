@@ -59,8 +59,9 @@ router.get("/Produto",async(req, res) => {
 
 router.get('/Promocoes', async(req,res) => {
     Filmes.findAll({
-        attributes:[`filmes_id`, `titulo_fi`, `genero_fi`, `ano_fi`, `diretor_fi`, `sinopse_fi`, `link_trailer_fi`, `valor_fi`, `imagem_fi`],
-        raw:true
+        attributes:[`filmes_id`, `titulo_fi`, `genero_fi`, `ano_fi`, `diretor_fi`, `sinopse_fi`, `link_trailer_fi`, `valor_fi`, `imagem_fi`,`promo_fi`],
+        raw:true,
+        where:{promo_fi:1}
     })
     .then((data)=>{
         result = data
@@ -68,7 +69,7 @@ router.get('/Promocoes', async(req,res) => {
             result[i].imagem_fi = result[i].imagem_fi.toString('base64')
         }
         res.render(`usuario/promocoes`,{galeria:result})
-    })
+    }).catch((err)=>{console.log(err)})
 })
 
 router.get('/CadastroProdutos',function(req,res){

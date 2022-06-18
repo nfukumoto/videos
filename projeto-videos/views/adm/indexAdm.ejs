@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <title>Central do Administrador</title>
-    </head>
-    <body>
-        <header class="row mx-auto my-auto p-1">
-            <div class="col-sm-2 my-auto">
-                <img src="/public/imagens/logovideo.png" class="w-50 mt-4 mb-0">
-            </div>  
-            <div class="col-sm-8 text-center my-auto">
-                <h1 class="font-weight-bold mt-4 mb-0" style="font-size:30px; color:firebrick">ÁREA DO ADMINISTRADOR, SEJA BEM-VINDO!</h1>
-            </div>
-            <div class="col-sm-2">
-                <span id="bemVindo" class="ml-2"></span>
-                <a id="sair" style="cursor:pointer; text-decoration:underline" href="/LoginAdm"class="ml-2">Sair</a> <!--Redirecionado pelo JS-->
-            </div>  
-        </header>
+<%-include('../partials/adm/header.ejs')%>
+<%-include('../partials/adm/nav.ejs')%>
+
         <section class="container text-center">
             <div class="mt-5 mb-5">
                 <div class="row">
@@ -59,32 +42,29 @@
                 </div>
                 </div>
             </div>
-            <script>
-                let user= localStorage.emailUser
-                let bemVindo=document.querySelector("#bemVindo")
-                let sair=document.querySelector("#sair")
+        </section>            
+        <script>
+            let user= localStorage.emailUser
+            let bemVindo=document.querySelector("#bemVindo")
+            let sair=document.querySelector("#sair")
 
-                function msgUser(){ // Função para ocultar link entrar quando logado.
-                    let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
-                    bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
-                }
+            function msgUser(){ // Função para ocultar link entrar quando logado.
+                let nomeUser=user.substring(0,user.indexOf('@')) // Pega apenas a informação que está antes do "@" e está dentro da função, pois é quando ela existe.
+                bemVindo.innerHTML='Olá <b>' + nomeUser.toUpperCase() + '!</b>'
+            }
 
-                function resetUser(){ // Função para ocultar link sair quando não estivar logado.
-                    entrar.style.display="none"
-                    sair.style.display="none"
-                }
+            function resetUser(){ // Função para ocultar link sair quando não estivar logado.
+                entrar.style.display="none"
+                sair.style.display="none"
+            }
 
-                sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial
-                    localStorage.removeItem('emailUser')
-                    location.href='/LoginAdm'
-                }
+            sair.onclick=function(){ // Função que remove o usuário e reinicia a página inicial
+                localStorage.removeItem('emailUser')
+                location.href='/LoginAdm'
+            }
 
-                localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair.
+            localStorage.emailUser ? msgUser() : resetUser() // Ternário 'if' que verifica o entrar e sair.
 
-            </script>
-        </section>
-        <footer class="bg-dark p-4 text-warning text-center mt-4">
-            <p> &copy;2022 - Todos os direitos reservados.</p>
-         </footer>
-    </body>
-</html>
+        </script>
+
+<%-include('../partials/adm/footer.ejs')%>
