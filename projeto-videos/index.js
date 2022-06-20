@@ -5,6 +5,7 @@
     const url = require("url")
     const port = 3000
     const bodyParser = require('body-parser')
+    const session = require('express-session')
 
     const connection = require('./database/Database')
     const contatoController = require('./contato/contatoController')
@@ -20,6 +21,10 @@
     app.use('/', filmesController)
     app.use('/', carrinhoController)
     app.use('/', usuarioController)
+    app.use(session({
+        secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
+        cookie:{maxAge: 1000 * 60 * 60 * 24}
+    }))
 
     connection.authenticate()
         .then(()=>{console.log('Mysql conectado')})
@@ -80,6 +85,19 @@
 
     app.listen(port, () => {
         console.log("Servidor Online")
+    })
+
+    app.get('/session', (req, res) => {
+        req.session.email='r@r'
+        req.session.ano='2013'
+        req.session.senha='aaaaaaaaa'
+        res.send('Sessão criada!')
+    })
+
+    app.get('/session-leitura', (req, res)=>{
+        res.json({
+            email:req.session.email, ano:req.session.ano,
+        })
     })
 
 })()
