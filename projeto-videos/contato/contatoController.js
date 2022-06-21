@@ -1,10 +1,15 @@
 const express = require('express')
 const Chamados = require('./Chamados')
+const session = require('express-session')
 
 const router = express.Router();
+router.use(session({
+    secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
+    cookie: {maxAge:1000*60*60*24}
+}))
 
 router.get('/Contato', (req,res) => {
-    res.render(`usuario/contato`)
+    res.render(`usuario/contato`,{user:req.session})
 })
 
 router.post('/enviarChamado', function(req, res){

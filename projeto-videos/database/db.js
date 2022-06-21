@@ -2,8 +2,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host:"localhost",
-        user:"nfukumoto",
-        password:"24052003nN@!",
+        user:"kayke",
+        password:"K310104+a",
         database: "projeto_video"
     })
     console.log("mySQL conectado!")
@@ -11,7 +11,8 @@ async function conecta(){
     return connection
 }
 
-//conecta()
+const session = require('express-session')
+const mysqlSession = require('express-mysql-session')(session)
 
 async function selectFilmes(){
     const conectado = await conecta()
@@ -94,6 +95,18 @@ async function insertUsuario(usuario){
     return rows
 }
 
+async function makeSession(app,opt){
+    const conectado = await conecta()
+    const sessionStore = new mysqlSession(opt,conectado)
+    app.use(session({
+        cookie:{maxAge:1000*60*60*24},
+        secret: "hrgfgrfrty84fwir767sakjh872ekjh",
+        saveUninitialized:false,
+        store:sessionStore,
+        resave: false 
+    }))
+}
+
 module.exports = {
     selectFilmes,
     selectFilme,
@@ -106,5 +119,6 @@ module.exports = {
     getChamados,
     selectCarrinhoU,
     insertCarrinhoU,
-    deleteCarrinhoU
+    deleteCarrinhoU,
+    makeSession
 }

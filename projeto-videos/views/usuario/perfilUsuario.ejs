@@ -4,24 +4,23 @@
         <section class="container-fluid" style="margin: top 80px;">
             <article>
                 <h1 class="alert text-center" style="background-color:#E0D1FA ;"><b>Perfil do usuário</b></h1>
-                <div class="row mt-4">
-                    <div class="col-sm-12">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
-                    </div>
-                </div>
-                <form  class="w-50 mx-auto p-3 mt-3 mb-5" style="border:1px solid #ccc; border-radius: 12px;">
-                <div id="perfil"><!--Controlado pelo arquivo exemplo-json.js-->
-                    <h4></h4>
-                    <p id="p1"></p>
-                    <p id="p2"></p>
-                    <p id="p3"></p>
-                    <p id="p4"></p>
-                    <p id="p5"></p>
-                    <p id="p6"></p>
-                    <p id="p7"></p>
-                </div>
+
+                <form method="post" action="/atualizarDadosUsuario" class="form-group w-50 mx-auto p-3 mt-3 mb-5" style="border:1px solid #ccc; border-radius: 12px;">
+                    <fieldset>
+                        <legend class="text-center">Dados Pessoais</legend>
+                        <label class="mt-2">Nome:</label>
+                        <input name="nome" class="form-control" type="text" value="<%=data.nome_us%>" required>
+                        <label class="mt-2">Email:</label>
+                        <input name="email" class="form-control" type="text" value="<%=data.email_us%>" required>
+                        <label class="mt-2">Telefone:</label>
+                        <input name="telefone" class="form-control" type="text" value="<%=data.telefone_us%>" required>
+                        <label class="mt-3">N° Identificador: <%=data.usuario_id%></label><br>
+                        <div class="text-center">
+                            <button class="mt-3 btn btn-info" type="submit">Salvar</button>
+                        </div>
+                    </fieldset>
                 </form>
             </article>
         </section>
-    <script src="../js/perfilUsuario.js"></script>        
+     
 <%- include('../partials/usuario/footer.ejs') %>

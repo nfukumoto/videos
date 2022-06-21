@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const Filmes = require('./Filmes')
 const multer = require('multer');
 const fs = require('fs')
@@ -6,6 +7,7 @@ const url = require("url")
 const path = require('path')
 
 const router = express()
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
@@ -19,18 +21,31 @@ const storage = multer.diskStorage({
 
 const uploads = multer({storage})
 
+router.use(session({
+    secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
+    cookie:{maxAge: 1000*60*60*24}
+}))
+
 router.get('/',(req,res)=>{
-    Filmes.findAll({
-        attributes:[`filmes_id`, `titulo_fi`, `genero_fi`, `ano_fi`, `diretor_fi`, `sinopse_fi`, `link_trailer_fi`, `valor_fi`, `imagem_fi`],
-        raw:true
-    })
-    .then((data)=>{
-        result = data
-        for (let i = 0; i < result.length; i++) {
-            result[i].imagem_fi = result[i].imagem_fi.toString('base64')
-        }
-        res.render(`usuario/index`,{galeria:result})
-    })
+
+    if(req.session.usuario_id != undefined){
+        Filmes.findAll({
+            attributes:[`filmes_id`, `titulo_fi`, `genero_fi`, `ano_fi`, `diretor_fi`, `sinopse_fi`, `link_trailer_fi`, `valor_fi`, `imagem_fi`],
+            raw:true
+        })
+        .then((data)=>{
+            result = data
+            for (let i = 0; i < result.length; i++) {
+                result[i].imagem_fi = result[i].imagem_fi.toString('base64')
+            }
+            res.render(`usuario/index`,{galeria:result, user:req.session})
+        })
+    }
+    else{
+        res.redirect('/Login')
+    }
+
+   
 })
 
 router.get('/Produtos', (req,res) => {
@@ -43,7 +58,7 @@ router.get('/Produtos', (req,res) => {
         for (let i = 0; i < result.length; i++) {
             result[i].imagem_fi = result[i].imagem_fi.toString('base64')
         }
-        res.render(`usuario/produtos`,{galeria:result})
+        res.render(`usuario/produtos`,{galeria:result, user:req.session})
     })
 })
 
@@ -53,7 +68,7 @@ router.get("/Produto",async(req, res) => {
     let q = urlProp.query
     Filmes.findByPk(q.id).then((result)=>{
         result.imagem_fi = result.imagem_fi.toString('base64')
-        res.render(`usuario/singlePreferencia`,{galeria:result})
+        res.render(`usuario/singlePreferencia`,{galeria:result, user:req.session})
     })
 })
 
@@ -68,7 +83,7 @@ router.get('/Promocoes', async(req,res) => {
         for (let i = 0; i < result.length; i++) {
             result[i].imagem_fi = result[i].imagem_fi.toString('base64')
         }
-        res.render(`usuario/promocoes`,{galeria:result})
+        res.render(`usuario/promocoes`,{galeria:result, user:req.session})
     }).catch((err)=>{console.log(err)})
 })
 
