@@ -87,17 +87,4 @@
         console.log("Servidor Online")
     })
 
-    app.get('/session', (req, res) => {
-        req.session.email='r@r'
-        req.session.ano='2013'
-        req.session.senha='aaaaaaaaa'
-        res.send('Sessão criada!')
-    })
-
-    app.get('/session-leitura', (req, res)=>{
-        res.json({
-            email:req.session.email, ano:req.session.ano,
-        })
-    })
-
 })()

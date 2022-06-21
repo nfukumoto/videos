@@ -1,7 +1,13 @@
 const express = require('express')
 const Usuario = require('./Usuario')
+const session = require('express-session')
 
 const router = express.Router();
+
+router.use(session({
+    secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
+    cookie: {maxAge: 1000*60*60*24}
+}))
 
 router.get('/Login', (req,res) => {
     res.render(`usuario/login`)
@@ -15,6 +21,11 @@ router.post('/verificaUser', (req,res)=>{
         where:{email_us:email,senha_us:senha}
     }).then((result)=>{
         if(result != undefined){
+            
+            req.session.usuario_id = result.usuario_id
+            req.session.email = email
+            req.session.nome = result.nome_us
+            
             if(!result.adm_us){
                 res.redirect('/')
             }
@@ -34,7 +45,21 @@ router.get('/Cadastro', (req,res) => {
 })
 
 router.get('/Perfil', (req,res) => {
-    res.render(`usuario/perfilUsuario`)
+    const ID = req.session.usuario_id
+    Usuario.findByPk(ID, {raw:true}).then((result)=>{
+        res.render(`usuario/perfilUsuario`,{data:result,user:req.session})
+    })
+})
+
+router.post('/atualizarDadosUsuario', (req,res)=>{
+    const ID = req.session.usuario_id
+    Usuario.update({
+       nome_us:req.body.nome,
+       email_us: req.body.email,
+       telefone_us: req.body.telefone
+    },{where:{usuario_id:ID}}).then(()=>{
+        res.redirect('/Perfil')
+    })
 })
 
 router.get('/LoginAdm', (req,res) => {
@@ -55,6 +80,8 @@ router.post('/CadastrarAdm',(req,res)=>{
         email_us: email,
         senha_us: senha,
         adm_us: true
+    }).then(()=>{
+        res.redirect('/LoginAdm')
     })
 })
 
