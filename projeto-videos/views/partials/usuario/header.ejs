@@ -18,11 +18,13 @@
             <div class="col-sm-8 text-center">
                 <h1 class="font-weight-bold" style="font-size:30px; color:#5A18C9">SEU CONTEÚDO FAVORITO ESTÁ AQUI<BR>QUANDO QUISER E ONDE ESTIVER</h1>
             </div>
-            <div class="col-sm-2">
-                <span id="bemVindo" class="ml-2"></span>
-                <!-- <a id="entrar" style="cursor:pointer; text-decoration:underline" href="/Login">Entrar</a> -->
-                <span>Olá <%=user.nome%>!</span>
-                <a id="sair" style="cursor:pointer; text-decoration:underline" href="/Home" class="ml-2">Sair</a> <!--Redirecionado pelo JS-->                
-                <!-- <a id="cadastrar" href="/Cadastro" style="cursor:pointer; text-decoration:underline" class="ml-2">Cadastre-se</button></a> -->
-            </div>  
+            <%if(user.nome !=''){%>
+                <div class="col-sm-2">
+                    <span id="bemVindo" class="ml-2"></span>
+                    <!-- <a id="entrar" style="cursor:pointer; text-decoration:underline" href="/Login">Entrar</a> -->
+                    <span>Olá <%=user.nome%>!</span>
+                    <a id="sair" style="cursor:pointer; text-decoration:underline" href="/Home" class="ml-2">Sair</a> <!--Redirecionado pelo JS-->                
+                    <!-- <a id="cadastrar" href="/Cadastro" style="cursor:pointer; text-decoration:underline" class="ml-2">Cadastre-se</button></a> -->
+                </div>
+            <%}%>  
         </header> 

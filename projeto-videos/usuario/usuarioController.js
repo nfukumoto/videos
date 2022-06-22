@@ -3,7 +3,6 @@ const Usuario = require('./Usuario')
 const session = require('express-session')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
-const { info } = require('console')
 
 const router = express.Router();
 
@@ -89,7 +88,7 @@ router.post('/alterarSenha', (req, res) =>{
 })
 
 router.get('/Cadastro', (req,res) => {
-    res.render(`usuario/cadastro`,{user:''})
+    res.render(`usuario/cadastro`,{user:{nome:''}})
 })
 
 router.post('/Cadastro', async(req,res)=>{
