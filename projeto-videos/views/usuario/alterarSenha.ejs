@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Recuperação de Senha</title>
+    </head>
+<body>
+    <section class="container">
+        <article>
+            <form class="w-75 mx-auto mt-5 p-4" action="/alterarSenha" method="post" style="border: 1px solid #ccc;border-radius: 12px;" onsubmit="verificarSenha(event)">
+                <fieldset class="form-group">
+                    <legend class="text-center">Alterar Senha</legend>
+                    <label class="mt-2">Usuário:</label>
+                    <input class="form-control" name="email" type='email' placeholder="exemplo@gmail.com" required>
+                    <label class="mt-2">Senha:</label>
+                    <input class="form-control" id="senha" name="senha" type='password' placeholder="senha" required>
+                    <label class="mt-2">Confirme sua senha:</label>
+                    <input class="form-control" id="senhaC" type='password' placeholder="Confirmar senha" required>
+                    <div class="text-center mt-2">
+                        <button type="submit" class="btn btn-danger">Alterar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </article>
+    </section>
+</body>
+
+<script>
+    function verificarSenha(event){
+        const senha = document.getElementById('senha')
+        const senhaC = document.getElementById('senhaC')
+        if(senha.value != senhaC.value){
+            alert('Ops, senhas diferentes !')
+            event.preventDefault();
+        }
+    }
+</script>
+</html>
