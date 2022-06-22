@@ -40,7 +40,7 @@ const Filmes = connection.define('filmes', {
         type: Sequelize.BLOB('long'),
         allowNull: false
     },
-    promo_id:{
+    promo_fi:{
         type: Sequelize.INTEGER,
         allowNull: false
     }
