@@ -3,6 +3,7 @@ const Usuario = require('./Usuario')
 const session = require('express-session')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
+const { info } = require('console')
 
 const router = express.Router();
 
@@ -88,7 +89,17 @@ router.post('/alterarSenha', (req, res) =>{
 })
 
 router.get('/Cadastro', (req,res) => {
-    res.render(`usuario/cadastro`)
+    res.render(`usuario/cadastro`,{user:''})
+})
+
+router.post('/Cadastro', async(req,res)=>{
+    const nome = req.body.nome
+    const email = req.body.email
+    const senha = req.body.senha
+
+    const info = {nome:nome, email:email, senha:senha, isAdm: false}
+    await cadastrarUsuario(info)
+    res.redirect('/Login')    
 })
 
 router.get('/Perfil', (req,res) => {
@@ -117,19 +128,24 @@ router.get('/CadastroAdm', (req,res) => {
     res.render(`adm/cadastroAdm`)
 })
 
-router.post('/CadastrarAdm',(req,res)=>{
+router.post('/CadastrarAdm',async(req,res)=>{
     const nome = req.body.nome
     const email = req.body.email
     const senha = req.body.senha
 
-    Usuario.create({
-        nome_us: nome,
-        email_us: email,
-        senha_us: senha,
-        adm_us: true
-    }).then(()=>{
-        res.redirect('/LoginAdm')
-    })
+    const info = {nome:nome, email:email, senha:senha, isAdm: true}
+    await cadastrarUsuario(info)
+    res.redirect('/LoginAdm')
+    
 })
+
+ async function cadastrarUsuario(info, rota){
+    Usuario.create({
+        nome_us: info.nome,
+        email_us: info.email,
+        senha_us: info.senha,
+        adm_us: info.isAdm
+    })
+}
 
 module.exports = router
