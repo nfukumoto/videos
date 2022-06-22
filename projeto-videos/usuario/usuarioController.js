@@ -1,8 +1,18 @@
 const express = require('express')
 const Usuario = require('./Usuario')
 const session = require('express-session')
+const nodemailer = require('nodemailer')
+const fs = require('fs')
 
 const router = express.Router();
+
+let transporter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user:"squand4code@gmail.com",
+        pass:'xxqgbasdxnlhaerc'
+    }
+});
 
 router.use(session({
     secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
@@ -37,6 +47,43 @@ router.post('/verificaUser', (req,res)=>{
         {
             res.redirect('/Login')
         }
+    })
+})
+
+router.get('/recuperarSenha',(req,res)=>{
+    res.render('usuario/recuperarSenha')
+})
+
+router.post('/recuperarSenha', (req,res)=>{
+    const email = req.body.email
+    
+    const file = fs.readFileSync('./html/gmail.html','utf-8')
+
+    transporter.sendMail({
+        from: "squand4code@gmail.com",
+        to: email,
+        subject: "Recuperação de Senha",
+        html:file
+    })
+    .then((msg)=>{
+        console.log(msg);
+        res.redirect('/Login')
+    })
+    .catch((err)=>{
+        console.log(err);
+        res.send(err)
+    })
+})
+
+router.get('/alterarSenha', (req, res) =>{
+    res.render('usuario/alterarSenha')
+})
+
+router.post('/alterarSenha', (req, res) =>{
+    const email = req.body.email
+    const senha = req.body.senha
+    Usuario.update({senha_us:senha},{where:{email_us:email}}).then(()=>{
+        res.redirect('/Login')
     })
 })
 
