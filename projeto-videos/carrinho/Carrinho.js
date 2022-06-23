@@ -1,3 +1,4 @@
+//teste Prates//
 const Sequelize = require('sequelize')
 const connection = require('../database/Database')
 const Filmes = require('../filmes/Filmes')
