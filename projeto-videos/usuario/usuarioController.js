@@ -1,7 +1,9 @@
 const express = require('express')
 const Usuario = require('./Usuario')
+const Cadastro = require('./Cadastro')
 const session = require('express-session')
 const nodemailer = require('nodemailer')
+const crypto = require('crypto')
 const fs = require('fs')
 
 const router = express.Router();
@@ -20,7 +22,8 @@ router.use(session({
 }))
 
 router.get('/Login', (req,res) => {
-    res.render(`usuario/login`)
+    const msgErr = req.query['msgErr']
+    res.render(`usuario/login`,{msgErr:msgErr})
 })
 
 router.post('/verificaUser', (req,res)=>{
@@ -45,7 +48,7 @@ router.post('/verificaUser', (req,res)=>{
         }
         else
         {
-            res.redirect('/Login')
+            res.redirect('/Login?msgErr=403')
         }
     })
 })
@@ -56,33 +59,35 @@ router.get('/recuperarSenha',(req,res)=>{
 
 router.post('/recuperarSenha', (req,res)=>{
     const email = req.body.email
+
+    Usuario.findOne({raw:true, attributes:['token_us'], where:{email_us:email}}).then((result)=>{
+        let msg = fs.readFileSync('./html/gmail1.html','utf-8')
+        msg += result.token_us
+        msg +=  fs.readFileSync('./html/gmail2.html','utf-8')
+
+        transporter.sendMail({
+            from: "squand4code@gmail.com",
+            to: email,
+            subject: "Recuperação de Senha",
+            html:msg
+        })
+        .then((msg)=>{
+            console.log(msg);
+            res.redirect('/Login')
+        })
+    })
     
-    const file = fs.readFileSync('./html/gmail.html','utf-8')
-
-    transporter.sendMail({
-        from: "squand4code@gmail.com",
-        to: email,
-        subject: "Recuperação de Senha",
-        html:file
-    })
-    .then((msg)=>{
-        console.log(msg);
-        res.redirect('/Login')
-    })
-    .catch((err)=>{
-        console.log(err);
-        res.send(err)
-    })
 })
 
-router.get('/alterarSenha', (req, res) =>{
-    res.render('usuario/alterarSenha')
+router.get('/alterarSenha/:token', (req, res) =>{
+    const token = req.params.token
+    res.render('usuario/alterarSenha',{token:token})
 })
 
-router.post('/alterarSenha', (req, res) =>{
-    const email = req.body.email
+router.post('/alterarSenha/:token', (req, res) =>{
+    const token = req.params.token
     const senha = req.body.senha
-    Usuario.update({senha_us:senha},{where:{email_us:email}}).then(()=>{
+    Usuario.update({senha_us:senha},{where:{token_us:token}}).then(()=>{
         res.redirect('/Login')
     })
 })
@@ -96,9 +101,40 @@ router.post('/Cadastro', async(req,res)=>{
     const email = req.body.email
     const senha = req.body.senha
 
-    const info = {nome:nome, email:email, senha:senha, isAdm: false}
-    await cadastrarUsuario(info)
-    res.redirect('/Login')    
+    const num = parseInt(Math.random()*9000000 + 1000000)
+
+    Cadastro.create({
+        nome:nome,
+        email:email,
+        senha:senha,
+        isAdm: false,
+        numeroConfirmacao: num.toString()
+    })
+
+    let msg = fs.readFileSync('./html/cadastro1.html','utf-8')
+    msg += num.toString()
+    msg += fs.readFileSync('./html/cadastro2.html','utf-8')
+
+    transporter.sendMail({
+        from: "squand4code@gmail.com",
+        to: email,
+        subject: "Confirme seu cadastro",
+        html:msg
+    })
+    .then(()=>{
+        res.redirect('/Login')
+    })
+    .catch((err)=>{
+        res.send(err)
+    })  
+})
+
+router.get('/efetuarCadastro/:ID', async(req,res)=>{
+    const num = req.params.ID
+    Cadastro.findOne({raw: true, where:{numeroConfirmacao:num.toString()}}).then((result)=>{
+        cadastrarUsuario(result)
+        res.redirect('/Login')
+    })
 })
 
 router.get('/Perfil', (req,res) => {
@@ -138,13 +174,18 @@ router.post('/CadastrarAdm',async(req,res)=>{
     
 })
 
- async function cadastrarUsuario(info, rota){
-    Usuario.create({
-        nome_us: info.nome,
-        email_us: info.email,
-        senha_us: info.senha,
-        adm_us: info.isAdm
-    })
+ async function cadastrarUsuario(info, rota){    
+    crypto.randomBytes(100, function(err, buffer) {
+        let token = buffer.toString('hex');
+
+        Usuario.create({
+            nome_us: info.nome,
+            email_us: info.email,
+            senha_us: info.senha,
+            adm_us: info.isAdm,
+            token_us: token
+        })
+    });
 }
 
 module.exports = router

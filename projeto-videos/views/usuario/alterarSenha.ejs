@@ -12,11 +12,9 @@
 <body>
     <section class="container">
         <article>
-            <form class="w-75 mx-auto mt-5 p-4" action="/alterarSenha" method="post" style="border: 1px solid #ccc;border-radius: 12px;" onsubmit="verificarSenha(event)">
+            <form class="w-75 mx-auto mt-5 p-4" action="/alterarSenha/<%=token%>" method="post" style="border: 1px solid #ccc;border-radius: 12px;" onsubmit="verificarSenha(event)">
                 <fieldset class="form-group">
                     <legend class="text-center">Alterar Senha</legend>
-                    <label class="mt-2">Usuário:</label>
-                    <input class="form-control" name="email" type='email' placeholder="exemplo@gmail.com" required>
                     <label class="mt-2">Senha:</label>
                     <input class="form-control" id="senha" name="senha" type='password' placeholder="senha" required>
                     <label class="mt-2">Confirme sua senha:</label>
