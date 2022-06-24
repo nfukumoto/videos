@@ -1,38 +1,34 @@
 const Sequelize = require('sequelize')
 const connection = require('../database/Database')
 
-const Usuario = connection.define('usuarios', {
-    usuario_id:{
+const Cadastro = connection.define('cadastros', {
+    cadastro_id:{
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
     },
-    nome_us:{
+    nome:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    email_us:{
+    email:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    telefone_us:{
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    senha_us:{
+    senha:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    adm_us:{
+    isAdm:{
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    token_us:{
-        type: Sequelize.STRING
+    numeroConfirmacao:{
+        type: Sequelize.STRING,
+        allowNull: false
     }
 })
 
-Usuario.sync({force:false}).then(()=>{})
-
-module.exports = Usuario
+Cadastro.sync({force:false}).then()
+module.exports = Cadastro
