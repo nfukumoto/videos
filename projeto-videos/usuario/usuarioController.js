@@ -3,8 +3,30 @@ const Usuario = require('./Usuario')
 const Cadastro = require('./Cadastro')
 const session = require('express-session')
 const nodemailer = require('nodemailer')
+const connection = require('../database/Database')
 const crypto = require('crypto')
 const fs = require('fs')
+const MySQLStore = require('express-mysql-session')(session);
+
+const options ={
+    expiration: 1000*60*60*24,
+    createDatabaseTable: true,
+    host: 'localhost',
+    port: 3306,
+    user: 'kayke',
+    password: 'K310104+a',
+    database: 'projeto_video',
+    schema: {
+        tableName: 'session_tbl',
+        columnNames: {
+            session_id: 'session_id',
+            expires: 'expires',
+            data: 'data'
+        }
+    }  
+}
+
+let sessionStore = new MySQLStore(options);
 
 const router = express.Router();
 
@@ -18,7 +40,10 @@ let transporter = nodemailer.createTransport({
 
 router.use(session({
     secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
-    cookie: {maxAge: 1000*60*60*24}
+    cookie: {maxAge: 1000*60*60*24},
+    store: sessionStore,
+    resave: false,
+	saveUninitialized: false
 }))
 
 router.get('/Login', (req,res) => {
@@ -187,5 +212,12 @@ router.post('/CadastrarAdm',async(req,res)=>{
         })
     });
 }
+
+router.use('/logout', function (req, res) {
+    req.session.destroy()
+    res.clearCookie('connect.sid', { path: '/' });
+    res.redirect("/Login") 
+ 
+})
 
 module.exports = router

@@ -6,6 +6,27 @@
     const port = 3000
     const bodyParser = require('body-parser')
     const session = require('express-session')
+    const MySQLStore = require('express-mysql-session')(session);
+
+    const options ={
+        expiration: 1000*60*60*24,
+        createDatabaseTable: true,
+        host: 'localhost',
+        port: 3306,
+        user: 'kayke',
+        password: 'K310104+a',
+        database: 'projeto_video',
+        schema: {
+            tableName: 'session_tbl',
+            columnNames: {
+                session_id: 'session_id',
+                expires: 'expires',
+                data: 'data'
+            }
+        }  
+    }
+    
+    let sessionStore = new MySQLStore(options);
 
     const connection = require('./database/Database')
     const contatoController = require('./contato/contatoController')
@@ -23,7 +44,10 @@
     app.use('/', usuarioController)
     app.use(session({
         secret:'owieuwhjck23xjce1WYFCKSJ457fgdO4IEWUQ8sdf1NBV',
-        cookie:{maxAge: 1000 * 60 * 60 * 24}
+        cookie:{maxAge:1000*60*60*24},
+        store: sessionStore,
+        resave: false,
+        saveUninitialized: false
     }))
 
     connection.authenticate()
