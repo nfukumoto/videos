@@ -41,7 +41,7 @@
                                 <p class="card-text"><%=item.sinopse_fi.substring(0, 200)%>...</p>
                             <div class="text-left w-100" style="position: absolute;bottom:2vh;">
                                 <h2>R$ <%=item.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
-                                <a href="carrinho/?id=<%=item.livros_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
+                                <a href="/addProdutoCarrinho/<%=item.filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
                             </div>
                                 
                         </div>
