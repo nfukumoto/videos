@@ -22,15 +22,20 @@
                                     <h3 class="text-dark">Excluir</h3>
                                 </div>
                             </div><hr>
-
-                            <% item.forEach((n) => {%>
+                            <% 
+                                var total=0
+                                var telas_t=0
+                                item.forEach((n) => {
+                                total += n.valor_fi
+                                telas_t += n.qtdTelas_ca
+                            %>
                             <div class="row mb-2" id="car<%=n.carrinho_id %>">
-                                    <div class="col-sm-6 mt-2"><p><%=n.titulo_fi%></p></div>
-                                    <div class="col-sm-2 mt-2 text-center"><p><%=n.qtdTelas_ca%></p></div>
-                                    <div class="col-sm-2 mt-2 text-right"><p>R$ <%=n.valor_fi.toFixed(2).toString().replace(".",",")%></p></div>
-                                    <div class="col-sm-2">
-                                        <a class="btn btn-light" href="/deleteProdutoCarrinho/<%=n.carrinhos_id%>" ><img src="/public/imagens/lixeira.png" class="w-25"></a>
-                                    </div>
+                                <div class="col-sm-6 mt-2"><p><%=n.titulo_fi%></p></div>
+                                <div class="col-sm-2 mt-2 text-center"><p><%=n.qtdTelas_ca%></p></div>
+                                <div class="col-sm-2 mt-2 text-right"><p>R$ <%=n.valor_fi.toFixed(2).toString().replace(".",",")%></p></div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-light" href="/deleteProdutoCarrinho/<%=n.carrinhos_id%>" ><img src="/public/imagens/lixeira.png" class="w-25"></a>
+                                </div>
                             </div>
                             <% }) %>
                         </div>
@@ -41,6 +46,8 @@
                     <form class="form-group p-3 mt-4 ml-4" style="border: 1px solid #ccc; border-radius: 12px">
                         <fieldset>
                             <div id="resumoCompra"></div>
+                            <p class="mt-1 font-weight-bold">Tem <%=telas_t%> produto(s) no carrinho.</p>
+                            <p class="mt-1 font-weight-bold">Total: R$ <%=(total.toFixed(2)).toString().replace(".",",")%>.</p>
                             <div class="row">
                                 <input type="number" id="cupom" class="w-100 form-control col-sm-7 mx-auto" placeholder="Cupom de Desconto">
                                 <button type="button" class="btn btn-info col-sm-3 mx-auto" id="btnCupom">Validar</button>
