@@ -2,7 +2,7 @@
 <%- include('../partials/usuario/nav.ejs') %>
 
         <section class="container-fluid" style="margin: top 80px;">
-            <h1 id="tituloPagina" class="alert text-center" style="background-color:#E0D1FA ;"><b>Meu Carrinho</b></h1>
+            <h1 id="tituloPagina" class="alert text-center" style="background-color:#E0D1FA ;"><b>Meu Carrinho de Compras</b></h1>
             <article class="container-fluid mt-4 row mx-auto" style="border: 1px solid #ccc; border-radius: 12px">
 
                 <div id="carrinho" class="row col-sm-8 mb-3">
@@ -46,8 +46,8 @@
                     <form class="form-group p-3 mt-4 ml-4" style="border: 1px solid #ccc; border-radius: 12px">
                         <fieldset>
                             <div id="resumoCompra"></div>
-                            <p class="mt-1 font-weight-bold">Tem <%=telas_t%> produto(s) no carrinho.</p>
-                            <p class="mt-1 font-weight-bold">Total: R$ <%=(total.toFixed(2)).toString().replace(".",",")%>.</p>
+                            <p class="mt-1 font-weight-bold">Tem <%=telas_t%> produto(s) no meu carrinho.</p>
+                            <p class="mt-1 font-weight-bold">Total: R$ <%=(total.toFixed(2)).toString().replace(".",",")%></p>
                             <div class="row">
                                 <input type="number" id="cupom" class="w-100 form-control col-sm-7 mx-auto" placeholder="Cupom de Desconto">
                                 <button type="button" class="btn btn-info col-sm-3 mx-auto" id="btnCupom">Validar</button>
