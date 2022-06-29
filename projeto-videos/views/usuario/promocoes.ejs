@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="alert text-center" style="background-color:#E0D1FA ;"><b>Conheça as Nossas Promoções</b></h1>
-                    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam provident rem neque eos inventore expedita fugit, necessitatibus deleniti voluptatem sint adipisci temporibus corporis ullam ducimus itaque architecto omnis, odio esse voluptatibus perspiciatis. Rem neque temporibus commodi voluptatum sint quas, porro iusto voluptatibus itaque ipsum? Illo repudiandae totam deleniti velit dicta!</p> 
+                    <p class="mt-4" style="color: purple;">Aqui você encontra os clássicos que nunca saem de moda, porém com um preço especial que você não encontrará em outro lugar. Aproveite porque são por tempo limitado. Mas não se preocupe, sempre temos novas promoções aqui!</p> 
                 </div>
             </div>
             <article>
@@ -14,16 +14,16 @@
                     <!--Inicio da iteração-->
                     <% galeria.forEach((item) => { %>
                     <div class="col-md-16 col-sm-16 col-lg-3">
-                        <div class="card" style="height: 140vh;">
+                        <div class="card" style="height: 135vh;">
                             <a href="/Produto?id=<%=item.filmes_id%>">
                                 <img class="card-img-top" src="data:image/png;base64,<%=item.imagem_fi%>" alt="Card image cap">
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title"><%=item.titulo_fi%></h4>
-                                <p class="card-text"><%=item.sinopse_fi%></p>
+                                <p class="card-text"><%=item.sinopse_fi.substring(0, 200)%>...</p>
                                 <div style="position: absolute;bottom:2vh;">
                                     <h2>R$ <%=item.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
-                                    <a href="carrinho/?id=<%=item.filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
+                                    <a href="/addProdutoCarrinho/<%=item.filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
                                 </div>
                             </div>
                         </div>
