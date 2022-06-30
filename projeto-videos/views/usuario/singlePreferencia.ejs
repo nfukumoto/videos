@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-sm-3">
                         <h4 class="text-center"><b>SINOPSE</b></h4>
-                        <p class="card-text mt-5"><%=galeria.sinopse_fi%></p>
+                        <p class="card-text mt-5"><%=galeria.sinopse_fi.substring(0, 350)%>...</p>
                         <div style="position: absolute;bottom:0vh;">
                             <h2>R$ <%=galeria.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
                             <a href="/addProdutoCarrinho/<%=galeria.filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
