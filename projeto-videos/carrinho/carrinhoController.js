@@ -34,7 +34,7 @@ router.use(session({
 }))
 
 router.get('/Carrinho', async(req,res) => {
-    let [result] = await connection.query('SELECT carrinhos.carrinhos_id,filmes.titulo_fi, filmes.valor_fi, carrinhos.qtdTelas_ca FROM carrinhos INNER JOIN filmes ON carrinhos.filmes_ca=filmes.filmes_id')
+    let [result] = await connection.query('SELECT carrinhos.carrinhos_id, filmes.imagem_fi, filmes.titulo_fi, filmes.valor_fi, carrinhos.qtdTelas_ca FROM carrinhos INNER JOIN filmes ON carrinhos.filmes_ca=filmes.filmes_id')
     res.render(`usuario/carrinhoCompra`,{item:result, user: req.session})
 })
 

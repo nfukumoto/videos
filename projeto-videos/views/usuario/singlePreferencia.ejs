@@ -3,16 +3,22 @@
 
         <section class="container-fluid" style="margin: top 80px;">
             <h1 class="alert text-center" style="background-color:#E0D1FA ;"><b>Descrição do Produto Escolhido</b></h1>
-
-
             <div class="card p-2">
                 <div class="card-body row">
-                    <div class="col-sm-2">
-                        <img class="w-100" src="data:image/png;base64,<%=galeria.imagem_fi%>" alt="Card image cap">
+                    <div class="col-sm-3">
+                        <h4 class="text-center"><b>TITULO</b></h4>
+                        <h4 class="card-title text-center"><%=galeria.titulo_fi%></h4>
+                        <center><img class="w-75" src="data:image/png;base64,<%=galeria.imagem_fi%>" alt="Card image cap"></center>
                     </div>
-                    <div class="col-sm-10">
-                        <h4 class="card-title"><%=galeria.titulo_fi%></h4>
-                        <p class="card-text"><%=galeria.sinopse_fi%></p>
+                    <div class=" col-sm-6">
+                        <h4 class="text-center"><b>TRAILER</b></h4>
+                        <div class="mt-5 embed-responsive embed-responsive-16by9">
+                            <iframe width="560" height="315" class="embed-responsive-item" src="<%=galeria.link_trailer_fi%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4 class="text-center"><b>SINOPSE</b></h4>
+                        <p class="card-text mt-5"><%=galeria.sinopse_fi.substring(0, 350)%>...</p>
                         <div style="position: absolute;bottom:0vh;">
                             <h2>R$ <%=galeria.valor_fi.toFixed(2).toString().replace(".",",")%></h2>
                             <a href="/addProdutoCarrinho/<%=galeria.filmes_id%>" class="btn btn-primary">Adicionar ao carrinho</a>
@@ -20,9 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-5 embed-responsive embed-responsive-16by9">
-                <iframe width="560" height="315" class="embed-responsive-item" src="<%=galeria.link_trailer_fi%>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-            </div>
+
         </section>
     <script src="../js/singlePreferencia.js"></script>
 <%- include('../partials/usuario/footer.ejs') %>

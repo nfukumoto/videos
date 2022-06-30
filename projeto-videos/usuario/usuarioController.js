@@ -193,9 +193,32 @@ router.post('/CadastrarAdm',async(req,res)=>{
     const email = req.body.email
     const senha = req.body.senha
 
-    const info = {nome:nome, email:email, senha:senha, isAdm: true}
-    await cadastrarUsuario(info)
-    res.redirect('/LoginAdm')
+    const num = parseInt(Math.random()*9000000 + 1000000)
+
+    Cadastro.create({
+        nome:nome,
+        email:email,
+        senha:senha,
+        isAdm: true,
+        numeroConfirmacao: num.toString()
+    })
+
+    let msg = fs.readFileSync('./html/cadastro1.html','utf-8')
+    msg += num.toString()
+    msg += fs.readFileSync('./html/cadastro2.html','utf-8')
+
+    transporter.sendMail({
+        from: "squand4code@gmail.com",
+        to: email,
+        subject: "Confirme seu cadastro",
+        html:msg
+    })
+    .then(()=>{
+        res.redirect('/Login')
+    })
+    .catch((err)=>{
+        res.send(err)
+    })  
     
 })
 
@@ -209,6 +232,8 @@ router.post('/CadastrarAdm',async(req,res)=>{
             senha_us: info.senha,
             adm_us: info.isAdm,
             token_us: token
+        }).then(()=>{
+            Cadastro.destroy({where:{email:info.email}})
         })
     });
 }

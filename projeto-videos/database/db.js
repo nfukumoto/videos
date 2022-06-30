@@ -2,8 +2,13 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host:"localhost",
+<<<<<<< HEAD
         user:"Devlux",//"Devlux"
         password:"RafaRita#22",//"RafaRita#22"
+=======
+        user:"kayke", // Alterações necessárias aqui, e nos arquivos Database.js, contatoController.js, usuarioController.js, filmesController.js e carrinhoController.js
+        password:"K310104+a",
+>>>>>>> 7758836f6b847da9b93a653cbc76aab6fbed85e2
         database: "projeto_video"
     })
     console.log("mySQL conectado!")
@@ -61,7 +66,7 @@ async function setProduct(data){
 
 async function selectCarrinhoU(){
     const conectado = await conecta()
-    const [rows] = await conectado.query("SELECT carrinhos.carrinhos_id,filmes.titulo_fi, filmes.valor_fi, carrinhos.qtdTelas_ca FROM carrinhos INNER JOIN filmes ON carrinhos.filmes_ca=filmes.filmes_id")
+    const [rows] = await conectado.query("SELECT carrinhos.carrinhos_id, filmes.imagem_fi, filmes.titulo_fi, filmes.valor_fi, carrinhos.qtdTelas_ca FROM carrinhos INNER JOIN filmes ON carrinhos.filmes_ca=filmes.filmes_id")
     //console.log(rows)
     return rows
 }
