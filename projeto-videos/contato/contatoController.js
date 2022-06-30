@@ -9,8 +9,8 @@ const options ={
     createDatabaseTable: true,
     host: 'localhost',
     port: 3306,
-    user: 'nfukumoto',
-    password: '24052003nN@!',
+    user: 'kayke',
+    password: 'K310104+a',
     database: 'projeto_video',
     schema: {
         tableName: 'session_tbl',
